@@ -1,1 +1,4 @@
 /실습과정_전체.md
+.env
+.env.local
+.env*.local
