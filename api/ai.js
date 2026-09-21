@@ -2,7 +2,7 @@
 
 
 // ★ Groq 무료 플랜에서 쓸 수 있는 모델인데 더 똑똑한 답 원하면 "openai/gpt-oss-120b"로 바꿔도 돼요 (근데 조금 느림)
-const MODEL = "openai/gpt-oss-20b";
+const MODEL = "openai/gpt-oss-120b";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
