@@ -10,17 +10,59 @@
 
   <header id="nav"></header>
 
+  <div class="home-layout">
+
+  <!-- 왼쪽 광고 2개 -->
+  <aside class="side-ads side-ads-left" aria-label="왼쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-sangam.png"
+        alt="상암고등학교 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-toilet.png"
+        alt="바로화장실 광고"
+      >
+    </aside>
+
+  <!-- 기존 내 정보 화면 -->
   <main>
     <h1>내 정보</h1>
 
     <section class="card">
-      <p>이메일: <strong id="myEmail"></strong></p>
-      <p>내가 쓴 글: <strong id="myCount">-</strong>개</p>
+      <p>
+        이메일:
+        <strong id="myEmail"></strong>
+      </p>
+
+      <p>
+        내가 쓴 글:
+        <strong id="myCount">-</strong>개
+      </p>
     </section>
 
     <h2>내가 쓴 글</h2>
     <ul id="myList"></ul>
   </main>
+
+  <!-- 오른쪽 광고 2개 -->
+  <aside class="side-ads side-ads-right" aria-label="오른쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-land.png"
+        alt="상암랜드 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-wonking.png"
+        alt="원킹쌤 메이커 프로젝트 광고"
+      >
+    </aside>
+
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/static/js/common.js"></script>

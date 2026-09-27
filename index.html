@@ -11,26 +11,73 @@
 
   <header id="nav"></header>
 
-  <main>
-    <img src="/assets/logo.svg" alt="로고" class="logo">
-    <h1>상암랜드</h1>
+  <div class="home-layout">
 
-    <!-- 로그인 안 했을 때 -->
-    <section id="loginBox" class="card" hidden>
-      <input id="email" type="email" placeholder="이메일">
-      <input id="password" type="password" placeholder="비밀번호 (6자 이상)">
-      <div class="row">
-        <button onclick="signUp()">회원가입</button>
-        <button onclick="signIn()">로그인</button> 
-      </div>
-    </section>
+    <!-- 왼쪽 광고 2개 -->
+    <aside class="side-ads side-ads-left" aria-label="왼쪽 광고">
+      <span class="side-ad-label">광고</span>
 
-    <!-- 로그인 했을 때 -->
-    <section id="welcomeBox" class="card" hidden>
-      <p id="hello"></p>
-      <a class="btn" href="/pages/board.html">게시판으로 가기</a>
-    </section>
-  </main>
+      <img
+        src="/assets/ads/ad-sangam.png"
+        alt="상암고등학교 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-toilet.png"
+        alt="바로화장실 광고"
+      >
+    </aside>
+
+    <!-- 기존 홈 화면 -->
+    <main>
+      <img src="/assets/logo.svg" alt="로고" class="logo">
+      <h1>상암랜드</h1>
+
+      <!-- 로그인 안 했을 때 -->
+      <section id="loginBox" class="card" hidden>
+        <input
+          id="email"
+          type="email"
+          placeholder="이메일"
+        >
+
+        <input
+          id="password"
+          type="password"
+          placeholder="비밀번호 (6자 이상)"
+        >
+
+        <div class="row">
+          <button onclick="signUp()">회원가입</button>
+          <button onclick="signIn()">로그인</button>
+        </div>
+      </section>
+
+      <!-- 로그인 했을 때 -->
+      <section id="welcomeBox" class="card" hidden>
+        <p id="hello"></p>
+        <a class="btn" href="/pages/board.html">
+          게시판으로 가기
+        </a>
+      </section>
+    </main>
+
+    <!-- 오른쪽 광고 2개 -->
+    <aside class="side-ads side-ads-right" aria-label="오른쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-land.png"
+        alt="상암랜드 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-wonking.png"
+        alt="원킹쌤 메이커 프로젝트 광고"
+      >
+    </aside>
+
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/static/js/common.js"></script>

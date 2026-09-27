@@ -12,20 +12,62 @@
 
   <header id="nav"></header>
 
+  <div class="home-layout">
+
+  <!-- 왼쪽 광고 2개 -->
+  <aside class="side-ads side-ads-left" aria-label="왼쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-sangam.png"
+        alt="상암고등학교 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-toilet.png"
+        alt="바로화장실 광고"
+      >
+    </aside>
+
+  <!-- 기존 게시판 -->
   <main>
     <h1>게시판</h1>
 
     <section class="card">
-      <textarea id="content" placeholder="한 줄 남기기"></textarea>
+      <textarea
+        id="content"
+        placeholder="한 줄 남기기"
+      ></textarea>
+
       <div class="row">
         <button onclick="addPost()">등록</button>
-        <button id="aiBtn" onclick="polish()">AI에게 다듬어달라기</button>
+        <button id="aiBtn" onclick="polish()">
+          AI에게 다듬어달라기
+        </button>
       </div>
+
       <div id="aiBox"></div>
     </section>
 
     <ul id="list"></ul>
   </main>
+
+  <!-- 오른쪽 광고 2개 -->
+  <aside class="side-ads side-ads-right" aria-label="오른쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-land.png"
+        alt="상암랜드 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-wonking.png"
+        alt="원킹쌤 메이커 프로젝트 광고"
+      >
+    </aside>
+
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/static/js/common.js"></script>

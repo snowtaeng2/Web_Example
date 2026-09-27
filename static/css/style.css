@@ -130,3 +130,145 @@ li .when {
   font-size: 12px;
   color: var(--gray);
 }
+
+/* =========================================================
+   홈 화면 양쪽 광고
+   ========================================================= */
+
+.home-layout {
+  display: grid;
+
+  /* 왼쪽 광고 280px, 가운데 760px, 오른쪽 광고 280px */
+  grid-template-columns: 280px minmax(500px, 760px) 280px;
+
+  justify-content: center;
+  align-items: start;
+  gap: 28px;
+
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 24px 60px;
+}
+
+/* 가운데 상암랜드 홈 영역 */
+.home-layout main {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* 로그인 및 환영 카드 */
+.home-layout .card {
+  width: 100%;
+  padding: 26px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(24, 24, 27, 0.08);
+}
+
+/* 로그인 입력창 확대 */
+.home-layout input {
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+/* 로그인과 회원가입 버튼 확대 */
+.home-layout button,
+.home-layout .btn {
+  padding: 11px 20px;
+  font-size: 15px;
+}
+
+/* 양쪽 광고 묶음 */
+.side-ads {
+  position: sticky;
+  top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* 광고 이미지 */
+.side-ads img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+
+  box-shadow: 0 6px 18px rgba(24, 24, 27, 0.14);
+}
+
+/* 광고 표시 */
+.side-ad-label {
+  align-self: flex-end;
+
+  padding: 4px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+
+  background: #fff;
+  color: var(--gray);
+  font-size: 11px;
+}
+
+@media (max-width: 1100px) {
+  .home-layout {
+    grid-template-columns: 220px minmax(400px, 640px) 220px;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 850px) {
+  .home-layout {
+    display: flex;
+    flex-direction: column;
+    max-width: 680px;
+    padding: 12px 16px 50px;
+  }
+
+  .home-layout main {
+    order: 1;
+  }
+
+  .side-ads {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 12px;
+  }
+
+  .side-ads-left {
+    order: 2;
+  }
+
+  .side-ads-right {
+    order: 3;
+  }
+
+  .side-ad-label {
+    display: none;
+  }
+
+  .side-ads img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .side-ads {
+    grid-template-columns: 1fr;
+  }
+
+  .home-layout .card {
+    padding: 18px;
+  }
+}
