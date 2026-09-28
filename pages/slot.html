@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>상암 슬롯 | 상암랜드</title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body data-require-auth="true">
+
+  <header id="nav"></header>
+
+  <div class="home-layout">
+
+    <!-- 왼쪽 광고 2개 -->
+    <aside class="side-ads side-ads-left" aria-label="왼쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-sangam.png"
+        alt="상암고등학교 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-toilet.png"
+        alt="바로화장실 광고"
+      >
+    </aside>
+
+    <!-- 가운데 슬롯 화면 -->
+    <main class="slot-page">
+
+      <section class="slot-intro">
+        <a class="slot-back" href="/pages/games.html">
+          ← 게임장으로 돌아가기
+        </a>
+
+        <span class="slot-label">SANGAM SLOT</span>
+
+        <h1>🎰 상암 슬롯</h1>
+
+        <p>
+          실제 돈이 아닌 상암랜드 가상 칩으로 즐기는 슬롯 게임입니다.
+        </p>
+      </section>
+
+      <!-- 슬롯 기계 -->
+      <section class="slot-machine">
+
+        <div class="slot-screen" aria-label="슬롯 결과 화면">
+          <div id="slotReel1" class="slot-reel">❔</div>
+          <div id="slotReel2" class="slot-reel">❔</div>
+          <div id="slotReel3" class="slot-reel">❔</div>
+        </div>
+
+        <div class="slot-bet-area">
+          <strong>베팅할 칩 선택</strong>
+
+          <div class="slot-bet-buttons">
+            <button
+              type="button"
+              class="slot-bet-button active"
+              data-bet="100"
+              onclick="selectSlotBet(100)"
+            >
+              100칩
+            </button>
+
+            <button
+              type="button"
+              class="slot-bet-button"
+              data-bet="500"
+              onclick="selectSlotBet(500)"
+            >
+              500칩
+            </button>
+
+            <button
+              type="button"
+              class="slot-bet-button"
+              data-bet="1000"
+              onclick="selectSlotBet(1000)"
+            >
+              1,000칩
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          id="slotSpinButton"
+          class="slot-spin-button"
+          onclick="playSlot()"
+        >
+          100칩으로 돌리기
+        </button>
+
+        <p
+          id="slotMessage"
+          class="slot-message"
+          aria-live="polite"
+        >
+          베팅할 칩을 선택하고 슬롯을 돌려보세요.
+        </p>
+
+      </section>
+
+      <!-- 배당표 -->
+      <section class="slot-paytable-section">
+        <h2>잭팟 배당표</h2>
+
+        <p class="slot-rule-notice">
+          같은 과일이 3개 나와야 당첨입니다.
+          같은 과일 2개는 꽝입니다.
+        </p>
+
+        <div class="slot-paytable">
+
+  <div class="slot-paytable-item slot-jackpot">
+    <span>🍒 🍒 🍒</span>
+    <strong>20배 잭팟</strong>
+  </div>
+
+  <div class="slot-paytable-item">
+    <span>🍋 🍋 🍋</span>
+    <strong>5배</strong>
+  </div>
+
+  <div class="slot-paytable-item">
+    <span>🍇 🍇 🍇</span>
+    <strong>2배</strong>
+  </div>
+
+  <div class="slot-paytable-item slot-miss">
+    <span>🍒 🍒 🍇</span>
+    <strong>꽝</strong>
+  </div>
+
+  <div class="slot-paytable-item slot-miss">
+    <span>🍒 🍋 🍇</span>
+    <strong>꽝</strong>
+  </div>
+
+        </div>
+
+        <p class="slot-disclaimer">
+          상암랜드 가상 칩은 실제 현금이나 상품으로 교환할 수 없습니다.
+        </p>
+      </section>
+
+    </main>
+
+    <!-- 오른쪽 광고 2개 -->
+    <aside class="side-ads side-ads-right" aria-label="오른쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-land.png"
+        alt="상암랜드 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-wonking.png"
+        alt="원킹쌤 메이커 프로젝트 광고"
+      >
+    </aside>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/slot.js"></script>
+
+
+</body>
+</html>

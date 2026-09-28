@@ -18,12 +18,37 @@ const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 // 지금 로그인한 사람 (로그인 안 했으면 null)
 let currentUser = null;
 
+// 현재 로그인한 사용자의 보유 칩
+let currentChips = 0;
+
+async function loadMyChips() {
+  if (!currentUser) {
+    currentChips = 0;
+    return;
+  }
+
+  const { data, error } = await db
+    .from("chip_balances")
+    .select("chips")
+    .eq("user_id", currentUser.id)
+    .single();
+
+  if (error) {
+    console.error("칩 조회 실패:", error);
+    currentChips = 0;
+    return;
+  }
+
+  currentChips = Number(data.chips) || 0;
+}
+
 // ---------------------------------------------------------
 // 2. 메뉴  ★ 만약 새 페이지 만들게 되시면 여기에 한 줄만 추가하주세요!!!!! ★
 // ---------------------------------------------------------
 
 const MENU = [
   { name: "홈", url: "/index.html" },
+  { name: "게임장", url: "/pages/games.html" },
   { name: "게시판", url: "/pages/board.html" },
   { name: "내 정보", url: "/pages/mypage.html" },
 ];
@@ -40,9 +65,14 @@ function renderNav() {
   }).join("");
 
   const me = currentUser
-    ? "<span>" + currentUser.email + "</span>" +
-      ' <button onclick="signOut()">로그아웃</button>'
-    : '<a href="/index.html">로그인</a>';
+  ? '<span class="chip-box">🪙 ' +
+      currentChips.toLocaleString("ko-KR") +
+      '칩</span>' +
+    '<span class="user-email">' +
+      currentUser.email +
+      '</span>' +
+    '<button onclick="signOut()">로그아웃</button>'
+  : '<a href="/index.html">로그인</a>';
 
   nav.innerHTML = '<div class="menu">' + links + "</div>" +
                   '<div class="me">' + me + "</div>";
@@ -105,8 +135,9 @@ const pageReady = new Promise(function (resolve) {
 db.auth.onAuthStateChange(function (event, session) {
   currentUser = session ? session.user : null;
 
-  pageReady.then(function () {
-    renderNav();
+  pageReady.then(async function () {
+  await loadMyChips();
+  renderNav();
 
     // <body data-require-auth="true"> 인 페이지는 로그인 안 하면 홈으로 보냅니다.
     if (!currentUser && document.body.dataset.requireAuth === "true") {

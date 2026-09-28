@@ -55,11 +55,25 @@
 
       <!-- 로그인 했을 때 -->
       <section id="welcomeBox" class="card" hidden>
-        <p id="hello"></p>
-        <a class="btn" href="/pages/board.html">
-          게시판으로 가기
-        </a>
-      </section>
+  <p id="hello"></p>
+
+  <section class="attendance-box">
+    <div class="attendance-info">
+      <strong>오늘의 출석 체크</strong>
+      <span>매일 한 번, 1,000칩을 받을 수 있습니다.</span>
+    </div>
+
+    <button
+      type="button"
+      id="attendanceBtn"
+      onclick="checkAttendance()"
+    >
+      출석 체크
+    </button>
+
+    <p id="attendanceMessage" class="attendance-message"></p>
+  </section>
+  
     </main>
 
     <!-- 오른쪽 광고 2개 -->

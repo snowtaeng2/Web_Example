@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>게임장 | 상암랜드</title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body data-require-auth="true">
+
+  <header id="nav"></header>
+
+  <div class="home-layout">
+
+    <!-- 왼쪽 광고 2개 -->
+    <aside class="side-ads side-ads-left" aria-label="왼쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-sangam.png"
+        alt="상암고등학교 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-toilet.png"
+        alt="바로화장실 광고"
+      >
+    </aside>
+
+    <!-- 가운데 게임장 콘텐츠 시작 -->
+    <main class="game-page">
+
+      <section class="game-hero">
+        <span class="game-hero-label">SANGAM LAND</span>
+
+        <h1>상암랜드 게임장</h1>
+
+        <p>
+          실제 돈 없이 가상 칩으로 즐기는 상암랜드 게임장입니다.
+        </p>
+
+        <div class="virtual-chip-notice">
+          가상 칩은 실제 돈이나 상품으로 교환할 수 없습니다.
+        </div>
+      </section>
+
+      <section class="game-section">
+        <div class="game-section-heading">
+          <div>
+            <span class="section-small-title">GAME LIST</span>
+            <h2>게임 선택</h2>
+          </div>
+
+          <span class="game-count">4개의 게임</span>
+        </div>
+
+        <div class="game-grid">
+
+          <article class="game-card game-card-featured">
+  <div class="game-icon" aria-hidden="true">🎰</div>
+
+  <div class="game-card-content">
+    <span class="game-badge game-badge-open">
+      플레이 가능
+    </span>
+
+    <h3>상암 슬롯</h3>
+
+    <p>
+      같은 기호 3개를 맞추고 기호별 잭팟 배당에 도전해 보세요.
+    </p>
+
+    <a href="/pages/slot.html" class="game-start-button">
+      슬롯 시작
+    </a>
+  </div>
+</article>
+
+          <article class="game-card">
+            <div class="game-icon" aria-hidden="true">🪙</div>
+
+            <div class="game-card-content">
+              <span class="game-badge">준비 중</span>
+              <h3>동전 던지기</h3>
+
+              <p>
+                앞면과 뒷면 중 하나를 선택하는 간단한 게임입니다.
+              </p>
+
+              <button type="button" disabled>
+                준비 중
+              </button>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <div class="game-icon" aria-hidden="true">🎲</div>
+
+            <div class="game-card-content">
+              <span class="game-badge">준비 중</span>
+              <h3>상암 주사위</h3>
+
+              <p>
+                주사위 결과를 예측하고 행운을 확인해 보세요.
+              </p>
+
+              <button type="button" disabled>
+                준비 중
+              </button>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <div class="game-icon" aria-hidden="true">🎡</div>
+
+            <div class="game-card-content">
+              <span class="game-badge">준비 중</span>
+              <h3>행운의 룰렛</h3>
+
+              <p>
+                룰렛을 돌려 가상 칩 보상 칸에 도전해 보세요.
+              </p>
+
+              <button type="button" disabled>
+                준비 중
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="game-guide">
+        <h2>상암랜드 이용 안내</h2>
+
+        <ul>
+          <li>모든 게임에서는 가상 칩만 사용합니다.</li>
+          <li>가상 칩은 현금이나 상품으로 교환할 수 없습니다.</li>
+          <li>출석 체크를 통해 매일 가상 칩을 받을 수 있습니다.</li>
+          <li>게임 기능은 준비가 완료된 순서대로 공개됩니다.</li>
+        </ul>
+      </section>
+
+    </main>
+    <!-- 가운데 게임장 콘텐츠 끝 -->
+
+   <!-- 오른쪽 광고 2개 -->
+    <aside class="side-ads side-ads-right" aria-label="오른쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-land.png"
+        alt="상암랜드 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-wonking.png"
+        alt="원킹쌤 메이커 프로젝트 광고"
+      >
+    </aside>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/home.js"></script>
+</body>
+</html>

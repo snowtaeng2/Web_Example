@@ -272,3 +272,1010 @@ li .when {
     padding: 18px;
   }
 }
+
+/* ---------- 우측 상단 보유 칩 ---------- */
+
+header .me {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chip-box {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+
+  border: 1px solid #f59e0b;
+  border-radius: 999px;
+
+  background: #fffbeb;
+  color: #b45309;
+
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.user-email {
+  color: var(--gray);
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .user-email {
+    display: none;
+  }
+
+  header .me {
+    gap: 6px;
+  }
+
+  .chip-box {
+    padding: 6px 9px;
+    font-size: 12px;
+  }
+
+  header .me button {
+    padding: 6px 9px;
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   출석 체크
+   ========================================================= */
+
+.attendance-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+
+  margin: 16px 0;
+  padding: 16px;
+
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #fffbeb,
+    #fff7ed
+  );
+}
+
+.attendance-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 220px;
+}
+
+.attendance-info strong {
+  color: #92400e;
+  font-size: 16px;
+}
+
+.attendance-info span {
+  color: #78716c;
+  font-size: 13px;
+}
+
+#attendanceBtn {
+  border-color: #f59e0b;
+  background: #f59e0b;
+  color: #fff;
+  font-weight: 700;
+}
+
+#attendanceBtn:hover:not(:disabled) {
+  background: #d97706;
+}
+
+#attendanceBtn:disabled {
+  border-color: #d4d4d8;
+  background: #e4e4e7;
+  color: #71717a;
+}
+
+.attendance-message {
+  width: 100%;
+  margin: 0 !important;
+  color: #92400e;
+  font-size: 13px !important;
+}
+
+@media (max-width: 600px) {
+  .attendance-box {
+    align-items: stretch;
+  }
+
+  .attendance-info {
+    min-width: 100%;
+  }
+
+  #attendanceBtn {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   상암랜드 게임장
+   ========================================================= */
+
+.game-page {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* 게임장 상단 소개 */
+.game-hero {
+  position: relative;
+  overflow: hidden;
+
+  padding: 30px;
+  border: 1px solid #ddd6fe;
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(251, 191, 36, 0.35),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #312e81,
+      #6d28d9
+    );
+
+  color: #fff;
+  box-shadow: 0 10px 28px rgba(76, 29, 149, 0.2);
+}
+
+.game-hero-label {
+  display: inline-block;
+
+  margin-bottom: 10px;
+  padding: 5px 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.game-hero h1 {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: 30px;
+}
+
+.game-hero p {
+  margin: 0;
+  color: #ede9fe;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.virtual-chip-notice {
+  margin-top: 18px;
+  padding: 10px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+
+  background: rgba(17, 24, 39, 0.25);
+
+  color: #fef3c7;
+  font-size: 12px;
+}
+
+/* 게임 목록 제목 */
+.game-section {
+  padding: 22px;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  background: #fff;
+}
+
+.game-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 18px;
+}
+
+.game-section-heading h2 {
+  margin: 3px 0 0;
+  font-size: 21px;
+}
+
+.section-small-title {
+  color: var(--main);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.game-count {
+  padding: 6px 10px;
+
+  border-radius: 999px;
+  background: #f4f4f5;
+
+  color: var(--gray);
+  font-size: 12px;
+}
+
+/* 게임 카드 목록 */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+  border-radius: 14px;
+
+  background: #fafafa;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-3px);
+  border-color: #c4b5fd;
+  box-shadow: 0 9px 20px rgba(76, 29, 149, 0.1);
+}
+
+.game-card-featured {
+  border-color: #fbbf24;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffbeb,
+      #fff
+    );
+}
+
+.game-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 110px;
+
+  background:
+    radial-gradient(
+      circle,
+      #ede9fe,
+      #f5f3ff
+    );
+
+  font-size: 54px;
+}
+
+.game-card-featured .game-icon {
+  background:
+    radial-gradient(
+      circle,
+      #fef3c7,
+      #fffbeb
+    );
+}
+
+.game-card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 16px;
+}
+
+.game-badge {
+  display: inline-block;
+
+  margin-bottom: 8px;
+  padding: 4px 8px;
+
+  border-radius: 999px;
+  background: #ede9fe;
+
+  color: #6d28d9;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.game-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.game-card p {
+  flex: 1;
+
+  margin: 0 0 16px;
+
+  color: var(--gray);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.game-card button {
+  width: 100%;
+}
+
+/* 하단 이용 안내 */
+.game-guide {
+  padding: 20px;
+
+  border: 1px solid #bfdbfe;
+  border-radius: 14px;
+
+  background: #eff6ff;
+}
+
+.game-guide h2 {
+  margin: 0 0 12px;
+  color: #1e3a8a;
+}
+
+.game-guide ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.game-guide li {
+  margin: 7px 0;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  color: #475569;
+  font-size: 13px;
+}
+
+/* 게임 페이지 모바일 */
+@media (max-width: 600px) {
+  .game-hero {
+    padding: 22px;
+  }
+
+  .game-hero h1 {
+    font-size: 24px;
+  }
+
+  .game-section {
+    padding: 16px;
+  }
+
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-icon {
+    min-height: 95px;
+  }
+}
+
+/* =========================================================
+   상암 슬롯 전체 스타일
+   ========================================================= */
+
+
+/* ---------- 슬롯 페이지 전체 ---------- */
+
+.slot-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ---------- 슬롯 상단 소개 ---------- */
+
+.slot-intro {
+  padding: 24px;
+
+  border: 1px solid #ddd6fe;
+  border-radius: 16px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(251, 191, 36, 0.4),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #312e81,
+      #7c3aed
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 10px 25px rgba(76, 29, 149, 0.2);
+}
+
+.slot-back {
+  display: inline-block;
+  margin-bottom: 18px;
+
+  color: #ddd6fe;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.slot-back:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.slot-label {
+  display: block;
+  margin-bottom: 6px;
+
+  color: #fef3c7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.slot-intro h1 {
+  margin: 0 0 8px;
+
+  color: #fff;
+  font-size: 29px;
+}
+
+.slot-intro p {
+  margin: 0;
+
+  color: #ede9fe;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* ---------- 슬롯 기계 ---------- */
+
+.slot-machine {
+  position: relative;
+  overflow: hidden;
+
+  padding: 28px;
+
+  border: 5px solid #f59e0b;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(147, 51, 234, 0.65),
+      transparent 45%
+    ),
+    linear-gradient(
+      160deg,
+      #4c1d95,
+      #1e1b4b
+    );
+
+  box-shadow:
+    0 14px 32px rgba(30, 27, 75, 0.28),
+    inset 0 0 0 3px #fef3c7;
+}
+
+
+/* ---------- 슬롯 결과 화면 ---------- */
+
+.slot-screen {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+
+  padding: 18px;
+
+  border: 4px solid #92400e;
+  border-radius: 16px;
+
+  background: #fef3c7;
+
+  box-shadow:
+    inset 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+
+.slot-reel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+  min-height: 135px;
+
+  border: 3px solid #d6d3d1;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff,
+      #f5f5f4
+    );
+
+  font-size: clamp(44px, 7vw, 72px);
+
+  box-shadow:
+    inset 0 6px 10px rgba(0, 0, 0, 0.08),
+    inset 0 -6px 10px rgba(0, 0, 0, 0.08);
+
+  transition:
+    transform 0.08s ease,
+    filter 0.08s ease;
+}
+
+.slot-reel.spinning {
+  transform: translateY(3px) scale(0.97);
+  filter: blur(1.2px);
+}
+
+
+/* ---------- 베팅 영역 ---------- */
+
+.slot-bet-area {
+  margin-top: 20px;
+  padding: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.slot-bet-area > strong {
+  display: block;
+  margin-bottom: 11px;
+
+  color: #fff;
+  font-size: 14px;
+}
+
+.slot-bet-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.slot-bet-button {
+  width: 100%;
+  padding: 11px 10px;
+
+  border: 1px solid #a78bfa;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #ede9fe;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.slot-bet-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  border-color: #fbbf24;
+  background: rgba(251, 191, 36, 0.2);
+  color: #fef3c7;
+}
+
+.slot-bet-button.active {
+  border-color: #fbbf24;
+
+  background: #fbbf24;
+  color: #422006;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 4px 12px rgba(251, 191, 36, 0.25);
+}
+
+.slot-bet-button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+
+/* ---------- 슬롯 실행 버튼 ---------- */
+
+.slot-spin-button {
+  width: 100%;
+
+  margin-top: 16px;
+  padding: 15px;
+
+  border: 0;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fbbf24,
+      #f97316
+    );
+
+  color: #431407;
+
+  font-size: 17px;
+  font-weight: 900;
+
+  box-shadow:
+    0 7px 16px rgba(249, 115, 22, 0.3);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.slot-spin-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #fcd34d,
+      #fb923c
+    );
+
+  box-shadow:
+    0 9px 20px rgba(249, 115, 22, 0.4);
+}
+
+.slot-spin-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.slot-spin-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+
+/* ---------- 슬롯 결과 메시지 ---------- */
+
+.slot-message {
+  margin: 15px 0 0;
+  padding: 12px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e7ff;
+
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.slot-message-win {
+  border-color: rgba(254, 240, 138, 0.5);
+
+  background: rgba(254, 240, 138, 0.18);
+  color: #fef08a;
+
+  font-weight: 800;
+}
+
+.slot-message-lose {
+  border-color: rgba(254, 202, 202, 0.35);
+
+  background: rgba(254, 202, 202, 0.12);
+  color: #fecaca;
+}
+
+
+/* ---------- 당첨 애니메이션 ---------- */
+
+.slot-machine.slot-win {
+  animation: slot-win-flash 0.3s alternate 4;
+}
+
+@keyframes slot-win-flash {
+  from {
+    border-color: #f59e0b;
+
+    box-shadow:
+      0 14px 32px rgba(30, 27, 75, 0.28),
+      inset 0 0 0 3px #fef3c7;
+  }
+
+  to {
+    border-color: #fef08a;
+
+    box-shadow:
+      0 0 38px rgba(250, 204, 21, 0.9),
+      inset 0 0 0 3px #fff;
+  }
+}
+
+
+/* ---------- 배당표 전체 ---------- */
+
+.slot-paytable-section {
+  padding: 22px;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  background: #fff;
+
+  box-shadow:
+    0 6px 18px rgba(24, 24, 27, 0.06);
+}
+
+.slot-paytable-section h2 {
+  margin: 0 0 12px;
+}
+
+
+/* 배당 규칙 안내 */
+
+.slot-rule-notice {
+  margin: 0 0 16px;
+  padding: 11px 13px;
+
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+
+  background: #fef2f2;
+  color: #991b1b;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+
+/* 배당 항목 */
+
+.slot-paytable {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.slot-paytable-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  min-width: 0;
+  padding: 13px 15px;
+
+  border: 1px solid var(--line);
+  border-radius: 11px;
+
+  background: #fafafa;
+}
+
+.slot-paytable-item span {
+  font-size: 21px;
+  white-space: nowrap;
+}
+
+.slot-paytable-item strong {
+  color: #7c3aed;
+
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+
+/* 최고 배당 */
+
+.slot-paytable-item.slot-jackpot {
+  border-color: #fbbf24;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffbeb,
+      #fef3c7
+    );
+}
+
+.slot-paytable-item.slot-jackpot strong {
+  color: #b45309;
+}
+
+
+/* 꽝 안내 */
+
+.slot-paytable-item.slot-miss {
+  background: #f4f4f5;
+  opacity: 0.8;
+}
+
+.slot-paytable-item.slot-miss strong {
+  color: #dc2626;
+}
+
+
+/* 가상 칩 안내 */
+
+.slot-disclaimer {
+  margin: 16px 0 0;
+
+  color: var(--gray);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   슬롯 페이지 반응형
+   ========================================================= */
+
+@media (max-width: 650px) {
+  .slot-intro {
+    padding: 20px;
+  }
+
+  .slot-intro h1 {
+    font-size: 24px;
+  }
+
+  .slot-machine {
+    padding: 16px;
+
+    border-width: 4px;
+    border-radius: 18px;
+  }
+
+  .slot-screen {
+    gap: 7px;
+    padding: 10px;
+
+    border-width: 3px;
+  }
+
+  .slot-reel {
+    min-height: 90px;
+
+    border-width: 2px;
+    font-size: 38px;
+  }
+
+  .slot-bet-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .slot-paytable {
+    grid-template-columns: 1fr;
+  }
+
+  .slot-paytable-section {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .slot-machine {
+    padding: 12px;
+  }
+
+  .slot-screen {
+    gap: 5px;
+    padding: 7px;
+  }
+
+  .slot-reel {
+    min-height: 75px;
+    font-size: 31px;
+  }
+
+  .slot-paytable-item {
+    padding: 11px;
+  }
+
+  .slot-paytable-item span {
+    font-size: 18px;
+  }
+}
+
+/* 상암 슬롯 시작 버튼 */
+
+.game-card .game-start-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  width: 100%;
+  min-height: 44px;
+  margin-top: auto;
+  padding: 10px 16px;
+
+  border: 1px solid #6366f1;
+  border-radius: 8px;
+
+  background: #6366f1;
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.game-card .game-start-button:hover {
+  transform: translateY(-2px);
+
+  border-color: #4f46e5;
+  background: #4f46e5;
+  color: #fff;
+  text-decoration: none;
+
+  box-shadow: 0 6px 14px rgba(99, 102, 241, 0.3);
+}
+
+.game-card .game-start-button:active {
+  transform: translateY(0);
+
+  background: #4338ca;
+
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.25);
+}
+
+.game-card .game-start-button:focus-visible {
+  outline: 3px solid rgba(99, 102, 241, 0.3);
+  outline-offset: 3px;
+}
