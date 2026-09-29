@@ -2936,3 +2936,1025 @@ header .me {
     align-items: flex-start;
   }
 }
+
+/* =========================================================
+   운명의 도박 페이지
+   ========================================================= */
+
+.fate-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ---------- 상단 소개 ---------- */
+
+.fate-intro {
+  padding: 24px;
+
+  border: 1px solid #fca5a5;
+  border-radius: 16px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(239, 68, 68, 0.45),
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      #450a0a,
+      #991b1b
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 10px 25px rgba(127, 29, 29, 0.25);
+}
+
+.fate-back {
+  display: inline-block;
+  margin-bottom: 18px;
+
+  color: #fecaca;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.fate-back:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.fate-label {
+  display: block;
+  margin-bottom: 6px;
+
+  color: #fef3c7;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.7px;
+}
+
+.fate-intro h1 {
+  margin: 0 0 8px;
+
+  color: #fff;
+  font-size: 30px;
+}
+
+.fate-intro p {
+  margin: 0;
+
+  color: #fee2e2;
+  font-size: 14px;
+}
+
+
+/* ---------- 게임 영역 ---------- */
+
+.fate-machine {
+  position: relative;
+  overflow: hidden;
+
+  padding: 28px;
+
+  border: 5px solid #dc2626;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(127, 29, 29, 0.5),
+      transparent 50%
+    ),
+    linear-gradient(
+      160deg,
+      #18181b,
+      #450a0a
+    );
+
+  box-shadow:
+    0 16px 35px rgba(69, 10, 10, 0.32),
+    inset 0 0 0 3px #7f1d1d;
+}
+
+
+/* ---------- 천사와 악마 ---------- */
+
+.fate-scene {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+
+  min-height: 250px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 17px;
+
+  overflow: hidden;
+}
+
+.fate-scene-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 24px;
+
+  text-align: center;
+
+  transition:
+    opacity 0.4s ease,
+    filter 0.4s ease,
+    transform 0.4s ease;
+}
+
+.angel-scene {
+  background:
+    radial-gradient(
+      circle,
+      rgba(254, 240, 138, 0.45),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      #1e3a8a,
+      #312e81
+    );
+
+  color: #fef3c7;
+}
+
+.devil-scene {
+  background:
+    radial-gradient(
+      circle,
+      rgba(239, 68, 68, 0.48),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      #450a0a,
+      #991b1b
+    );
+
+  color: #fecaca;
+}
+
+.fate-character {
+  margin-bottom: 8px;
+
+  font-size: 72px;
+  line-height: 1;
+
+  filter:
+    drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35));
+}
+
+.fate-scene-side strong {
+  font-size: 19px;
+}
+
+.fate-scene-side span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+}
+
+.fate-scene-side em {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+
+/* ---------- 가운데 운명 봉인 ---------- */
+
+.fate-scene-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #27272a,
+      #09090b
+    );
+}
+
+.fate-seal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 76px;
+  height: 76px;
+
+  border: 5px solid #fecaca;
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #dc2626,
+      #450a0a
+    );
+
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 900;
+
+  box-shadow:
+    0 0 24px rgba(239, 68, 68, 0.5);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* ---------- 운명 결정 애니메이션 ---------- */
+
+.fate-machine.fate-deciding .fate-seal {
+  animation: fate-seal-spin 0.55s linear infinite;
+}
+
+.fate-machine.fate-deciding .fate-scene-side {
+  animation: fate-side-pulse 0.65s alternate infinite;
+}
+
+@keyframes fate-seal-spin {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.12);
+  }
+
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes fate-side-pulse {
+  from {
+    filter: brightness(0.75);
+  }
+
+  to {
+    filter: brightness(1.35);
+  }
+}
+
+
+/* ---------- 결과 연출 ---------- */
+
+.fate-machine.fate-angel-result .angel-scene {
+  transform: scale(1.02);
+  filter: brightness(1.35);
+}
+
+.fate-machine.fate-angel-result .devil-scene {
+  opacity: 0.28;
+  filter: grayscale(1);
+}
+
+.fate-machine.fate-angel-result .fate-seal {
+  border-color: #fef08a;
+  background: #d97706;
+
+  box-shadow:
+    0 0 32px rgba(250, 204, 21, 0.9);
+}
+
+.fate-machine.fate-devil-result .devil-scene {
+  transform: scale(1.02);
+  filter: brightness(1.3);
+}
+
+.fate-machine.fate-devil-result .angel-scene {
+  opacity: 0.25;
+  filter: grayscale(1);
+}
+
+.fate-machine.fate-devil-result .fate-seal {
+  border-color: #fca5a5;
+  background: #450a0a;
+
+  box-shadow:
+    0 0 35px rgba(239, 68, 68, 0.95);
+}
+
+.fate-machine.fate-angel-flash {
+  animation: fate-angel-flash 0.3s alternate 6;
+}
+
+.fate-machine.fate-devil-flash {
+  animation: fate-devil-flash 0.3s alternate 6;
+}
+
+@keyframes fate-angel-flash {
+  from {
+    border-color: #dc2626;
+  }
+
+  to {
+    border-color: #fef08a;
+
+    box-shadow:
+      0 0 48px rgba(250, 204, 21, 0.95),
+      inset 0 0 0 3px #fff;
+  }
+}
+
+@keyframes fate-devil-flash {
+  from {
+    filter: brightness(1);
+  }
+
+  to {
+    filter: brightness(1.35);
+
+    box-shadow:
+      0 0 48px rgba(220, 38, 38, 0.95),
+      inset 0 0 0 3px #7f1d1d;
+  }
+}
+
+
+/* ---------- 현재 잔액 ---------- */
+
+.fate-balance-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+
+  margin-top: 18px;
+  padding: 16px;
+
+  border: 1px solid rgba(254, 202, 202, 0.35);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  text-align: center;
+}
+
+.fate-balance-panel span,
+.fate-balance-panel small {
+  color: #fecaca;
+  font-size: 12px;
+}
+
+.fate-balance-panel strong {
+  color: #fff;
+
+  font-size: 28px;
+  font-weight: 900;
+}
+
+
+/* ---------- 위험 경고 ---------- */
+
+.fate-warning-box {
+  margin-top: 14px;
+  padding: 14px;
+
+  border: 1px solid #ef4444;
+  border-radius: 11px;
+
+  background: rgba(127, 29, 29, 0.6);
+}
+
+.fate-warning-box strong {
+  display: block;
+  margin-bottom: 6px;
+
+  color: #fff;
+  font-size: 15px;
+}
+
+.fate-warning-box p {
+  margin: 0;
+
+  color: #fecaca;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+
+/* ---------- 확인란 ---------- */
+
+.fate-agreement {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  margin-top: 14px;
+  padding: 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.07);
+
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.45;
+
+  cursor: pointer;
+}
+
+.fate-agreement input {
+  flex: 0 0 auto;
+
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+
+  accent-color: #dc2626;
+}
+
+
+/* ---------- 실행 버튼 ---------- */
+
+.fate-play-button {
+  width: 100%;
+
+  margin-top: 15px;
+  padding: 16px;
+
+  border: 1px solid #fca5a5;
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dc2626,
+      #7f1d1d
+    );
+
+  color: #fff;
+
+  font-size: 17px;
+  font-weight: 900;
+
+  box-shadow:
+    0 8px 18px rgba(127, 29, 29, 0.38);
+}
+
+.fate-play-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ef4444,
+      #991b1b
+    );
+
+  box-shadow:
+    0 11px 23px rgba(127, 29, 29, 0.5);
+}
+
+.fate-play-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+
+/* ---------- 결과 메시지 ---------- */
+
+.fate-message {
+  margin: 15px 0 0;
+  padding: 13px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: #e4e4e7;
+
+  font-size: 14px;
+  text-align: center;
+}
+
+.fate-message-angel {
+  border-color: rgba(254, 240, 138, 0.6);
+  background: rgba(250, 204, 21, 0.18);
+  color: #fef08a;
+
+  font-weight: 900;
+}
+
+.fate-message-lose {
+  border-color: rgba(254, 202, 202, 0.4);
+  background: rgba(127, 29, 29, 0.4);
+  color: #fecaca;
+}
+
+
+/* ---------- 규칙 및 기록 ---------- */
+
+.fate-rule-section,
+.fate-history-section {
+  padding: 22px;
+
+  border: 1px solid #fecaca;
+  border-radius: 16px;
+
+  background: #fff;
+
+  box-shadow:
+    0 6px 18px rgba(127, 29, 29, 0.08);
+}
+
+.fate-rule-section h2,
+.fate-history-section h2 {
+  margin: 0 0 15px;
+}
+
+.fate-rule-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.fate-rule-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 16px;
+
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.fate-rule-card > span {
+  flex: 0 0 auto;
+  font-size: 38px;
+}
+
+.fate-rule-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.fate-rule-card strong {
+  font-size: 15px;
+}
+
+.fate-rule-card small {
+  color: var(--gray);
+  font-size: 11px;
+}
+
+.fate-rule-card p {
+  margin: 3px 0 0;
+
+  color: #57534e;
+  font-size: 12px;
+}
+
+.angel-rule {
+  border-color: #fde68a;
+  background: #fffbeb;
+}
+
+.devil-rule {
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+
+.fate-math-notice {
+  margin-top: 14px;
+  padding: 12px;
+
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+
+  background: #fff1f2;
+  color: #9f1239;
+
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.fate-disclaimer {
+  margin: 14px 0 0;
+
+  color: var(--gray);
+  font-size: 12px;
+}
+
+/* ---------- 모바일 ---------- */
+
+@media (max-width: 650px) {
+  .fate-intro,
+  .fate-machine {
+    padding: 18px;
+  }
+
+  .fate-scene {
+    grid-template-columns: 1fr;
+  }
+
+  .fate-scene-center {
+    min-height: 84px;
+  }
+
+  .fate-scene-side {
+    min-height: 180px;
+  }
+
+  .fate-character {
+    font-size: 55px;
+  }
+
+  .fate-rule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fate-history li {
+    align-items: flex-start;
+  }
+}
+
+/* =========================================================
+   게임 선택 화면의 운명의 도박 카드
+   ========================================================= */
+
+/* 게임 선택 화면의 두 칸을 모두 차지 */
+.fate-game-card {
+  grid-column: 1 / -1;
+
+  overflow: hidden;
+
+  border: 2px solid #dc2626;
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff1f2,
+      #fff
+    );
+
+  box-shadow:
+    0 10px 26px rgba(127, 29, 29, 0.16);
+}
+
+.fate-game-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #991b1b;
+
+  box-shadow:
+    0 15px 32px rgba(127, 29, 29, 0.24);
+}
+
+
+/* ---------- 천사와 악마 이미지 영역 ---------- */
+
+.fate-card-visual {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  min-height: 190px;
+
+  background: #18181b;
+}
+
+.fate-card-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 28px 20px;
+
+  text-align: center;
+}
+
+.fate-card-angel {
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(254, 240, 138, 0.48),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      #1e3a8a,
+      #312e81
+    );
+
+  color: #fef3c7;
+}
+
+.fate-card-devil {
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(239, 68, 68, 0.48),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      #450a0a,
+      #7f1d1d
+    );
+
+  color: #fecaca;
+}
+
+.fate-card-character {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 58px;
+  line-height: 1;
+
+  filter:
+    drop-shadow(0 7px 8px rgba(0, 0, 0, 0.3));
+}
+
+.fate-card-side strong {
+  font-size: 18px;
+}
+
+.fate-card-side small {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+}
+
+
+/* ---------- 가운데 VS 표시 ---------- */
+
+.fate-card-versus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 58px;
+  height: 58px;
+
+  border: 4px solid #fef2f2;
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #dc2626,
+      #7f1d1d
+    );
+
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 900;
+
+  transform: translate(-50%, -50%);
+
+  box-shadow:
+    0 7px 18px rgba(0, 0, 0, 0.38);
+}
+
+
+/* ---------- 카드 본문 ---------- */
+
+.fate-card-content {
+  padding: 22px;
+}
+
+.fate-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.fate-danger-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  background: #dc2626;
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.fate-final-label {
+  color: #991b1b;
+
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.fate-game-card h3 {
+  margin: 0 0 9px;
+
+  color: #7f1d1d;
+  font-size: 25px;
+}
+
+.fate-game-card p {
+  margin: 0 0 16px;
+
+  color: #57534e;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+
+/* ---------- 실제 확률 표시 ---------- */
+
+.fate-card-odds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+
+  width: 100%;
+  margin-bottom: 13px;
+}
+
+.fate-card-odds span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 12px;
+
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+
+  background: #fff;
+
+  color: #57534e;
+  font-size: 13px;
+}
+
+.fate-card-odds strong {
+  color: #b91c1c;
+  font-size: 18px;
+}
+
+
+/* ---------- 경고 ---------- */
+
+.fate-card-warning {
+  width: 100%;
+  margin-bottom: 13px;
+  padding: 11px 13px;
+
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+
+  background: #fef2f2;
+  color: #991b1b;
+
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+
+/* ---------- 운명의 문 버튼 ---------- */
+
+.fate-start-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 16px;
+
+  border: 1px solid #991b1b;
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dc2626,
+      #7f1d1d
+    );
+
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+
+  box-shadow:
+    0 6px 15px rgba(127, 29, 29, 0.28);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.fate-start-link:hover {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ef4444,
+      #991b1b
+    );
+
+  color: #fff;
+  text-decoration: none;
+
+  box-shadow:
+    0 10px 22px rgba(127, 29, 29, 0.45);
+}
+
+.fate-start-link:active {
+  transform: translateY(0);
+
+  box-shadow:
+    0 3px 9px rgba(127, 29, 29, 0.35);
+}
+
+
+/* ---------- 모바일 ---------- */
+
+@media (max-width: 600px) {
+  .fate-card-visual {
+    min-height: 160px;
+  }
+
+  .fate-card-side {
+    padding: 22px 10px;
+  }
+
+  .fate-card-character {
+    font-size: 43px;
+  }
+
+  .fate-card-side strong {
+    font-size: 14px;
+  }
+
+  .fate-card-side small {
+    font-size: 10px;
+  }
+
+  .fate-card-versus {
+    width: 48px;
+    height: 48px;
+
+    font-size: 12px;
+  }
+
+  .fate-card-odds {
+    grid-template-columns: 1fr;
+  }
+
+  .fate-game-card h3 {
+    font-size: 22px;
+  }
+}

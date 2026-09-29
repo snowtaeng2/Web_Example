@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>운명의 도박 | 상암랜드</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+  <link rel="stylesheet" href="/static/cssa-require-auth="true">
+
+  <header id="nav"></header>
+
+  <div class="home-layout">
+
+    <!-- 왼쪽 광고 -->
+     <aside class="side-ads side-ads-left" aria-label="왼쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-sangam.png"
+        alt="상암고등학교 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-toilet.png"
+        alt="바로화장실 광고"
+      >
+    </aside>
+
+    <!-- 가운데 게임 -->
+    <main class="fate-page">
+
+      <section class="fate-intro">
+        <a href="/pages/games.html" class="fate-back">
+          ← 게임장으로 돌아가기
+        </a>
+
+        <span class="fate-label">FINAL GAME</span>
+
+        <h1>⚖️ 운명의 도박</h1>
+
+        <p>
+          보유한 가상 칩 전부를 걸고 천사의 축복에 도전합니다.
+        </p>
+      </section>
+
+      <section id="fateMachine" class="fate-machine">
+
+        <div class="fate-scene">
+
+          <!-- 천사 -->
+          <div id="angelSide" class="fate-scene-side angel-scene">
+            <div class="fate-character">👼</div>
+
+            <strong>천사의 축복</strong>
+            <span>확률 30%</span>
+            <em>보유 칩 총 20배</em>
+          </div>
+
+          <div class="fate-scene-center">
+            <div id="fateSeal" class="fate-seal">
+              운명
+            </div>
+          </div>
+
+          <!-- 악마 -->
+          <div id="devilSide" class="fate-scene-side devil-scene">
+            <div class="fate-character">😈</div>
+
+            <strong>악마의 심판</strong>
+            <span>확률 70%</span>
+            <em>보유 칩 전액 손실</em>
+          </div>
+
+        </div>
+
+        <div class="fate-balance-panel">
+          <span>현재 보유 칩</span>
+
+          <strong id="fateCurrentChips">
+            확인 중...
+          </strong>
+
+          <small>
+            게임을 실행하면 위 칩 전체가 사용됩니다.
+          </small>
+        </div>
+
+        <div class="fate-warning-box">
+          <strong>⚠ 위험한 게임</strong>
+
+          <p>
+            천사의 축복 확률은 30%, 악마의 심판 확률은 70%입니다.
+            악마의 심판을 받으면 보유 칩이 0이 됩니다.
+          </p>
+        </div>
+
+        <label class="fate-agreement">
+          <input
+            id="fateAgreement"
+            type="checkbox"
+            onchange="updateFateButton()"
+          >
+
+          <span>
+            실제 확률과 전액 손실 가능성을 확인했습니다.
+          </span>
+        </label>
+
+        <button
+          type="button"
+          id="fatePlayButton"
+          class="fate-play-button"
+          onclick="playFateGame()"
+          disabled
+        >
+          운명의 문 열기
+        </button>
+
+        <p
+          id="fateMessage"
+          class="fate-message"
+          aria-live="polite"
+        >
+          확인란에 체크하면 게임을 실행할 수 있습니다.
+        </p>
+
+      </section>
+
+      <!-- 규칙 -->
+      <section class="fate-rule-section">
+        <h2>운명의 규칙</h2>
+
+        <div class="fate-rule-grid">
+
+          <article class="fate-rule-card angel-rule">
+            <span>👼</span>
+
+            <div>
+              <strong>천사의 축복</strong>
+              <small>등장 확률 30%</small>
+              <p>현재 보유 칩이 총 20배가 됩니다.</p>
+            </div>
+          </article>
+
+          <article class="fate-rule-card devil-rule">
+            <span>😈</span>
+
+            <div>
+              <strong>악마의 심판</strong>
+              <small>등장 확률 70%</small>
+              <p>현재 보유 칩을 모두 잃습니다.</p>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="fate-math-notice">
+          이 게임은 칩 손실 가능성이 매우 높습니다.
+        </div>
+
+        <p class="fate-disclaimer">
+          상암랜드 칩은 실제 현금이나 상품으로 교환할 수 없습니다.
+        </p>
+      </section>
+
+    </main>
+
+    <!-- 오른쪽 광고 -->
+    <aside class="side-ads side-ads-right" aria-label="오른쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-land.png"
+        alt="상암랜드 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-wonking.png"
+        alt="원킹쌤 메이커 프로젝트 광고"
+      >
+    </aside>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/fate.js"></script>
+
+</body>
+</html>
