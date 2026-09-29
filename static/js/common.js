@@ -18,6 +18,49 @@ const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 // 지금 로그인한 사람 (로그인 안 했으면 null)
 let currentUser = null;
 
+// 현재 사용자의 저장된 닉네임
+// 설정하지 않았으면 이메일 앞부분을 사용합니다.
+let currentNickname = null;
+
+function getCurrentDisplayName() {
+  if (currentNickname) {
+    return currentNickname;
+  }
+
+  if (
+    currentUser &&
+    currentUser.email
+  ) {
+    return currentUser.email.split("@")[0];
+  }
+
+  return "익명";
+}
+
+async function loadMyNickname() {
+  if (!currentUser) {
+    currentNickname = null;
+    return;
+  }
+
+  const { data, error } = await db
+    .from("user_profiles")
+    .select("nickname")
+    .eq("user_id", currentUser.id)
+    .maybeSingle();
+
+  if (error) {
+    console.error("닉네임 조회 실패:", error);
+    currentNickname = null;
+    return;
+  }
+
+  currentNickname =
+    data && data.nickname
+      ? data.nickname
+      : null;
+}
+
 // 현재 로그인한 사용자의 보유 칩
 let currentChips = 0;
 
@@ -48,6 +91,7 @@ async function loadMyChips() {
 
 const MENU = [
   { name: "홈", url: "/index.html" },
+  { name: "가이드", url: "/pages/guide.html" },
   { name: "게임장", url: "/pages/games.html" },
   { name: "광산", url: "/pages/mine.html" },
   { name: "상점", url: "/pages/shop.html" },
@@ -85,17 +129,82 @@ function renderNav() {
 // ---------------------------------------------------------
 
 async function signUp() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  const email =
+    document.getElementById("email").value.trim();
 
-  const { error } = await db.auth.signUp({ email, password });
+  const password =
+    document.getElementById("password").value;
+
+  const nicknameInput =
+    document.getElementById("signupNickname");
+
+  const nickname = nicknameInput
+    ? nicknameInput.value.trim()
+    : "";
+
+  if (!email || !password) {
+    alert("이메일과 비밀번호를 입력해 주세요.");
+    return;
+  }
+
+  if (password.length < 6) {
+    alert("비밀번호는 6자 이상 입력해 주세요.");
+    return;
+  }
+
+  // 닉네임은 선택 사항
+  if (nickname) {
+    if (
+      nickname.length < 2 ||
+      nickname.length > 16
+    ) {
+      alert("닉네임은 2자 이상 16자 이하로 입력해 주세요.");
+      return;
+    }
+
+    if (!/^[가-힣A-Za-z0-9_]+$/.test(nickname)) {
+      alert(
+        "닉네임에는 한글, 영문, 숫자, 밑줄만 사용할 수 있습니다."
+      );
+      return;
+    }
+  }
+
+  const { data, error } = await db.auth.signUp({
+    email: email,
+    password: password,
+
+    options: {
+      data: {
+        nickname: nickname || null,
+      },
+    },
+  });
 
   if (error) {
     console.error("가입 실패:", error);
+
+    if (
+      error.message &&
+      error.message.includes(
+        "user_profiles_nickname_unique"
+      )
+    ) {
+      alert("이미 사용 중인 닉네임입니다.");
+      return;
+    }
+
     alert("가입 실패: " + error.message);
     return;
   }
-  alert("가입 완료! 바로 로그인됩니다.");
+
+  if (data.session) {
+    alert("회원가입과 로그인이 완료되었습니다.");
+  } else {
+    alert(
+      "회원가입이 완료되었습니다. 이메일 인증이 설정되어 있다면 인증 메일을 확인해 주세요."
+    );
+  }
 }
 
 async function signIn() {
@@ -137,8 +246,10 @@ const pageReady = new Promise(function (resolve) {
 db.auth.onAuthStateChange(function (event, session) {
   currentUser = session ? session.user : null;
 
-  pageReady.then(async function () {
+ pageReady.then(async function () {
   await loadMyChips();
+  await loadMyNickname();
+
   renderNav();
 
     // <body data-require-auth="true"> 인 페이지는 로그인 안 하면 홈으로 보냅니다.

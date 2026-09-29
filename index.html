@@ -35,23 +35,44 @@
 
       <!-- 로그인 안 했을 때 -->
       <section id="loginBox" class="card" hidden>
-        <input
-          id="email"
-          type="email"
-          placeholder="이메일"
-        >
+  <input
+    id="email"
+    type="email"
+    placeholder="이메일"
+  >
 
-        <input
-          id="password"
-          type="password"
-          placeholder="비밀번호 (6자 이상)"
-        >
+  <input
+    id="signupNickname"
+    type="text"
+    maxlength="16"
+    autocomplete="nickname"
+    placeholder="닉네임 (선택, 2~16자)"
+  >
 
-        <div class="row">
-          <button onclick="signUp()">회원가입</button>
-          <button onclick="signIn()">로그인</button>
-        </div>
-      </section>
+  <input
+    id="password"
+    type="password"
+    placeholder="비밀번호 (6자 이상)"
+  >
+
+  <p class="nickname-help">
+    회원가입 시 닉네임을 입력하지 않으면 이메일의 @ 앞부분이 이름으로 사용됩니다.
+    로그인 시 닉네임을 입력하지 않아도 됩니다.
+  </p>
+
+  <div class="row">
+    <button type="button" onclick="signUp()">
+      회원가입
+    </button>
+
+    <button type="button" onclick="signIn()">
+      로그인
+    </button>
+  </div>
+  <a href="/pages/guide.html" class="home-guide-banner">
+  📖 상암랜드가 처음이라면 이용 가이드 보기
+</a>
+</section>
 
       <!-- 로그인 했을 때 -->
       <section id="welcomeBox" class="card" hidden>
@@ -73,6 +94,23 @@
 
     <p id="attendanceMessage" class="attendance-message"></p>
   </section>
+
+<!-- 상암랜드 이용 가이드 -->
+<a href="/pages/guide.html" class="home-guide-banner">
+  <span class="home-guide-icon">📖</span>
+
+  <span class="home-guide-content">
+    <small>처음 방문하셨나요?</small>
+    <strong>상암랜드 이용 가이드</strong>
+    <span>
+      출석, 게임, 광산, 상점과 게시판 이용 방법을 확인하세요.
+    </span>
+  </span>
+
+  <span class="home-guide-arrow" aria-hidden="true">
+    →
+  </span>
+</a>
 
   <!-- 홈 공지사항 -->
 <section

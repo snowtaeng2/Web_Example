@@ -94,12 +94,12 @@ function renderMineState() {
     "mineProgressText"
   ).textContent =
     mineState.clicksTowardFever.toLocaleString("ko-KR") +
-    " / 1,000";
+    " / 500";
 
   const progressPercent = Math.min(
-    100,
-    mineState.clicksTowardFever / 10
-  );
+  100,
+  (mineState.clicksTowardFever / 500) * 100
+);
 
   document.getElementById(
     "mineProgressBar"

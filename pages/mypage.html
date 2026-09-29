@@ -32,16 +32,53 @@
     <h1>내 정보</h1>
 
     <section class="card">
-      <p>
-        이메일:
-        <strong id="myEmail"></strong>
-      </p>
+  <p>
+    이메일:
+    <strong id="myEmail"></strong>
+  </p>
 
-      <p>
-        내가 쓴 글:
-        <strong id="myCount">-</strong>개
-      </p>
-    </section>
+  <p>
+    현재 표시 이름:
+    <strong id="myDisplayName"></strong>
+  </p>
+
+  <div class="nickname-setting">
+    <label for="myNickname">
+      닉네임 변경
+    </label>
+
+    <input
+      id="myNickname"
+      type="text"
+      maxlength="16"
+      autocomplete="nickname"
+      placeholder="닉네임 입력, 비우면 이메일 이름 사용"
+    >
+
+    <p class="nickname-help">
+      선택 항목입니다. 한글, 영문, 숫자, 밑줄을 사용해 2~16자로 입력하세요.
+      입력칸을 비우고 저장하면 이메일의 @ 앞부분으로 돌아갑니다.
+    </p>
+
+    <button
+      type="button"
+      onclick="saveNickname()"
+    >
+      닉네임 저장
+    </button>
+
+    <p
+      id="nicknameMessage"
+      class="nickname-message"
+      aria-live="polite"
+    ></p>
+  </div>
+
+  <p class="mypage-post-count">
+    내가 쓴 글:
+    <strong id="myCount">-</strong>개
+  </p>
+</section>
 
     <h2>내가 쓴 글</h2>
     <ul id="myList"></ul>

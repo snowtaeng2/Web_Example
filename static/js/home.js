@@ -10,7 +10,7 @@ async function onAuthReady() {
     welcomeBox.hidden = false;
 
     document.getElementById("hello").textContent =
-      currentUser.email.split("@")[0] + "님, 안녕하세요!";
+  getCurrentDisplayName() + "님, 안녕하세요!";
 
     await loadAttendanceStatus();
     await loadHomeNotices();

@@ -211,7 +211,7 @@ async function addPost() {
 
   const { error } = await db.from("posts").insert({
     content: content,
-    nickname: currentUser.email.split("@")[0],
+    nickname: getCurrentDisplayName(),
   });
 
   if (error) {
