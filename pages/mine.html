@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>상암 광산 | 상암랜드</title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body data-require-auth="true">
+
+  <header id="nav"></header>
+
+  <div class="home-layout">
+
+    <!-- 왼쪽 광고 -->
+    <aside class="side-ads side-ads-left" aria-label="왼쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-sangam.png"
+        alt="상암고등학교 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-toilet.png"
+        alt="바로화장실 광고"
+      >
+    </aside>
+
+    <!-- 광산 본문 -->
+    <main class="mine-page">
+
+      <section class="mine-intro">
+        <span>MINE OF SANGAM LAND</span>
+
+        <h1>⛏️ 상암 광산</h1>
+
+        <p>
+          거대한 광석을 클릭해 보석을 채굴하고 보물상자에 도전하세요.
+        </p>
+      </section>
+
+      <section id="mineMachine" class="mine-machine">
+        <!-- 크리티컬 전용 화면 효과 -->
+<div
+  id="mineCriticalOverlay"
+  class="mine-critical-overlay"
+  aria-hidden="true"
+>
+  <div class="mine-critical-rays"></div>
+
+  <div class="mine-critical-content">
+    <span>💥 CRITICAL! 💥</span>
+    <strong>+100 💎</strong>
+    <small id="mineCriticalGaugeText">
+      피버 게이지 +30
+    </small>
+  </div>
+</div>
+
+        <!-- 피버타임 표시 -->
+        <div
+          id="feverBanner"
+          class="mine-fever-banner"
+          hidden
+        >
+          🔥 FEVER TIME 🔥
+
+          <strong id="feverTimer">5.0초</strong>
+
+          <small>모든 채굴이 크리티컬!</small>
+        </div>
+
+        <!-- 광산 정보 -->
+        <div class="mine-stats">
+          <div>
+            <span>보유 보석</span>
+            <strong id="mineGems">💎 0개</strong>
+          </div>
+
+          <div>
+            <span>총 채굴 횟수</span>
+            <strong id="mineTotalClicks">0회</strong>
+          </div>
+        </div>
+
+        <!-- 피버 진행도 -->
+        <div class="mine-progress-area">
+          <div class="mine-progress-heading">
+            <span>다음 피버까지</span>
+            <strong id="mineProgressText">
+              0 / 1,000
+            </strong>
+          </div>
+
+          <div class="mine-progress-track">
+            <div
+              id="mineProgressBar"
+              class="mine-progress-bar"
+            ></div>
+          </div>
+        </div>
+
+        <!-- 광석 채굴 공간 -->
+        <div class="mine-cave">
+
+          <div class="mine-cave-light"></div>
+
+          <button
+            type="button"
+            id="oreButton"
+            class="mine-ore-button"
+            onclick="mineOre()"
+            aria-label="광석 채굴하기"
+          >
+            <span class="ore-shadow"></span>
+
+            <span class="ore-rock">
+              <span class="ore-crystal ore-crystal-one"></span>
+              <span class="ore-crystal ore-crystal-two"></span>
+              <span class="ore-crystal ore-crystal-three"></span>
+              <span class="ore-crystal ore-crystal-four"></span>
+
+              <span class="ore-rock-highlight"></span>
+              <span class="ore-rock-crack crack-one"></span>
+              <span class="ore-rock-crack crack-two"></span>
+            </span>
+
+            <span class="ore-label">
+              <strong>거대한 광석</strong>
+              <small>클릭해서 채굴하기</small>
+            </span>
+          </button>
+
+          <div class="mine-ground">
+            <span>◆</span>
+            <span>◆</span>
+            <span>◆</span>
+            <span>◆</span>
+            <span>◆</span>
+          </div>
+
+        </div>
+
+        <p
+          id="mineMessage"
+          class="mine-message"
+          aria-live="polite"
+        >
+          광석을 클릭하면 보석을 얻습니다.
+        </p>
+
+      </section>
+
+      <!-- 광산 상점 -->
+      <section class="mine-shop-section">
+        <div class="mine-section-heading">
+          <div>
+            <span>MINE SHOP</span>
+            <h2>광산 상점</h2>
+          </div>
+
+          <p>
+            채굴한 보석을 칩으로 바꾸거나 보물상자를 열 수 있습니다.
+          </p>
+        </div>
+
+        <div class="mine-shop-grid">
+
+          <!-- 보석 교환 -->
+          <article class="mine-shop-card">
+            <span class="mine-shop-icon">🪙</span>
+
+            <h3>보석을 칩으로 교환</h3>
+
+            <p>
+              보석 100개당 상암랜드 가상 칩 1개를 받습니다.
+            </p>
+
+            <select id="gemExchangeAmount">
+              <option value="100">
+                보석 100개 → 칩 1개
+              </option>
+
+              <option value="500">
+                보석 500개 → 칩 5개
+              </option>
+
+              <option value="1000">
+                보석 1,000개 → 칩 10개
+              </option>
+
+              <option value="5000">
+                보석 5,000개 → 칩 50개
+              </option>
+
+              <option value="10000">
+                보석 10,000개 → 칩 100개
+              </option>
+            </select>
+
+            <button
+              type="button"
+              class="mine-exchange-button"
+              onclick="exchangeMineGems()"
+            >
+              보석 교환하기
+            </button>
+          </article>
+
+          <!-- 보물상자 -->
+          <article class="mine-shop-card mine-chest-card">
+            <span
+              id="mineChestIcon"
+              class="mine-shop-icon mine-chest-icon"
+            >
+              📦
+            </span>
+
+            <h3>광부의 보물상자</h3>
+
+            <p>
+              보석 1,000개를 사용해 무작위 보물을 획득합니다.
+            </p>
+
+            <button
+              type="button"
+              id="mineChestButton"
+              class="mine-chest-button"
+              onclick="openMineChest()"
+            >
+              보석 1,000개로 열기
+            </button>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 상자 확률 -->
+      <section class="mine-chest-rules">
+        <h2>보물상자 확률</h2>
+
+        <div class="mine-chest-table">
+          <div class="mine-chest-result lose">
+            <span>빈 상자</span>
+            <strong>50%</strong>
+            <em>꽝</em>
+          </div>
+
+          <div class="mine-chest-result refund">
+            <span>원금 반환</span>
+            <strong>30%</strong>
+            <em>1,000개</em>
+          </div>
+
+          <div class="mine-chest-result small">
+            <span>작은 보물</span>
+            <strong>15%</strong>
+            <em>2,000개</em>
+          </div>
+
+          <div class="mine-chest-result large">
+            <span>큰 보물</span>
+            <strong>4%</strong>
+            <em>5,000개</em>
+          </div>
+
+          <div class="mine-chest-result legendary">
+            <span>전설의 보물</span>
+            <strong>1%</strong>
+            <em>30,000개</em>
+          </div>
+        </div>
+
+        <p>
+          상자 가격은 보석 1,000개입니다.
+        </p>
+      </section>
+
+      <section class="mine-info-section">
+        <h2>채굴 안내</h2>
+
+        <ul>
+          <li>일반 채굴은 보석 1개를 획득합니다.</li>
+          <li>1% 확률로 크리티컬이 발생해 보석 100개를 획득합니다.</li>
+          <li>일반 채굴 1,000회마다 5초간 피버타임이 시작됩니다.</li>
+          <li>피버타임에는 모든 유효 채굴이 크리티컬입니다.</li>
+          <li>보석과 칩은 실제 현금이나 상품으로 교환할 수 없습니다.</li>
+        </ul>
+      </section>
+
+    </main>
+
+    <!-- 오른쪽 광고 -->
+    <aside class="side-ads side-ads-right" aria-label="오른쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+<img
+        src="/assets/ads/ad-land.png"
+        alt="상암랜드 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-wonking.png"
+        alt="원킹쌤 메이커 프로젝트 광고"
+      >
+    </aside>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+ <script src="/static/js/common.js"></script>
+  <script src="/static/js/mine.js"></script>
+
+</body>
+</html>

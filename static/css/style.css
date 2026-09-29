@@ -4964,3 +4964,1542 @@ header .me {
 .home-notice-section .notice-item:last-child {
   margin-bottom: 0;
 }
+
+/* =========================================================
+   상암 광산
+   ========================================================= */
+
+.mine-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ---------- 광산 소개 ---------- */
+
+.mine-intro {
+  padding: 24px;
+
+  border: 1px solid #a16207;
+  border-radius: 16px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(253, 224, 71, 0.35),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #292524,
+      #57534e
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 10px 25px rgba(41, 37, 36, 0.22);
+}
+
+.mine-intro > span {
+  color: #fde68a;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.mine-intro h1 {
+  margin: 6px 0 8px;
+  color: #fff;
+}
+
+.mine-intro p {
+  margin: 0;
+
+  color: #e7e5e4;
+  font-size: 14px;
+}
+
+
+/* ---------- 광산 기계 ---------- */
+
+.mine-machine {
+  position: relative;
+  overflow: hidden;
+
+  padding: 24px;
+
+  border: 4px solid #a16207;
+  border-radius: 20px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(120, 53, 15, 0.45),
+      transparent 50%
+    ),
+    linear-gradient(
+      145deg,
+      #292524,
+      #1c1917
+    );
+
+  box-shadow:
+    0 13px 30px rgba(41, 37, 36, 0.3),
+    inset 0 0 0 3px #713f12;
+}
+
+
+/* ---------- 보석 및 클릭 정보 ---------- */
+
+.mine-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mine-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 11px;
+
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.mine-stats span {
+  color: #d6d3d1;
+  font-size: 12px;
+}
+
+.mine-stats strong {
+  color: #fde68a;
+  font-size: 18px;
+}
+
+
+/* ---------- 피버 진행도 ---------- */
+
+.mine-progress-area {
+  margin-top: 14px;
+  padding: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 11px;
+
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.mine-progress-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-bottom: 8px;
+
+  color: #e7e5e4;
+  font-size: 12px;
+}
+
+.mine-progress-track {
+  height: 13px;
+  overflow: hidden;
+
+  border: 1px solid #57534e;
+  border-radius: 999px;
+
+  background: #292524;
+}
+
+.mine-progress-bar {
+  width: 0;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f59e0b,
+      #fde047
+    );
+
+  box-shadow:
+    0 0 10px rgba(250, 204, 21, 0.55);
+
+  transition: width 0.15s ease;
+}
+
+
+/* =========================================================
+   광석 모양 클릭 영역
+   ========================================================= */
+
+.mine-cave {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 420px;
+  margin-top: 18px;
+  padding: 34px 20px 24px;
+
+  border: 2px solid #44403c;
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      ellipse at center bottom,
+      rgba(120, 53, 15, 0.45),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(68, 64, 60, 0.8),
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(68, 64, 60, 0.7),
+      transparent 22%
+    ),
+    linear-gradient(
+      180deg,
+      #0c0a09,
+      #1c1917 55%,
+      #292524
+    );
+}
+
+.mine-cave::before,
+.mine-cave::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+
+  width: 37%;
+  height: 75px;
+
+  background: #292524;
+
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      88% 40%,
+      72% 34%,
+      58% 75%,
+      35% 48%,
+      12% 100%,
+      0 75%
+    );
+}
+
+.mine-cave::before {
+  left: 0;
+}
+
+.mine-cave::after {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.mine-cave-light {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+
+  width: 280px;
+  height: 280px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(56, 189, 248, 0.25),
+      transparent 68%
+    );
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+
+/* ---------- 광석 버튼 초기화 ---------- */
+
+.mine-ore-button {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  width: 310px;
+  height: 310px;
+  max-width: 90%;
+  margin: 15px auto 0;
+  padding: 0 0 5px;
+
+  border: 0;
+  border-radius: 0;
+
+  background: transparent;
+  color: #fff;
+
+  box-shadow: none;
+  cursor: pointer;
+  user-select: none;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mine-ore-button:hover {
+  background: transparent;
+}
+
+.mine-ore-button:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 8px;
+}
+
+
+/* ---------- 광석 그림자 ---------- */
+
+.ore-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 48px;
+
+  width: 230px;
+  height: 52px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.48);
+
+  filter: blur(6px);
+
+  transform: translateX(-50%);
+
+  transition:
+    transform 0.18s ease,
+    opacity 0.18s ease;
+}
+
+
+/* ---------- 울퉁불퉁한 광석 ---------- */
+
+.ore-rock {
+  position: absolute;
+  left: 50%;
+  bottom: 64px;
+
+  width: 235px;
+  height: 190px;
+
+  border: 7px solid #1e3a8a;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(255, 255, 255, 0.6),
+      transparent 14%
+    ),
+    radial-gradient(
+      circle at 68% 35%,
+      #67e8f9,
+      transparent 20%
+    ),
+    linear-gradient(
+      145deg,
+      #38bdf8 0%,
+      #2563eb 32%,
+      #312e81 67%,
+      #1e1b4b 100%
+    );
+
+  clip-path:
+    polygon(
+      15% 24%,
+      32% 8%,
+      51% 14%,
+      64% 4%,
+      83% 19%,
+      96% 43%,
+      87% 70%,
+      70% 91%,
+      41% 96%,
+      15% 82%,
+      4% 57%
+    );
+
+  transform: translateX(-50%);
+
+  box-shadow:
+    0 18px 25px rgba(0, 0, 0, 0.38),
+    inset -18px -20px 30px rgba(30, 27, 75, 0.55),
+    inset 12px 10px 22px rgba(255, 255, 255, 0.16);
+
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
+}
+
+.ore-rock-highlight {
+  position: absolute;
+  top: 27px;
+  left: 47px;
+
+  width: 63px;
+  height: 24px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.34);
+
+  filter: blur(2px);
+
+  transform: rotate(-22deg);
+}
+
+
+/* ---------- 광석 위의 수정 ---------- */
+
+.ore-crystal {
+  position: absolute;
+  z-index: 2;
+  bottom: 92px;
+
+  width: 45px;
+
+  border: 3px solid #bae6fd;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ecfeff,
+      #67e8f9 35%,
+      #3b82f6 70%,
+      #312e81
+    );
+
+  clip-path:
+    polygon(
+      50% 0,
+      100% 30%,
+      82% 100%,
+      18% 100%,
+      0 30%
+    );
+
+  filter:
+    drop-shadow(
+      0 0 7px rgba(56, 189, 248, 0.75)
+    );
+}
+
+.ore-crystal-one {
+  left: 62px;
+  height: 105px;
+
+  transform: rotate(-13deg);
+}
+
+.ore-crystal-two {
+  left: 111px;
+  height: 136px;
+
+  transform: rotate(3deg);
+}
+
+.ore-crystal-three {
+  right: 58px;
+  height: 95px;
+
+  transform: rotate(17deg);
+}
+
+.ore-crystal-four {
+  left: 91px;
+  bottom: 84px;
+
+  width: 34px;
+  height: 75px;
+
+  transform: rotate(-32deg);
+}
+
+
+/* ---------- 광석 균열 ---------- */
+
+.ore-rock-crack {
+  position: absolute;
+  z-index: 3;
+
+  display: block;
+
+  width: 4px;
+  height: 58px;
+
+  background: #bfdbfe;
+
+  box-shadow:
+    0 0 7px rgba(191, 219, 254, 0.85);
+
+  opacity: 0.75;
+
+  transform-origin: top;
+}
+
+.crack-one {
+  top: 76px;
+  left: 104px;
+
+  transform: rotate(27deg);
+}
+
+.crack-two {
+  top: 99px;
+  right: 80px;
+
+  height: 42px;
+
+  transform: rotate(-38deg);
+}
+
+
+/* ---------- 광석 텍스트 ---------- */
+
+.ore-label {
+  position: absolute;
+  z-index: 4;
+  bottom: 2px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+
+  padding: 8px 15px;
+
+  border: 1px solid rgba(186, 230, 253, 0.42);
+  border-radius: 999px;
+
+  background: rgba(15, 23, 42, 0.82);
+
+  backdrop-filter: blur(5px);
+}
+
+.ore-label strong {
+  color: #e0f2fe;
+  font-size: 16px;
+}
+
+.ore-label small {
+  color: #7dd3fc;
+  font-size: 11px;
+}
+
+
+/* ---------- 광석 클릭 반응 ---------- */
+
+.mine-ore-button:hover .ore-rock {
+  filter: brightness(1.14);
+
+  transform:
+    translateX(-50%)
+    translateY(-4px)
+    scale(1.025);
+}
+
+.mine-ore-button:hover .ore-shadow {
+  opacity: 0.7;
+
+  transform:
+    translateX(-50%)
+    scaleX(0.92);
+}
+
+.mine-ore-button.mine-hit .ore-rock {
+  animation: ore-hit 0.22s ease;
+}
+
+.mine-ore-button.mine-hit .ore-crystal {
+  animation: crystal-hit 0.22s ease;
+}
+
+@keyframes ore-hit {
+  0% {
+    transform:
+      translateX(-50%)
+      rotate(0deg)
+      scale(1);
+  }
+
+  30% {
+    transform:
+      translateX(-50%)
+      rotate(-4deg)
+      scale(0.94);
+  }
+
+  65% {
+    transform:
+      translateX(-50%)
+      rotate(3deg)
+      scale(1.035);
+  }
+
+  100% {
+    transform:
+      translateX(-50%)
+      rotate(0deg)
+      scale(1);
+  }
+}
+
+@keyframes crystal-hit {
+  50% {
+    filter:
+      brightness(1.8)
+      drop-shadow(
+        0 0 15px rgba(103, 232, 249, 1)
+      );
+  }
+}
+
+
+/* ---------- 크리티컬 연출 ---------- */
+
+.mine-ore-button.mine-critical-hit .ore-rock {
+  animation: ore-critical 0.65s ease;
+}
+
+@keyframes ore-critical {
+  0% {
+    transform:
+      translateX(-50%)
+      scale(1);
+  }
+
+  25% {
+    filter:
+      brightness(2)
+      saturate(1.8);
+
+    transform:
+      translateX(-50%)
+      scale(1.08)
+      rotate(-4deg);
+  }
+
+  55% {
+    filter:
+      brightness(2.4)
+      saturate(2);
+
+    transform:
+      translateX(-50%)
+      scale(0.96)
+      rotate(4deg);
+  }
+
+  100% {
+    filter: brightness(1);
+
+    transform:
+      translateX(-50%)
+      scale(1);
+  }
+}
+
+
+/* ---------- 피버 광석 ---------- */
+
+.mine-ore-button.fever-ore .ore-rock {
+  border-color: #fef08a;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #fff,
+      transparent 14%
+    ),
+    radial-gradient(
+      circle at 68% 35%,
+      #fef08a,
+      transparent 20%
+    ),
+    linear-gradient(
+      145deg,
+      #fde047,
+      #f59e0b 35%,
+      #ea580c 68%,
+      #7c2d12
+    );
+
+  animation:
+    fever-ore-glow 0.45s alternate infinite;
+}
+
+.mine-ore-button.fever-ore .ore-crystal {
+  border-color: #fff7ed;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #fef08a,
+      #f59e0b,
+      #ea580c
+    );
+
+  filter:
+    drop-shadow(
+      0 0 12px rgba(250, 204, 21, 1)
+    );
+}
+
+@keyframes fever-ore-glow {
+  from {
+    filter: brightness(1);
+  }
+
+  to {
+    filter:
+      brightness(1.45)
+      saturate(1.4);
+
+    box-shadow:
+      0 0 30px rgba(250, 204, 21, 0.85),
+      inset -18px -20px 30px rgba(124, 45, 18, 0.5);
+  }
+}
+
+
+/* ---------- 동굴 바닥의 작은 돌 ---------- */
+
+.mine-ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+
+  display: flex;
+  justify-content: space-around;
+
+  color: #57534e;
+  font-size: 19px;
+
+  opacity: 0.8;
+
+  pointer-events: none;
+}
+
+.mine-ground span:nth-child(2) {
+  transform: scale(1.4) rotate(18deg);
+}
+
+.mine-ground span:nth-child(3) {
+  color: #1e40af;
+
+  transform: scale(0.8);
+}
+
+.mine-ground span:nth-child(4) {
+  transform: scale(1.25) rotate(-23deg);
+}
+
+
+/* ---------- 피버타임 ---------- */
+
+.mine-fever-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  margin-bottom: 15px;
+  padding: 13px;
+
+  border: 2px solid #fde047;
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ea580c,
+      #facc15,
+      #ea580c
+    );
+
+  background-size: 200% auto;
+
+  color: #431407;
+
+  font-size: 18px;
+  font-weight: 900;
+  text-align: center;
+
+  animation:
+    mine-fever-glow 0.4s alternate infinite,
+    mine-fever-background 1.2s linear infinite;
+}
+
+.mine-fever-banner[hidden] {
+  display: none;
+}
+
+.mine-fever-banner small {
+  width: 100%;
+
+  font-size: 11px;
+}
+
+.mine-machine.fever-active {
+  border-color: #fde047;
+
+  box-shadow:
+    0 0 35px rgba(250, 204, 21, 0.8),
+    inset 0 0 0 3px #fff7ed;
+}
+
+.mine-machine.mine-fever-start {
+  animation: mine-fever-start 0.25s alternate 5;
+}
+
+@keyframes mine-fever-glow {
+  to {
+    filter: brightness(1.25);
+  }
+}
+
+@keyframes mine-fever-background {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes mine-fever-start {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.015);
+
+    box-shadow:
+      0 0 50px rgba(250, 204, 21, 1),
+      inset 0 0 0 3px #fff;
+  }
+}
+
+
+/* ---------- 떠오르는 보석 보상 ---------- */
+
+.mine-floating-gem {
+  position: absolute;
+  z-index: 8;
+
+  color: #bae6fd;
+  font-size: 19px;
+  font-weight: 900;
+
+  text-shadow:
+    0 0 8px rgba(56, 189, 248, 0.85);
+
+  pointer-events: none;
+
+  animation:
+    mine-floating-gem 0.95s ease-out forwards;
+}
+
+.mine-floating-gem.critical {
+  color: #fef08a;
+  font-size: 30px;
+
+  text-shadow:
+    0 0 10px rgba(250, 204, 21, 1);
+}
+
+@keyframes mine-floating-gem {
+  from {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(0.8);
+  }
+
+  to {
+    opacity: 0;
+
+    transform:
+      translateY(-95px)
+      scale(1.3);
+  }
+}
+
+
+/* ---------- 결과 메시지 ---------- */
+
+.mine-message {
+  margin: 18px 0 0;
+  padding: 12px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: #e7e5e4;
+
+  font-size: 14px;
+  text-align: center;
+}
+
+.mine-message-critical,
+.mine-message-fever,
+.mine-message-legendary {
+  border-color: rgba(254, 240, 138, 0.55);
+
+  background: rgba(250, 204, 21, 0.18);
+  color: #fef08a;
+
+  font-weight: 900;
+}
+
+.mine-message-error {
+  border-color: rgba(254, 202, 202, 0.35);
+
+  background: rgba(239, 68, 68, 0.13);
+  color: #fecaca;
+}
+
+.mine-message-success {
+  border-color: rgba(187, 247, 208, 0.4);
+
+  background: rgba(34, 197, 94, 0.13);
+  color: #bbf7d0;
+}
+
+
+/* ---------- 광산 상점 ---------- */
+
+.mine-shop-section,
+.mine-chest-rules,
+.mine-info-section {
+  padding: 22px;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  background: #fff;
+
+  box-shadow:
+    0 6px 18px rgba(24, 24, 27, 0.06);
+}
+
+.mine-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+
+  margin-bottom: 15px;
+}
+
+.mine-section-heading span {
+  color: #b45309;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.mine-section-heading h2 {
+  margin: 3px 0 0;
+}
+
+.mine-section-heading p {
+  max-width: 300px;
+  margin: 0;
+
+  color: var(--gray);
+
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.mine-shop-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.mine-shop-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 17px;
+
+  border: 1px solid var(--line);
+  border-radius: 13px;
+
+  background: #fafafa;
+}
+
+.mine-chest-card {
+  border-color: #f59e0b;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffbeb,
+      #fff
+    );
+}
+
+.mine-shop-icon {
+  font-size: 38px;
+}
+
+.mine-chest-icon {
+  display: inline-block;
+  align-self: flex-start;
+
+  transform-origin: center bottom;
+}
+
+.mine-chest-icon.opening {
+  animation: mine-chest-opening 0.28s alternate infinite;
+}
+
+@keyframes mine-chest-opening {
+  from {
+    transform: rotate(-7deg) scale(1);
+  }
+
+  to {
+    transform: rotate(7deg) scale(1.12);
+  }
+}
+
+.mine-shop-card h3,
+.mine-shop-card p {
+  margin: 0;
+}
+
+.mine-shop-card p {
+  flex: 1;
+
+  color: var(--gray);
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.mine-shop-card select {
+  width: 100%;
+  padding: 10px;
+
+  border: 1px solid var(--line);
+  border-radius: 7px;
+
+  background: #fff;
+
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.mine-exchange-button {
+  border-color: #6366f1;
+  background: #6366f1;
+  color: #fff;
+}
+
+.mine-exchange-button:hover {
+  background: #4f46e5;
+  color: #fff;
+}
+
+.mine-chest-button {
+  border-color: #f59e0b;
+  background: #f59e0b;
+  color: #431407;
+
+  font-weight: 800;
+}
+
+.mine-chest-button:hover:not(:disabled) {
+  background: #fbbf24;
+}
+
+.mine-chest-card.legendary-open {
+  animation: mine-legendary-chest 0.28s alternate 6;
+}
+
+@keyframes mine-legendary-chest {
+  from {
+    border-color: #f59e0b;
+  }
+
+  to {
+    border-color: #fef08a;
+
+    box-shadow:
+      0 0 30px rgba(250, 204, 21, 0.9);
+  }
+}
+
+
+/* ---------- 보물상자 확률 ---------- */
+
+.mine-chest-rules h2,
+.mine-info-section h2 {
+  margin: 0 0 15px;
+}
+
+.mine-chest-table {
+  display: grid;
+  gap: 8px;
+}
+
+.mine-chest-table > div {
+  display: grid;
+  grid-template-columns: 1fr 70px 100px;
+  align-items: center;
+  gap: 10px;
+
+  padding: 11px;
+
+  border: 1px solid var(--line);
+  border-radius: 9px;
+
+  background: #fafafa;
+}
+
+.mine-chest-table strong,
+.mine-chest-table em {
+  text-align: right;
+}
+
+.mine-chest-table em {
+  color: #b45309;
+
+  font-style: normal;
+  font-weight: 700;
+}
+
+.mine-chest-result.legendary {
+  border-color: #f59e0b;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffbeb,
+      #fef3c7
+    );
+}
+
+.mine-chest-result.lose {
+  opacity: 0.75;
+}
+
+.mine-chest-rules > p {
+  margin: 14px 0 0;
+
+  color: var(--gray);
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* ---------- 채굴 안내 ---------- */
+
+.mine-info-section ul {
+  padding-left: 20px;
+
+  list-style: disc;
+}
+
+.mine-info-section li {
+  margin: 7px 0;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  color: #57534e;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* ---------- 모바일 ---------- */
+
+@media (max-width: 650px) {
+  .mine-intro,
+  .mine-machine,
+  .mine-shop-section,
+  .mine-chest-rules,
+  .mine-info-section {
+    padding: 17px;
+  }
+
+  .mine-stats,
+  .mine-shop-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mine-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .mine-section-heading p {
+    max-width: none;
+    text-align: left;
+  }
+
+  .mine-cave {
+    min-height: 350px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .mine-ore-button {
+    width: 255px;
+    height: 260px;
+  }
+
+  .ore-rock {
+    bottom: 61px;
+
+    width: 195px;
+    height: 158px;
+  }
+
+  .ore-crystal-one {
+    left: 48px;
+    bottom: 82px;
+
+    height: 87px;
+  }
+
+  .ore-crystal-two {
+    left: 91px;
+    bottom: 82px;
+
+    height: 112px;
+  }
+
+  .ore-crystal-three {
+    right: 44px;
+    bottom: 82px;
+
+    height: 81px;
+  }
+
+  .ore-crystal-four {
+    left: 74px;
+    bottom: 77px;
+  }
+
+  .mine-chest-table > div {
+    grid-template-columns: 1fr auto auto;
+  }
+}
+
+/* =========================================================
+   광산 크리티컬 오버레이
+   ========================================================= */
+
+.mine-critical-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(254, 240, 138, 0.38),
+      rgba(245, 158, 11, 0.12) 45%,
+      transparent 72%
+    );
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+}
+
+.mine-critical-overlay.show {
+  visibility: visible;
+
+  animation:
+    mine-critical-overlay-show
+    1.5s ease-out forwards;
+}
+
+
+/* 회전하는 광선 */
+
+.mine-critical-rays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 480px;
+  height: 480px;
+
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(254, 240, 138, 0.42)
+      0deg 7deg,
+      transparent
+      7deg 18deg
+    );
+
+  border-radius: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  animation:
+    mine-critical-rays-spin
+    1.5s linear;
+}
+
+
+/* 크리티컬 문구 */
+
+.mine-critical-content {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+
+  min-width: 280px;
+  padding: 22px 30px;
+
+  border: 3px solid #fef08a;
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(120, 53, 15, 0.96),
+      rgba(234, 88, 12, 0.96)
+    );
+
+  color: #fff;
+
+  text-align: center;
+
+  box-shadow:
+    0 0 18px rgba(250, 204, 21, 0.95),
+    0 0 45px rgba(249, 115, 22, 0.7);
+
+  animation:
+    mine-critical-content-pop
+    1.5s ease-out;
+}
+
+.mine-critical-content span {
+  color: #fef08a;
+
+  font-size: 22px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+
+  text-shadow:
+    0 2px 0 #9a3412,
+    0 0 12px rgba(254, 240, 138, 0.9);
+}
+
+.mine-critical-content strong {
+  color: #fff;
+
+  font-size: 38px;
+  font-weight: 1000;
+
+  text-shadow:
+    0 3px 0 #9a3412,
+    0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.mine-critical-content small {
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.18);
+  color: #fffbeb;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+
+/* 광산 화면 순간 충격 효과 */
+
+.mine-machine:has(
+  .mine-critical-overlay.show
+) {
+  animation:
+    mine-critical-machine-shock
+    0.35s ease;
+}
+
+
+@keyframes mine-critical-overlay-show {
+  0% {
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes mine-critical-rays-spin {
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotate(0deg)
+      scale(0.4);
+
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotate(180deg)
+      scale(1.25);
+
+    opacity: 0;
+  }
+}
+
+@keyframes mine-critical-content-pop {
+  0% {
+    opacity: 0;
+
+    transform:
+      scale(0.35)
+      rotate(-8deg);
+  }
+
+  16% {
+    opacity: 1;
+
+    transform:
+      scale(1.13)
+      rotate(3deg);
+  }
+
+  28% {
+    transform:
+      scale(1)
+      rotate(0);
+  }
+
+  78% {
+    opacity: 1;
+
+    transform:
+      scale(1);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scale(1.12)
+      translateY(-15px);
+  }
+}
+
+@keyframes mine-critical-machine-shock {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  75% {
+    transform: translateX(-3px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+@media (max-width: 650px) {
+  .mine-critical-content {
+    min-width: 230px;
+    padding: 18px 20px;
+  }
+
+  .mine-critical-content span {
+    font-size: 18px;
+  }
+
+  .mine-critical-content strong {
+    font-size: 31px;
+  }
+
+  .mine-critical-rays {
+    width: 380px;
+    height: 380px;
+  }
+}
