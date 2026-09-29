@@ -49,6 +49,7 @@ async function loadMyChips() {
 const MENU = [
   { name: "홈", url: "/index.html" },
   { name: "게임장", url: "/pages/games.html" },
+  { name: "상점", url: "/pages/shop.html" },
   { name: "게시판", url: "/pages/board.html" },
   { name: "내 정보", url: "/pages/mypage.html" },
 ];

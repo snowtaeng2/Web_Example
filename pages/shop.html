@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>꾸미기 상점 | 상암랜드</title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body data-require-auth="true">
+
+  <header id="nav"></header>
+
+  <div class="home-layout">
+
+    <aside class="side-ads side-ads-left" aria-label="왼쪽 광고">
+      <span class="side-ad-label">광고</span>
+    <img
+        src="/assets/ads/ad-sangam.png"
+        alt="상암고등학교 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-toilet.png"
+        alt="바로화장실 광고"
+      >
+    </aside>
+
+    <main class="shop-page">
+
+      <section class="shop-intro">
+        <span>STYLE SHOP</span>
+        <h1>🛍️ 게시글 꾸미기 상점</h1>
+
+        <p>
+          상암랜드 칩으로 게시글에 사용할 색상과 효과를 구매하세요.
+        </p>
+
+        <strong id="shopBalance">보유 칩 확인 중...</strong>
+      </section>
+
+      <section class="shop-preview-section">
+        <h2>미리보기</h2>
+
+        <article id="shopPreview" class="shop-post-preview">
+          <strong id="shopPreviewName">상암랜드 사용자</strong>
+          <span id="shopPreviewText">
+            구매한 스타일은 새로 작성하는 게시글에 적용됩니다.
+          </span>
+        </article>
+
+        <p id="shopMessage" class="shop-message">
+          상품을 선택해 미리 확인할 수 있습니다.
+        </p>
+      </section>
+
+      <section class="shop-filter-section">
+  <button class="shop-filter active" data-category="all">
+    전체
+  </button>
+
+  <button class="shop-filter" data-category="icon_style">
+    아이콘
+  </button>
+
+  <button class="shop-filter" data-category="name_color">
+    이름
+  </button>
+
+  <button class="shop-filter" data-category="text_style">
+    글씨
+  </button>
+
+  <button class="shop-filter" data-category="border_style">
+    테두리
+  </button>
+
+  <button class="shop-filter" data-category="background_style">
+    배경
+  </button>
+</section>
+
+      <section id="shopList" class="shop-grid">
+        <p>상점 상품을 불러오는 중입니다.</p>
+      </section>
+
+    </main>
+
+    <aside class="side-ads side-ads-right" aria-label="오른쪽 광고">
+      <span class="side-ad-label">광고</span>
+    <img
+        src="/assets/ads/ad-land.png"
+        alt="상암랜드 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-wonking.png"
+        alt="원킹쌤 메이커 프로젝트 광고"
+      >
+    </aside>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/shop.js"></script>
+
+</body>
+</html>

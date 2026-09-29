@@ -3958,3 +3958,992 @@ header .me {
     font-size: 22px;
   }
 }
+
+/* =========================================================
+   게시글 꾸미기 상점
+   ========================================================= */
+
+.shop-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.shop-intro {
+  padding: 24px;
+  border-radius: 16px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(251, 191, 36, 0.4),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #312e81, #7c3aed);
+
+  color: #fff;
+}
+
+.shop-intro > span {
+  color: #fef3c7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.shop-intro h1 {
+  margin: 6px 0 8px;
+  color: #fff;
+}
+
+.shop-intro p {
+  color: #ede9fe;
+}
+
+.shop-intro strong {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.shop-preview-section,
+.shop-filter-section {
+  padding: 18px;
+
+  border: 1px solid var(--line);
+  border-radius: 14px;
+
+  background: #fff;
+}
+
+.shop-post-preview {
+  margin: 12px 0;
+  padding: 16px;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  background: #fff;
+}
+
+.shop-post-preview strong,
+.shop-post-preview span {
+  display: block;
+}
+
+.shop-post-preview strong {
+  margin-bottom: 7px;
+  color: var(--main);
+}
+
+.shop-filter-section {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.shop-filter.active {
+  border-color: var(--main);
+  background: var(--main);
+  color: #fff;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.shop-item-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 16px;
+
+  border: 1px solid var(--line);
+  border-radius: 14px;
+
+  background: #fff;
+}
+
+.shop-item-top {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shop-rarity {
+  align-self: flex-start;
+  padding: 3px 8px;
+  border-radius: 999px;
+
+  background: #f4f4f5;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.rarity-rare {
+  border-color: #60a5fa;
+}
+
+.rarity-epic {
+  border-color: #a78bfa;
+  box-shadow: 0 5px 15px rgba(124, 58, 237, 0.1);
+}
+
+.rarity-legendary {
+  border-color: #f59e0b;
+  box-shadow: 0 7px 20px rgba(245, 158, 11, 0.18);
+}
+
+.shop-item-preview {
+  padding: 20px 12px;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  text-align: center;
+}
+
+.shop-price {
+  color: #b45309;
+}
+
+.shop-item-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+
+  margin-top: auto;
+}
+
+.shop-preview-button {
+  background: #f4f4f5;
+}
+
+.shop-message {
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+
+.shop-message-success {
+  color: #15803d;
+}
+
+.shop-message-error {
+  color: #dc2626;
+}
+
+@media (max-width: 650px) {
+  .shop-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 닉네임 색상 */
+
+.name_sky strong {
+  color: #38bdf8 !important;
+}
+
+.name_blue strong {
+  color: #2563eb !important;
+}
+
+.name_emerald strong {
+  color: #059669 !important;
+}
+
+.name_gold strong {
+  color: #d97706 !important;
+  text-shadow: 0 0 8px rgba(245, 158, 11, 0.35);
+}
+
+.name_rainbow strong {
+  color: transparent !important;
+  background: linear-gradient(
+    90deg,
+    #ef4444,
+    #f59e0b,
+    #22c55e,
+    #3b82f6,
+    #8b5cf6,
+    #ef4444
+  );
+  background-size: 250% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shop-rainbow 3s linear infinite;
+}
+
+.name_neon strong {
+  color: #f0abfc !important;
+  text-shadow:
+    0 0 5px #d946ef,
+    0 0 12px #a855f7,
+    0 0 20px #7c3aed;
+}
+
+
+/* 글씨 */
+
+.text_navy .post-content,
+.text_navy > span {
+  color: #1e3a8a;
+}
+
+.text_purple .post-content,
+.text_purple > span {
+  color: #7c3aed;
+}
+
+.text_red .post-content,
+.text_red > span {
+  color: #dc2626;
+}
+
+.text_gold .post-content,
+.text_gold > span {
+  color: #b45309;
+  font-weight: 700;
+}
+
+.text_gradient .post-content,
+.text_gradient > span {
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    #7c3aed,
+    #2563eb,
+    #db2777,
+    #7c3aed
+  );
+  background-size: 250% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shop-rainbow 4s linear infinite;
+}
+
+.text_glitch .post-content,
+.text_glitch > span {
+  color: #f0abfc;
+  font-weight: 800;
+  text-shadow:
+    2px 0 #22d3ee,
+    -2px 0 #f43f5e;
+  animation: shop-glitch 0.8s steps(2) infinite;
+}
+
+
+/* 테두리 */
+
+.border_blue {
+  border: 2px solid #3b82f6 !important;
+}
+
+.border_gold {
+  border: 3px solid #f59e0b !important;
+}
+
+.border_dashed {
+  border: 3px dashed #8b5cf6 !important;
+  animation: shop-border-pulse 1.8s alternate infinite;
+}
+
+.border_double {
+  border: 5px double #7c3aed !important;
+}
+
+.border_neon {
+  border: 2px solid #a855f7 !important;
+  box-shadow:
+    0 0 8px rgba(168, 85, 247, 0.65),
+    0 0 18px rgba(99, 102, 241, 0.4);
+}
+
+.border_legend {
+  border: 3px solid #ef4444 !important;
+  box-shadow:
+    0 0 8px #f97316,
+    0 0 18px rgba(239, 68, 68, 0.7);
+  animation: shop-fire-border 0.7s alternate infinite;
+}
+
+
+/* 배경 */
+
+.bg_sky {
+  background: #f0f9ff !important;
+}
+
+.bg_purple {
+  background:
+    linear-gradient(135deg, #f5f3ff, #ede9fe) !important;
+}
+
+.bg_sunset {
+  background:
+    linear-gradient(135deg, #fff1f2, #ffedd5) !important;
+}
+
+.bg_night {
+  background:
+    linear-gradient(135deg, #172554, #312e81) !important;
+  color: #fff;
+}
+
+.bg_night .post-content,
+.bg_night > span {
+  color: #e0e7ff;
+}
+
+.bg_aurora {
+  background:
+    linear-gradient(
+      120deg,
+      #dbeafe,
+      #ede9fe,
+      #fce7f3,
+      #dcfce7
+    ) !important;
+  background-size: 300% 300% !important;
+  animation: shop-aurora 5s ease infinite;
+}
+
+.bg_inferno {
+  background:
+    linear-gradient(
+      135deg,
+      #450a0a,
+      #991b1b,
+      #ea580c,
+      #450a0a
+    ) !important;
+  background-size: 300% 300% !important;
+  color: #fff;
+  animation: shop-inferno 2.5s ease infinite;
+}
+
+.bg_inferno .post-content,
+.bg_inferno > span {
+  color: #ffedd5;
+}
+
+
+/* 애니메이션 */
+
+@keyframes shop-rainbow {
+  to {
+    background-position: 250% center;
+  }
+}
+
+@keyframes shop-glitch {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(1px);
+  }
+
+  100% {
+    transform: translateX(-1px);
+  }
+}
+
+@keyframes shop-border-pulse {
+  from {
+    border-color: #8b5cf6;
+  }
+
+  to {
+    border-color: #ec4899;
+  }
+}
+
+@keyframes shop-fire-border {
+  from {
+    box-shadow: 0 0 7px #ef4444;
+  }
+
+  to {
+    box-shadow:
+      0 0 15px #f97316,
+      0 0 26px rgba(239, 68, 68, 0.65);
+  }
+}
+
+@keyframes shop-aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shop-inferno {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* =========================================================
+   상점 기본 스타일 선택
+   ========================================================= */
+
+.shop-default-section {
+  padding: 20px;
+
+  border: 1px solid var(--line);
+  border-radius: 14px;
+
+  background: #fff;
+}
+
+.shop-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 18px;
+
+  margin-bottom: 16px;
+}
+
+.shop-section-heading span {
+  color: var(--main);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.shop-section-heading h2 {
+  margin: 4px 0 0;
+}
+
+.shop-section-heading p {
+  max-width: 330px;
+  margin: 0;
+
+  color: var(--gray);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.shop-default-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.shop-default-button {
+  display: grid;
+  grid-template-columns: 46px 1fr auto;
+  align-items: center;
+  gap: 11px;
+
+  min-width: 0;
+  padding: 12px;
+
+  border: 1px solid var(--line);
+  border-radius: 11px;
+
+  background: #fafafa;
+  color: var(--text);
+
+  text-align: left;
+}
+
+.shop-default-button:hover:not(:disabled) {
+  border-color: #a5b4fc;
+  background: #f5f3ff;
+}
+
+.shop-default-button.active {
+  border-color: var(--main);
+  background: #eef2ff;
+}
+
+.shop-default-button:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.shop-default-button > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.shop-default-button strong {
+  font-size: 13px;
+}
+
+.shop-default-button small {
+  overflow: hidden;
+
+  color: var(--gray);
+  font-size: 11px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shop-default-button em {
+  color: var(--main);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.shop-default-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 36px;
+
+  border: 1px solid var(--line);
+  border-radius: 8px;
+
+  background: #fff;
+  color: var(--main);
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.shop-default-border {
+  border: 2px solid #e4e4e7;
+}
+
+.shop-default-background {
+  background: #fff;
+}
+
+@media (max-width: 650px) {
+  .shop-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .shop-section-heading p {
+    max-width: none;
+    text-align: left;
+  }
+
+  .shop-default-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   게시판 공지사항
+   ========================================================= */
+
+.notice-section {
+  margin-bottom: 24px;
+}
+
+.notice-section-title {
+  margin: 0 0 10px;
+
+  color: #92400e;
+  font-size: 16px;
+}
+
+.notice-item {
+  position: relative;
+
+  margin-bottom: 10px;
+  padding: 16px;
+
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffbeb,
+      #fff7ed
+    );
+
+  box-shadow:
+    0 5px 14px rgba(245, 158, 11, 0.14);
+}
+
+.notice-item-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 9px;
+}
+
+.notice-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 8px;
+
+  border-radius: 999px;
+
+  background: #dc2626;
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.notice-title {
+  color: #b45309;
+  font-size: 15px;
+}
+
+.notice-content {
+  margin: 0 0 8px;
+
+  color: #3f3f46;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.notice-date {
+  display: block;
+
+  color: #a16207;
+  font-size: 11px;
+  text-align: right;
+}
+
+/* =========================================================
+   게시글 작성자 보유 칩
+   ========================================================= */
+
+.post-author-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  margin-bottom: 7px;
+}
+
+/* 기존 이름 스타일이 적용되도록 유지 */
+.post-author-line > strong {
+  color: var(--main);
+}
+
+/* 작성자 칩 배지 */
+.post-chip-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 3px 8px;
+
+  border: 1px solid #fde68a;
+  border-radius: 999px;
+
+  background: #fffbeb;
+  color: #b45309;
+
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+/* 게시글 본문 */
+.post-content {
+  display: block;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* 삭제 버튼과 내용이 겹치지 않게 유지 */
+#list li {
+  position: relative;
+  padding-right: 78px;
+}
+
+/* =========================================================
+   상점 아이콘 및 장착 해제
+   ========================================================= */
+
+.shop-unequip-button {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.shop-unequip-button:hover {
+  border-color: #f87171;
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+
+/* 게시글 이름 왼쪽 아이콘 */
+
+.post-author-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  width: 22px;
+  height: 22px;
+
+  font-size: 17px;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.post-author-icon::before {
+  display: block;
+}
+
+
+/* 상점 미리보기에서도 아이콘 표시 */
+
+.shop-post-preview[class*="icon_"] > strong::before,
+.shop-item-preview[class*="icon_"] > strong::before {
+  display: inline-block;
+  margin-right: 6px;
+
+  font-size: 17px;
+  vertical-align: middle;
+}
+
+
+/* 아이콘별 그림 */
+/* 게시판에서는 실제 아이콘 요소에만 그림 표시 */
+
+.post-author-icon.icon_star::before {
+  content: "⭐";
+}
+
+.post-author-icon.icon_clover::before {
+  content: "🍀";
+}
+
+.post-author-icon.icon_coin::before {
+  content: "🪙";
+}
+
+.post-author-icon.icon_dice::before {
+  content: "🎲";
+}
+
+.post-author-icon.icon_crown::before {
+  content: "👑";
+}
+
+.post-author-icon.icon_angel::before {
+  content: "👼";
+}
+
+.post-author-icon.icon_devil::before {
+  content: "😈";
+}
+
+.post-author-icon.icon_dragon::before {
+  content: "🐉";
+}
+
+.post-author-icon.icon_galaxy::before {
+  content: "🌌";
+}
+
+/* 상점 상품 미리보기 아이콘 */
+
+.shop-item-preview.icon_star > strong::before,
+.shop-post-preview.icon_star > strong::before {
+  content: "⭐";
+}
+
+.shop-item-preview.icon_clover > strong::before,
+.shop-post-preview.icon_clover > strong::before {
+  content: "🍀";
+}
+
+.shop-item-preview.icon_coin > strong::before,
+.shop-post-preview.icon_coin > strong::before {
+  content: "🪙";
+}
+
+.shop-item-preview.icon_dice > strong::before,
+.shop-post-preview.icon_dice > strong::before {
+  content: "🎲";
+}
+
+.shop-item-preview.icon_crown > strong::before,
+.shop-post-preview.icon_crown > strong::before {
+  content: "👑";
+}
+
+.shop-item-preview.icon_angel > strong::before,
+.shop-post-preview.icon_angel > strong::before {
+  content: "👼";
+}
+
+.shop-item-preview.icon_devil > strong::before,
+.shop-post-preview.icon_devil > strong::before {
+  content: "😈";
+}
+
+.shop-item-preview.icon_dragon > strong::before,
+.shop-post-preview.icon_dragon > strong::before {
+  content: "🐉";
+}
+
+.shop-item-preview.icon_galaxy > strong::before,
+.shop-post-preview.icon_galaxy > strong::before {
+  content: "🌌";
+}
+
+.shop-item-preview[class*="icon_"] > strong::before,
+.shop-post-preview[class*="icon_"] > strong::before {
+  display: inline-block;
+  margin-right: 6px;
+
+  font-size: 17px;
+  vertical-align: middle;
+}
+
+/* 고급 아이콘 효과 */
+
+.post-author-icon.icon_coin,
+.post-author-icon.icon_crown {
+  filter:
+    drop-shadow(0 0 4px rgba(245, 158, 11, 0.65));
+}
+
+.post-author-icon.icon_angel {
+  animation: shop-icon-angel 1.5s alternate infinite;
+}
+
+.post-author-icon.icon_devil {
+  animation: shop-icon-devil 1.2s alternate infinite;
+}
+
+.post-author-icon.icon_dragon {
+  animation: shop-icon-dragon 1s alternate infinite;
+}
+
+.post-author-icon.icon_galaxy {
+  animation: shop-icon-galaxy 3s linear infinite;
+}
+
+
+@keyframes shop-icon-angel {
+  from {
+    filter:
+      drop-shadow(0 0 2px #fde68a);
+  }
+
+  to {
+    transform: translateY(-2px);
+
+    filter:
+      drop-shadow(0 0 8px #facc15);
+  }
+}
+
+@keyframes shop-icon-devil {
+  from {
+    filter:
+      drop-shadow(0 0 2px #ef4444);
+  }
+
+  to {
+    transform: scale(1.1);
+
+    filter:
+      drop-shadow(0 0 8px #dc2626);
+  }
+}
+
+@keyframes shop-icon-dragon {
+  from {
+    filter:
+      drop-shadow(0 0 3px #f97316);
+  }
+
+  to {
+    transform: rotate(-5deg) scale(1.08);
+
+    filter:
+      drop-shadow(0 0 9px #ef4444);
+  }
+}
+
+@keyframes shop-icon-galaxy {
+  from {
+    transform: rotate(0deg);
+
+    filter:
+      drop-shadow(0 0 4px #6366f1);
+  }
+
+  to {
+    transform: rotate(360deg);
+
+    filter:
+      drop-shadow(0 0 10px #d946ef);
+  }
+}
+
+/* 게시글 작성 시간: 우측 하단 */
+
+.post-created-at {
+  position: absolute;
+  right: 14px;
+  bottom: 8px;
+
+  display: block;
+
+  color: #a1a1aa;
+  font-size: 10px;
+  line-height: 1.3;
+  white-space: nowrap;
+  text-align: right;
+}
+
+#list li {
+  position: relative;
+
+  /* 아래쪽 시간 표시 공간 확보 */
+  padding-bottom: 28px;
+}
