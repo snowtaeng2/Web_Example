@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>행운의 룰렛 | 상암랜드</title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body data-require-auth="true">
+
+  <header id="nav"></header>
+
+  <div class="home-layout">
+
+    <!-- 왼쪽 광고 -->
+    <aside class="side-ads side-ads-left" aria-label="왼쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img src="/assets/ads/ad-sangam.png" alt="상암랜드 광고">
+
+      <img src="/assets/ads/ad-toilet.png" alt="화장실 광고">
+    </aside>
+
+    <!-- 가운데 룰렛 -->
+    <main class="roulette-page">
+
+      <section class="roulette-intro">
+       <a href="/pages/games.html" class="roulette-back">
+          ← 게임장으로 돌아가기
+        </a>
+
+        <span class="roulette-label">LUCKY ROULETTE</span>
+
+        <h1>🎡 행운의 룰렛</h1>
+
+        <p>
+          아주 작은 20배 잭팟 칸을 노리고 룰렛을 돌려보세요.
+        </p>
+      </section>
+
+      <section class="roulette-machine">
+
+        <div class="roulette-stage">
+          <div class="roulette-pointer" aria-hidden="true"></div>
+
+          <div id="rouletteWheel" class="roulette-wheel">
+            <div class="roulette-wheel-center">
+              상암<br>랜드
+            </div>
+          </div>
+        </div>
+
+        <p id="rouletteResultText" class="roulette-result-text">
+          베팅할 칩을 선택하고 룰렛을 돌려보세요.
+        </p>
+
+        <div class="roulette-bet-area">
+          <strong>베팅할 칩 선택</strong>
+
+          <div class="roulette-bet-buttons">
+            <button
+              type="button"
+              class="roulette-bet-button active"
+              data-bet="100"
+              onclick="selectRouletteBet(100)"
+            >
+              100칩
+            </button>
+
+            <button
+              type="button"
+              class="roulette-bet-button"
+              data-bet="500"
+              onclick="selectRouletteBet(500)"
+            >
+              500칩
+            </button>
+
+            <button
+              type="button"
+              class="roulette-bet-button"
+              data-bet="1000"
+              onclick="selectRouletteBet(1000)"
+            >
+              1,000칩
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          id="rouletteSpinButton"
+          class="roulette-spin-button"
+          onclick="playRoulette()"
+        >
+          100칩으로 룰렛 돌리기
+        </button>
+
+        <p
+          id="rouletteMessage"
+          class="roulette-message"
+          aria-live="polite"
+        >
+          20배 잭팟 칸의 확률은 2.5%입니다.
+        </p>
+
+      </section>
+
+      <section class="roulette-reward-section">
+        <h2>룰렛 배당 안내</h2>
+
+        <p class="roulette-rule-notice">
+          룰렛의 결과는 동일한 확률의 가상 40칸 중 하나로 결정됩니다.
+        </p>
+
+        <div class="roulette-reward-grid">
+          <div class="roulette-reward-item jackpot">
+            <span class="roulette-color jackpot-color"></span>
+            <div>
+              <strong>20배 슈퍼 잭팟</strong>
+              <small>1칸 · 2.5%</small>
+            </div>
+          </div>
+
+          <div class="roulette-reward-item">
+            <span class="roulette-color five-color"></span>
+            <div>
+              <strong>5배 대박</strong>
+              <small>2칸 · 5%</small>
+            </div>
+          </div>
+
+          <div class="roulette-reward-item">
+            <span class="roulette-color double-color"></span>
+            <div>
+              <strong>2배 당첨</strong>
+              <small>3칸 · 7.5%</small>
+            </div>
+          </div>
+
+          <div class="roulette-reward-item">
+            <span class="roulette-color refund-color"></span>
+            <div>
+              <strong>1배 환급</strong>
+              <small>4칸 · 10%</small>
+            </div>
+          </div>
+
+          <div class="roulette-reward-item lose">
+            <span class="roulette-color lose-color"></span>
+            <div>
+              <strong>꽝</strong>
+              <small>30칸 · 75%</small>
+            </div>
+          </div>
+        </div>
+
+        <p class="roulette-disclaimer">
+          장기 기대 지급률은 100%이며, 상암랜드 칩은 현금이나 상품으로
+          교환할 수 없습니다.
+        </p>
+      </section>
+
+      <section class="roulette-history-section">
+        <div class="roulette-history-heading">
+          <h2>최근 플레이</h2>
+
+          <button
+            type="button"
+            onclick="loadRouletteHistory()"
+          >
+            새로고침
+          </button>
+        </div>
+
+        <ul id="rouletteHistory" class="roulette-history">
+          <li>게임 기록을 불러오는 중입니다.</li>
+        </ul>
+      </section>
+
+    </main>
+
+    <!-- 오른쪽 광고 -->
+    <aside class="side-ads side-ads-right" aria-label="오른쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+       <img
+        src="/assets/ads/ad-land.png"
+        alt="상암랜드 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-wonking.png"
+        alt="원킹쌤 메이커 프로젝트 광고"
+      >
+    </aside>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/roulette.js"></script>
+
+</body>
+</html>

@@ -122,7 +122,38 @@ li {
 
 li strong { color: var(--main); margin-right: 6px; }
 
-li button { float: right; padding: 3px 9px; font-size: 12px; }
+/* 게시판 및 내 정보 글의 삭제 버튼 */
+
+#list li,
+#myList li {
+  position: relative;
+  min-height: 58px;
+  padding-right: 78px;
+}
+
+#list li button,
+#myList li button {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+
+  float: none;
+  transform: translateY(-50%);
+
+  padding: 5px 10px;
+  font-size: 12px;
+
+  border: 1px solid #fecaca;
+  background: #fff;
+  color: #dc2626;
+}
+
+#list li button:hover,
+#myList li button:hover {
+  border-color: #f87171;
+  background: #fef2f2;
+  color: #b91c1c;
+}
 
 li .when {
   display: block;
@@ -549,17 +580,6 @@ header .me {
   box-shadow: 0 9px 20px rgba(76, 29, 149, 0.1);
 }
 
-.game-card-featured {
-  border-color: #fbbf24;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fffbeb,
-      #fff
-    );
-}
-
 .game-icon {
   display: flex;
   align-items: center;
@@ -575,15 +595,6 @@ header .me {
     );
 
   font-size: 54px;
-}
-
-.game-card-featured .game-icon {
-  background:
-    radial-gradient(
-      circle,
-      #fef3c7,
-      #fffbeb
-    );
 }
 
 .game-card-content {
@@ -1278,4 +1289,1650 @@ header .me {
 .game-card .game-start-button:focus-visible {
   outline: 3px solid rgba(99, 102, 241, 0.3);
   outline-offset: 3px;
+}
+
+/* =========================================================
+   상암랜드 동전 던지기
+   ========================================================= */
+
+.coin-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ---------- 상단 소개 ---------- */
+
+.coin-intro {
+  padding: 24px;
+
+  border: 1px solid #ddd6fe;
+  border-radius: 16px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(250, 204, 21, 0.4),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #312e81,
+      #7c3aed
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 10px 25px rgba(76, 29, 149, 0.2);
+}
+
+.coin-back {
+  display: inline-block;
+  margin-bottom: 18px;
+
+  color: #ddd6fe;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.coin-back:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.coin-label {
+  display: block;
+  margin-bottom: 6px;
+
+  color: #fef3c7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.coin-intro h1 {
+  margin: 0 0 8px;
+
+  color: #fff;
+  font-size: 29px;
+}
+
+.coin-intro p {
+  margin: 0;
+
+  color: #ede9fe;
+  font-size: 14px;
+}
+
+
+/* ---------- 동전 게임 영역 ---------- */
+
+.coin-machine {
+  position: relative;
+  overflow: hidden;
+
+  padding: 28px;
+
+  border: 4px solid #f59e0b;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(147, 51, 234, 0.6),
+      transparent 42%
+    ),
+    linear-gradient(
+      160deg,
+      #4c1d95,
+      #1e1b4b
+    );
+
+  box-shadow:
+    0 14px 32px rgba(30, 27, 75, 0.28),
+    inset 0 0 0 3px #fef3c7;
+}
+
+
+/* ---------- 3D 동전 ---------- */
+
+.coin-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 220px;
+  padding: 30px;
+
+  perspective: 800px;
+}
+
+.coin-object {
+  position: relative;
+
+  width: 150px;
+  height: 150px;
+
+  transform-style: preserve-3d;
+
+  transition: transform 0.8s ease-out;
+}
+
+.coin-face {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 8px solid #d97706;
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #fef3c7,
+      #fbbf24 45%,
+      #d97706
+    );
+
+  color: #78350f;
+
+  font-size: 44px;
+  font-weight: 900;
+
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 6px rgba(255, 255, 255, 0.25);
+
+  backface-visibility: hidden;
+}
+
+.coin-tails {
+  transform: rotateY(180deg);
+}
+
+.coin-object.coin-flipping {
+  animation: coin-flip-spin 0.35s linear infinite;
+}
+
+.coin-object.coin-show-heads {
+  transform: rotateY(0deg);
+}
+
+.coin-object.coin-show-tails {
+  transform: rotateY(180deg);
+}
+
+@keyframes coin-flip-spin {
+  from {
+    transform: rotateY(0deg) translateY(0);
+  }
+
+  50% {
+    transform: rotateY(540deg) translateY(-22px);
+  }
+
+  to {
+    transform: rotateY(1080deg) translateY(0);
+  }
+}
+
+.coin-result-text {
+  margin: 0 0 18px;
+
+  color: #fef3c7;
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+}
+
+
+/* ---------- 선택 영역 ---------- */
+
+.coin-control-box {
+  margin-top: 12px;
+  padding: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.coin-control-box > strong {
+  display: block;
+  margin-bottom: 11px;
+
+  color: #fff;
+  font-size: 14px;
+}
+
+.coin-choice-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.coin-bet-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.coin-choice-button,
+.coin-bet-button {
+  width: 100%;
+  padding: 11px;
+
+  border: 1px solid #a78bfa;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #ede9fe;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.coin-choice-button:hover:not(:disabled),
+.coin-bet-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  border-color: #fbbf24;
+  background: rgba(251, 191, 36, 0.2);
+}
+
+.coin-choice-button.active,
+.coin-bet-button.active {
+  border-color: #fbbf24;
+
+  background: #fbbf24;
+  color: #422006;
+
+  box-shadow:
+    0 4px 12px rgba(251, 191, 36, 0.25);
+}
+
+
+/* ---------- 실행 버튼 ---------- */
+
+.coin-flip-button {
+  width: 100%;
+
+  margin-top: 16px;
+  padding: 15px;
+
+  border: 0;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fbbf24,
+      #f97316
+    );
+
+  color: #431407;
+
+  font-size: 17px;
+  font-weight: 900;
+
+  box-shadow:
+    0 7px 16px rgba(249, 115, 22, 0.3);
+}
+
+.coin-flip-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #fcd34d,
+      #fb923c
+    );
+}
+
+
+/* ---------- 결과 메시지 ---------- */
+
+.coin-message {
+  margin: 15px 0 0;
+  padding: 12px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e7ff;
+
+  font-size: 14px;
+  text-align: center;
+}
+
+.coin-message-win {
+  border-color: rgba(254, 240, 138, 0.5);
+
+  background: rgba(254, 240, 138, 0.18);
+  color: #fef08a;
+
+  font-weight: 800;
+}
+
+.coin-message-lose {
+  border-color: rgba(254, 202, 202, 0.35);
+
+  background: rgba(254, 202, 202, 0.12);
+  color: #fecaca;
+}
+
+.coin-machine.coin-win {
+  animation: coin-win-flash 0.3s alternate 4;
+}
+
+@keyframes coin-win-flash {
+  from {
+    border-color: #f59e0b;
+  }
+
+  to {
+    border-color: #fef08a;
+
+    box-shadow:
+      0 0 38px rgba(250, 204, 21, 0.9),
+      inset 0 0 0 3px #fff;
+  }
+}
+
+
+/* ---------- 게임 규칙 ---------- */
+
+.coin-rule-section,
+.coin-history-section {
+  padding: 22px;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  background: #fff;
+
+  box-shadow:
+    0 6px 18px rgba(24, 24, 27, 0.06);
+}
+
+.coin-rule-section h2,
+.coin-history-section h2 {
+  margin: 0 0 15px;
+}
+
+.coin-rule-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.coin-rule-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 14px;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  background: #fafafa;
+}
+
+.coin-rule-item span {
+  color: var(--gray);
+  font-size: 12px;
+}
+
+.coin-rule-item strong {
+  color: #7c3aed;
+  font-size: 14px;
+}
+
+.coin-disclaimer {
+  margin: 15px 0 0;
+
+  color: var(--gray);
+  font-size: 12px;
+}
+
+
+/* ---------- 최근 기록 ---------- */
+
+.coin-history-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 12px;
+}
+
+.coin-history-heading h2 {
+  margin: 0;
+}
+
+.coin-history {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.coin-history li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  margin: 0;
+}
+
+.coin-history-result {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.coin-history-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+
+  text-align: right;
+}
+
+.coin-history-details small {
+  color: var(--gray);
+  font-size: 11px;
+}
+
+.coin-history-win {
+  color: #16a34a !important;
+}
+
+.coin-history-loss {
+  color: #dc2626 !important;
+}
+
+
+/* ---------- 작은 화면 ---------- */
+
+@media (max-width: 650px) {
+  .coin-intro {
+    padding: 20px;
+  }
+
+  .coin-machine {
+    padding: 16px;
+  }
+
+  .coin-stage {
+    min-height: 170px;
+  }
+
+  .coin-object {
+    width: 115px;
+    height: 115px;
+  }
+
+  .coin-face {
+    font-size: 34px;
+  }
+
+  .coin-bet-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .coin-rule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .coin-history li {
+    align-items: flex-start;
+  }
+}
+
+/* =========================================================
+   상암 주사위
+   ========================================================= */
+
+.dice-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ---------- 상단 소개 ---------- */
+
+.dice-intro {
+  padding: 24px;
+
+  border: 1px solid #ddd6fe;
+  border-radius: 16px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(250, 204, 21, 0.4),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #312e81,
+      #7c3aed
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 10px 25px rgba(76, 29, 149, 0.2);
+}
+
+.dice-back {
+  display: inline-block;
+  margin-bottom: 18px;
+
+  color: #ddd6fe;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.dice-back:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.dice-label {
+  display: block;
+  margin-bottom: 6px;
+
+  color: #fef3c7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.dice-intro h1 {
+  margin: 0 0 8px;
+
+  color: #fff;
+  font-size: 29px;
+}
+
+.dice-intro p {
+  margin: 0;
+
+  color: #ede9fe;
+  font-size: 14px;
+}
+
+
+/* ---------- 주사위 게임 영역 ---------- */
+
+.dice-machine {
+  position: relative;
+  overflow: hidden;
+
+  padding: 28px;
+
+  border: 4px solid #a78bfa;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(147, 51, 234, 0.6),
+      transparent 42%
+    ),
+    linear-gradient(
+      160deg,
+      #4c1d95,
+      #1e1b4b
+    );
+
+  box-shadow:
+    0 14px 32px rgba(30, 27, 75, 0.28),
+    inset 0 0 0 3px #ddd6fe;
+}
+
+
+/* ---------- 주사위 표시 ---------- */
+
+.dice-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 230px;
+  padding: 30px;
+
+  perspective: 800px;
+}
+
+.dice-object {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 155px;
+  height: 155px;
+
+  border: 5px solid #4c1d95;
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #ede9fe
+    );
+
+  color: #5b21b6;
+
+  font-size: 112px;
+  line-height: 1;
+
+  box-shadow:
+    0 16px 24px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 6px rgba(124, 58, 237, 0.08);
+}
+
+.dice-object.rolling {
+  animation: dice-roll 0.4s linear infinite;
+}
+
+.dice-object.dice-stop {
+  animation: dice-stop 0.45s ease-out;
+}
+
+@keyframes dice-roll {
+  0% {
+    transform:
+      rotate(0deg)
+      translateY(0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      rotate(180deg)
+      translateY(-28px)
+      scale(0.92);
+  }
+
+  100% {
+    transform:
+      rotate(360deg)
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes dice-stop {
+  0% {
+    transform: scale(0.85) rotate(-12deg);
+  }
+
+  65% {
+    transform: scale(1.08) rotate(5deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+.dice-result-text {
+  margin: 0 0 18px;
+
+  color: #fef3c7;
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+}
+
+
+/* ---------- 선택 영역 ---------- */
+
+.dice-control-box {
+  margin-top: 12px;
+  padding: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dice-control-box > strong {
+  display: block;
+  margin-bottom: 11px;
+
+  color: #fff;
+  font-size: 14px;
+}
+
+.dice-number-buttons {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.dice-bet-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.dice-number-button,
+.dice-bet-button {
+  width: 100%;
+  padding: 11px 8px;
+
+  border: 1px solid #a78bfa;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #ede9fe;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.dice-number-button:hover:not(:disabled),
+.dice-bet-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  border-color: #fbbf24;
+  background: rgba(251, 191, 36, 0.2);
+}
+
+.dice-number-button.active,
+.dice-bet-button.active {
+  border-color: #fbbf24;
+  background: #fbbf24;
+  color: #422006;
+
+  box-shadow:
+    0 4px 12px rgba(251, 191, 36, 0.25);
+}
+
+
+/* ---------- 실행 버튼 ---------- */
+
+.dice-roll-button {
+  width: 100%;
+
+  margin-top: 16px;
+  padding: 15px;
+
+  border: 0;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8b5cf6,
+      #6366f1
+    );
+
+  color: #fff;
+
+  font-size: 17px;
+  font-weight: 900;
+
+  box-shadow:
+    0 7px 16px rgba(99, 102, 241, 0.3);
+}
+
+.dice-roll-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #4f46e5
+    );
+}
+
+
+/* ---------- 결과 메시지 ---------- */
+
+.dice-message {
+  margin: 15px 0 0;
+  padding: 12px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e7ff;
+
+  font-size: 14px;
+  text-align: center;
+}
+
+.dice-message-win {
+  border-color: rgba(254, 240, 138, 0.5);
+  background: rgba(254, 240, 138, 0.18);
+  color: #fef08a;
+
+  font-weight: 800;
+}
+
+.dice-message-lose {
+  border-color: rgba(254, 202, 202, 0.35);
+  background: rgba(254, 202, 202, 0.12);
+  color: #fecaca;
+}
+
+.dice-machine.dice-win {
+  animation: dice-win-flash 0.3s alternate 4;
+}
+
+@keyframes dice-win-flash {
+  from {
+    border-color: #a78bfa;
+  }
+
+  to {
+    border-color: #fef08a;
+
+    box-shadow:
+      0 0 38px rgba(250, 204, 21, 0.9),
+      inset 0 0 0 3px #fff;
+  }
+}
+
+
+/* ---------- 게임 규칙 및 기록 ---------- */
+
+.dice-rule-section,
+.dice-history-section {
+  padding: 22px;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  background: #fff;
+
+  box-shadow:
+    0 6px 18px rgba(24, 24, 27, 0.06);
+}
+
+.dice-rule-section h2,
+.dice-history-section h2 {
+  margin: 0 0 15px;
+}
+
+.dice-rule-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.dice-rule-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 14px;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  background: #fafafa;
+}
+
+.dice-rule-item span {
+  color: var(--gray);
+  font-size: 12px;
+}
+
+.dice-rule-item strong {
+  color: #7c3aed;
+  font-size: 14px;
+}
+
+.dice-disclaimer {
+  margin: 15px 0 0;
+
+  color: var(--gray);
+  font-size: 12px;
+}
+
+
+/* ---------- 최근 기록 ---------- */
+
+.dice-history-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 12px;
+}
+
+.dice-history-heading h2 {
+  margin: 0;
+}
+
+.dice-history {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dice-history li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  margin: 0;
+}
+
+.dice-history-result {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dice-history-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+
+  text-align: right;
+}
+
+.dice-history-details small {
+  color: var(--gray);
+  font-size: 11px;
+}
+
+.dice-history-win {
+  color: #16a34a !important;
+}
+
+.dice-history-loss {
+  color: #dc2626 !important;
+}
+
+
+/* ---------- 작은 화면 ---------- */
+
+@media (max-width: 650px) {
+  .dice-intro {
+    padding: 20px;
+  }
+
+  .dice-machine {
+    padding: 16px;
+  }
+
+  .dice-stage {
+    min-height: 180px;
+  }
+
+  .dice-object {
+    width: 115px;
+    height: 115px;
+
+    border-radius: 22px;
+    font-size: 82px;
+  }
+
+  .dice-number-buttons {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .dice-bet-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .dice-rule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dice-history li {
+    align-items: flex-start;
+  }
+}
+
+/* =========================================================
+   행운의 룰렛
+   ========================================================= */
+
+.roulette-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ---------- 상단 소개 ---------- */
+
+.roulette-intro {
+  padding: 24px;
+
+  border: 1px solid #ddd6fe;
+  border-radius: 16px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(250, 204, 21, 0.4),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #312e81,
+      #7c3aed
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 10px 25px rgba(76, 29, 149, 0.2);
+}
+
+.roulette-back {
+  display: inline-block;
+  margin-bottom: 18px;
+
+  color: #ddd6fe;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.roulette-back:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.roulette-label {
+  display: block;
+  margin-bottom: 6px;
+
+  color: #fef3c7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.roulette-intro h1 {
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 29px;
+}
+
+.roulette-intro p {
+  margin: 0;
+  color: #ede9fe;
+  font-size: 14px;
+}
+
+
+/* ---------- 룰렛 기계 ---------- */
+
+.roulette-machine {
+  position: relative;
+  overflow: hidden;
+
+  padding: 28px;
+
+  border: 4px solid #f59e0b;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(147, 51, 234, 0.6),
+      transparent 42%
+    ),
+    linear-gradient(
+      160deg,
+      #4c1d95,
+      #1e1b4b
+    );
+
+  box-shadow:
+    0 14px 32px rgba(30, 27, 75, 0.28),
+    inset 0 0 0 3px #fef3c7;
+}
+
+
+/* ---------- 룰렛 원판 ---------- */
+
+.roulette-stage {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 390px;
+  padding: 35px;
+}
+
+.roulette-pointer {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  z-index: 3;
+
+  width: 0;
+  height: 0;
+
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 38px solid #fef3c7;
+
+  transform: translateX(-50%);
+
+  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.3));
+}
+
+.roulette-wheel {
+  position: relative;
+
+  width: min(330px, 76vw);
+  aspect-ratio: 1;
+
+  border: 10px solid #fbbf24;
+  border-radius: 50%;
+
+  /*
+    40칸을 시각적 비율로 묶어서 표현:
+    잭팟 2.5%, 5배 5%, 2배 7.5%,
+    환급 10%, 꽝 75%
+  */
+  background:
+    conic-gradient(
+      #ef4444 0deg 9deg,
+      #f59e0b 9deg 27deg,
+      #22c55e 27deg 54deg,
+      #3b82f6 54deg 90deg,
+      #6b7280 90deg 135deg,
+      #4b5563 135deg 180deg,
+      #6b7280 180deg 225deg,
+      #4b5563 225deg 270deg,
+      #6b7280 270deg 315deg,
+      #4b5563 315deg 360deg
+    );
+
+  box-shadow:
+    0 18px 30px rgba(0, 0, 0, 0.32),
+    inset 0 0 0 5px rgba(255, 255, 255, 0.22);
+
+  transition:
+    transform 3.2s cubic-bezier(0.12, 0.7, 0.12, 1);
+}
+
+.roulette-wheel::after {
+  content: "";
+
+  position: absolute;
+  inset: 12%;
+
+  border: 2px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+}
+
+.roulette-wheel-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 86px;
+  height: 86px;
+
+  border: 6px solid #fef3c7;
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fbbf24,
+      #d97706
+    );
+
+  color: #431407;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.15;
+  text-align: center;
+
+  transform: translate(-50%, -50%);
+
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.roulette-result-text {
+  margin: 0 0 18px;
+
+  color: #fef3c7;
+  font-size: 19px;
+  font-weight: 900;
+  text-align: center;
+}
+
+
+/* ---------- 베팅 선택 ---------- */
+
+.roulette-bet-area {
+  padding: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.roulette-bet-area > strong {
+  display: block;
+  margin-bottom: 11px;
+
+  color: #fff;
+  font-size: 14px;
+}
+
+.roulette-bet-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.roulette-bet-button {
+  width: 100%;
+  padding: 11px;
+
+  border: 1px solid #a78bfa;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #ede9fe;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.roulette-bet-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  border-color: #fbbf24;
+  background: rgba(251, 191, 36, 0.2);
+}
+
+.roulette-bet-button.active {
+  border-color: #fbbf24;
+  background: #fbbf24;
+  color: #422006;
+
+  box-shadow:
+    0 4px 12px rgba(251, 191, 36, 0.25);
+}
+
+
+/* ---------- 룰렛 실행 버튼 ---------- */
+
+.roulette-spin-button {
+  width: 100%;
+
+  margin-top: 16px;
+  padding: 15px;
+
+  border: 0;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fbbf24,
+      #f97316
+    );
+
+  color: #431407;
+
+  font-size: 17px;
+  font-weight: 900;
+
+  box-shadow:
+    0 7px 16px rgba(249, 115, 22, 0.3);
+}
+
+.roulette-spin-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #fcd34d,
+      #fb923c
+    );
+}
+
+
+/* ---------- 결과 메시지 ---------- */
+
+.roulette-message {
+  margin: 15px 0 0;
+  padding: 12px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e7ff;
+
+  font-size: 14px;
+  text-align: center;
+}
+
+.roulette-message-win {
+  border-color: rgba(254, 240, 138, 0.5);
+  background: rgba(254, 240, 138, 0.18);
+  color: #fef08a;
+
+  font-weight: 800;
+}
+
+.roulette-message-refund {
+  border-color: rgba(191, 219, 254, 0.45);
+  background: rgba(191, 219, 254, 0.14);
+  color: #bfdbfe;
+
+  font-weight: 700;
+}
+
+.roulette-message-lose {
+  border-color: rgba(254, 202, 202, 0.35);
+  background: rgba(254, 202, 202, 0.12);
+  color: #fecaca;
+}
+
+.roulette-machine.roulette-win {
+  animation: roulette-win-flash 0.3s alternate 4;
+}
+
+@keyframes roulette-win-flash {
+  from {
+    border-color: #f59e0b;
+  }
+
+  to {
+    border-color: #fef08a;
+
+    box-shadow:
+      0 0 42px rgba(250, 204, 21, 0.95),
+      inset 0 0 0 3px #fff;
+  }
+}
+
+
+/* ---------- 배당 안내 ---------- */
+
+.roulette-reward-section,
+.roulette-history-section {
+  padding: 22px;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  background: #fff;
+
+  box-shadow:
+    0 6px 18px rgba(24, 24, 27, 0.06);
+}
+
+.roulette-reward-section h2,
+.roulette-history-section h2 {
+  margin: 0 0 15px;
+}
+
+.roulette-rule-notice {
+  margin: 0 0 16px;
+  padding: 11px 13px;
+
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+
+  background: #fffbeb;
+  color: #92400e;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.roulette-reward-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.roulette-reward-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px;
+
+  border: 1px solid var(--line);
+  border-radius: 11px;
+
+  background: #fafafa;
+}
+
+.roulette-reward-item.jackpot {
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+
+.roulette-reward-item.lose {
+  opacity: 0.78;
+}
+
+.roulette-color {
+  flex: 0 0 auto;
+
+  width: 22px;
+  height: 22px;
+
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+}
+
+.jackpot-color {
+  background: #ef4444;
+}
+
+.five-color {
+  background: #f59e0b;
+}
+
+.double-color {
+  background: #22c55e;
+}
+
+.refund-color {
+  background: #3b82f6;
+}
+
+.lose-color {
+  background: #6b7280;
+}
+
+.roulette-reward-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.roulette-reward-item strong {
+  font-size: 14px;
+}
+
+.roulette-reward-item small {
+  color: var(--gray);
+  font-size: 11px;
+}
+
+.roulette-disclaimer {
+  margin: 16px 0 0;
+
+  color: var(--gray);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* ---------- 최근 기록 ---------- */
+
+.roulette-history-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 12px;
+}
+
+.roulette-history-heading h2 {
+  margin: 0;
+}
+
+.roulette-history {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.roulette-history li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  margin: 0;
+}
+
+.roulette-history-result {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.roulette-history-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+
+  text-align: right;
+}
+
+.roulette-history-details small {
+  color: var(--gray);
+  font-size: 11px;
+}
+
+.roulette-history-win {
+  color: #16a34a !important;
+}
+
+.roulette-history-refund {
+  color: #2563eb !important;
+}
+
+.roulette-history-loss {
+  color: #dc2626 !important;
+}
+
+
+/* ---------- 작은 화면 ---------- */
+
+@media (max-width: 650px) {
+  .roulette-intro {
+    padding: 20px;
+  }
+
+  .roulette-machine {
+    padding: 16px;
+  }
+
+  .roulette-stage {
+    min-height: 310px;
+    padding: 28px 8px;
+  }
+
+  .roulette-wheel-center {
+    width: 68px;
+    height: 68px;
+
+    font-size: 13px;
+  }
+
+  .roulette-bet-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .roulette-reward-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .roulette-history li {
+    align-items: flex-start;
+  }
 }

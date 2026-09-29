@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>상암 주사위 | 상암랜드</title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body data-require-auth="true">
+
+  <header id="nav"></header>
+
+  <div class="home-layout">
+
+    <!-- 왼쪽 광고 -->
+    <aside class="side-ads side-ads-left" aria-label="왼쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img src="/assets/ads/ad-sangam.png" alt="상암랜드 광고">
+
+      <img src="/assets/ads/ad-toilet.png" alt="화장실 광고">
+    </aside>
+
+    <!-- 가운데 주사위 게임 -->
+    <main class="dice-page">
+
+      <section class="dice-intro">
+        <a href="/pages/games.html" class="dice-back">
+          ← 게임장으로 돌아가기
+        </a>
+
+        <span class="dice-label">SANGAM DICE</span>
+
+        <h1>🎲 상암 주사위</h1>
+
+        <p>
+          1부터 6까지 숫자 하나를 선택하고 주사위 결과를 맞혀보세요.
+        </p>
+      </section>
+
+      <section class="dice-machine">
+
+        <div class="dice-stage">
+          <div id="diceObject" class="dice-object">
+            🎲
+          </div>
+        </div>
+
+        <p id="diceResultText" class="dice-result-text">
+          숫자를 선택하고 주사위를 굴려보세요.
+        </p>
+
+        <!-- 숫자 선택 -->
+        <div class="dice-control-box">
+          <strong>예측할 숫자 선택</strong>
+
+          <div class="dice-number-buttons">
+            <button
+              type="button"
+              class="dice-number-button active"
+              data-number="1"
+              onclick="selectDiceNumber(1)"
+            >
+              1
+            </button>
+
+            <button
+              type="button"
+              class="dice-number-button"
+              data-number="2"
+              onclick="selectDiceNumber(2)"
+            >
+              2
+            </button>
+
+            <button
+              type="button"
+              class="dice-number-button"
+              data-number="3"
+              onclick="selectDiceNumber(3)"
+            >
+              3
+            </button>
+
+            <button
+              type="button"
+              class="dice-number-button"
+              data-number="4"
+              onclick="selectDiceNumber(4)"
+            >
+              4
+            </button>
+
+            <button
+              type="button"
+              class="dice-number-button"
+              data-number="5"
+              onclick="selectDiceNumber(5)"
+            >
+              5
+            </button>
+
+            <button
+              type="button"
+              class="dice-number-button"
+              data-number="6"
+              onclick="selectDiceNumber(6)"
+            >
+              6
+            </button>
+          </div>
+        </div>
+
+        <!-- 베팅 선택 -->
+        <div class="dice-control-box">
+          <strong>베팅할 칩 선택</strong>
+
+          <div class="dice-bet-buttons">
+            <button
+              type="button"
+              class="dice-bet-button active"
+              data-bet="100"
+              onclick="selectDiceBet(100)"
+            >
+              100칩
+            </button>
+
+            <button
+              type="button"
+              class="dice-bet-button"
+              data-bet="500"
+              onclick="selectDiceBet(500)"
+            >
+              500칩
+            </button>
+
+            <button
+              type="button"
+              class="dice-bet-button"
+              data-bet="1000"
+              onclick="selectDiceBet(1000)"
+            >
+              1,000칩
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          id="diceRollButton"
+          class="dice-roll-button"
+          onclick="playDice()"
+        >
+          숫자 1에 100칩 걸기
+        </button>
+
+        <p
+          id="diceMessage"
+          class="dice-message"
+          aria-live="polite"
+        >
+          결과를 정확히 맞히면 베팅 칩의 총 6배를 받습니다.
+        </p>
+
+      </section>
+
+      <!-- 규칙 안내 -->
+      <section class="dice-rule-section">
+        <h2>게임 규칙</h2>
+
+        <div class="dice-rule-grid">
+          <div class="dice-rule-item">
+            <span>각 숫자의 확률</span>
+            <strong>1/6, 약 16.67%</strong>
+          </div>
+
+          <div class="dice-rule-item">
+            <span>예측 성공</span>
+            <strong>총 6배 지급</strong>
+          </div>
+
+          <div class="dice-rule-item">
+            <span>예측 실패</span>
+            <strong>베팅 칩 손실</strong>
+          </div>
+
+          <div class="dice-rule-item">
+            <span>장기 기대 지급률</span>
+            <strong>100%</strong>
+          </div>
+        </div>
+
+        <p class="dice-disclaimer">
+          상암랜드 칩은 실제 현금이나 상품으로 교환할 수 없습니다.
+        </p>
+      </section>
+
+      <!-- 최근 기록 -->
+      <section class="dice-history-section">
+        <div class="dice-history-heading">
+          <h2>최근 플레이</h2>
+
+          <button
+            type="button"
+            onclick="loadDiceHistory()"
+          >
+            새로고침
+          </button>
+        </div>
+
+        <ul id="diceHistory" class="dice-history">
+          <li>게임 기록을 불러오는 중입니다.</li>
+        </ul>
+      </section>
+
+    </main>
+
+    <!-- 오른쪽 광고 -->
+    <aside class="side-ads side-ads-right" aria-label="오른쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img
+        src="/assets/ads/ad-land.png"
+        alt="상암랜드 광고"
+      >
+
+      <img
+        src="/assets/ads/ad-wonking.png"
+        alt="원킹쌤 메이커 프로젝트 광고"
+      >
+
+    </aside>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/dice.js"></script>
+
+</body>
+</html>

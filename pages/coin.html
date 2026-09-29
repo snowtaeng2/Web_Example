@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>동전 던지기 | 상암랜드</title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body data-require-auth="true">
+
+  <header id="nav"></header>
+
+  <div class="home-layout">
+
+    <!-- 왼쪽 광고 -->
+    <aside class="side-ads side-ads-left" aria-label="왼쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img src="/assets/ads/ad-sangam.png" alt="상암랜드 광고">
+
+      <img src="/assets/ads/ad-toilet.png" alt="화장실 광고">
+    </aside>
+
+    <!-- 가운데 게임 -->
+    <main class="coin-page">
+
+      <section class="coin-intro">
+        <a href="/pages/games.html" class="coin-back">
+          ← 게임장으로 돌아가기
+        </a>
+
+        <span class="coin-label">SANGAM COIN FLIP</span>
+
+        <h1>🪙 동전 던지기</h1>
+
+        <p>
+          앞면과 뒷면 중 하나를 선택하고 결과를 맞혀보세요.
+        </p>
+      </section>
+
+      <section class="coin-machine">
+
+        <!-- 동전 -->
+        <div class="coin-stage">
+          <div id="coinObject" class="coin-object">
+            <div class="coin-face coin-heads">
+              앞
+            </div>
+
+            <div class="coin-face coin-tails">
+              뒤
+            </div>
+          </div>
+        </div>
+
+        <p id="coinResultText" class="coin-result-text">
+          앞면 또는 뒷면을 선택하세요.
+        </p>
+
+        <!-- 면 선택 -->
+        <div class="coin-control-box">
+          <strong>결과 선택</strong>
+
+          <div class="coin-choice-buttons">
+            <button
+              type="button"
+              class="coin-choice-button active"
+              data-choice="heads"
+              onclick="selectCoinChoice('heads')"
+            >
+              앞면
+            </button>
+
+            <button
+              type="button"
+              class="coin-choice-button"
+              data-choice="tails"
+              onclick="selectCoinChoice('tails')"
+            >
+              뒷면
+            </button>
+          </div>
+        </div>
+
+        <!-- 베팅 선택 -->
+        <div class="coin-control-box">
+          <strong>베팅할 칩 선택</strong>
+
+          <div class="coin-bet-buttons">
+            <button
+              type="button"
+              class="coin-bet-button active"
+              data-bet="100"
+              onclick="selectCoinBet(100)"
+            >
+              100칩
+            </button>
+
+            <button
+              type="button"
+              class="coin-bet-button"
+              data-bet="500"
+              onclick="selectCoinBet(500)"
+            >
+              500칩
+            </button>
+
+            <button
+              type="button"
+              class="coin-bet-button"
+              data-bet="1000"
+              onclick="selectCoinBet(1000)"
+            >
+              1,000칩
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          id="coinFlipButton"
+          class="coin-flip-button"
+          onclick="playCoinFlip()"
+        >
+          앞면에 100칩 걸기
+        </button>
+
+        <p
+          id="coinMessage"
+          class="coin-message"
+          aria-live="polite"
+        >
+          선택한 결과를 맞히면 총 2배를 받습니다.
+        </p>
+
+      </section>
+
+      <!-- 규칙 안내 -->
+      <section class="coin-rule-section">
+        <h2>게임 규칙</h2>
+
+        <div class="coin-rule-grid">
+          <div class="coin-rule-item">
+            <span>확률</span>
+            <strong>앞면 50% / 뒷면 50%</strong>
+          </div>
+
+          <div class="coin-rule-item">
+            <span>예측 성공</span>
+            <strong>총 2배 지급</strong>
+          </div>
+
+          <div class="coin-rule-item">
+            <span>예측 실패</span>
+            <strong>베팅 칩 손실</strong>
+          </div>
+
+          <div class="coin-rule-item">
+            <span>장기 기대 지급률</span>
+            <strong>100%</strong>
+          </div>
+        </div>
+
+        <p class="coin-disclaimer">
+          상암랜드 칩은 실제 현금이나 상품으로 교환할 수 없습니다.
+        </p>
+      </section>
+
+      <!-- 최근 기록 -->
+      <section class="coin-history-section">
+        <div class="coin-history-heading">
+          <h2>최근 플레이</h2>
+
+          <button
+            type="button"
+            onclick="loadCoinHistory()"
+          >
+            새로고침
+          </button>
+        </div>
+
+        <ul id="coinHistory" class="coin-history">
+          <li>게임 기록을 불러오는 중입니다.</li>
+        </ul>
+      </section>
+
+    </main>
+
+    <!-- 오른쪽 광고 -->
+    <aside class="side-ads side-ads-right" aria-label="오른쪽 광고">
+      <span class="side-ad-label">광고</span>
+
+      <img src="/assets/ads/ad-land.png" alt="랜드 광고">
+
+      <img src="/assets/ads/ad-wonking.png" alt="원킹 광고">
+    </aside>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/coin.js"></script>
+
+</body>
+</html>
