@@ -7265,3 +7265,1949 @@ header .me {
   }
 }
 
+/* =========================================================
+   상암 대장간
+   ========================================================= */
+
+.forge-section {
+  overflow: hidden;
+
+  padding: 22px;
+
+  border: 2px solid #ea580c;
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff7ed,
+      #fff
+    );
+
+  box-shadow:
+    0 8px 22px rgba(234, 88, 12, 0.14);
+}
+
+.forge-layout {
+  display: grid;
+  grid-template-columns:
+    minmax(260px, 0.9fr)
+    minmax(0, 1.1fr);
+  gap: 20px;
+}
+
+
+/* ---------- 검 표시 공간 ---------- */
+
+.forge-fire-stage {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 380px;
+
+  border: 3px solid #7c2d12;
+  border-radius: 17px;
+
+  background:
+    radial-gradient(
+      circle at center bottom,
+      rgba(249, 115, 22, 0.72),
+      transparent 43%
+    ),
+    linear-gradient(
+      180deg,
+      #292524,
+      #450a0a
+    );
+}
+
+.forge-fire-glow {
+  position: absolute;
+  bottom: -80px;
+
+  width: 280px;
+  height: 220px;
+
+  border-radius: 50%;
+
+  background: #f97316;
+
+  filter: blur(50px);
+
+  animation:
+    forge-fire-glow 0.7s alternate infinite;
+}
+
+@keyframes forge-fire-glow {
+  to {
+    transform: scale(1.18);
+    background: #facc15;
+  }
+}
+
+.forge-anvil {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+
+  font-size: 49px;
+
+  transform: translateX(-50%);
+
+  filter:
+    drop-shadow(
+      0 8px 6px rgba(0, 0, 0, 0.5)
+    );
+}
+
+
+/* ---------- 검 없음 ---------- */
+
+.forge-empty-state {
+  position: relative;
+  z-index: 4;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+
+  padding-bottom: 55px;
+
+  color: #fff7ed;
+  text-align: center;
+}
+
+.forge-empty-state > span {
+  font-size: 58px;
+}
+
+.forge-empty-state strong {
+  font-size: 17px;
+}
+
+.forge-empty-state small {
+  color: #fdba74;
+}
+
+
+/* =========================================================
+   검 기본 구조
+   ========================================================= */
+
+.forge-sword {
+  position: relative;
+  z-index: 4;
+
+  width: 180px;
+  height: 300px;
+
+  transform: rotate(7deg);
+
+  filter:
+    drop-shadow(
+      0 13px 9px rgba(0, 0, 0, 0.5)
+    );
+}
+
+.sword-blade {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  z-index: 4;
+
+  width: 39px;
+  height: 192px;
+
+  border: 3px solid #71717a;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a1a1aa,
+      #fff,
+      #d4d4d8,
+      #71717a
+    );
+
+  clip-path:
+    polygon(
+      50% 0,
+      100% 17%,
+      84% 100%,
+      16% 100%,
+      0 17%
+    );
+
+  transform: translateX(-50%);
+}
+
+.sword-guard {
+  position: absolute;
+  top: 193px;
+  left: 50%;
+  z-index: 5;
+
+  width: 116px;
+  height: 20px;
+
+  border: 3px solid #78350f;
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fcd34d,
+      #b45309
+    );
+
+  transform: translateX(-50%);
+}
+
+.sword-handle {
+  position: absolute;
+  top: 211px;
+  left: 50%;
+  z-index: 4;
+
+  width: 25px;
+  height: 72px;
+
+  border: 3px solid #292524;
+  border-radius: 5px;
+
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #78350f 0 6px,
+      #451a03 6px 12px
+    );
+
+  transform: translateX(-50%);
+}
+
+.sword-gem,
+.sword-aura,
+.sword-wing,
+.sword-rune,
+.sword-crown,
+.sword-orbit {
+  position: absolute;
+  opacity: 0;
+}
+
+
+/* ---------- 1강 ---------- */
+
+.sword-level-1 .sword-blade {
+  border-color: #64748b;
+
+  background:
+    linear-gradient(
+      90deg,
+      #cbd5e1,
+      #fff,
+      #94a3b8
+    );
+}
+
+
+/* ---------- 2강 ---------- */
+
+.sword-level-2 .sword-blade {
+  border-color: #1d4ed8;
+
+  background:
+    linear-gradient(
+      90deg,
+      #60a5fa,
+      #e0f2fe,
+      #2563eb
+    );
+}
+
+
+/* ---------- 3강 ---------- */
+
+.sword-level-3 .sword-gem {
+  top: 188px;
+  left: 50%;
+  z-index: 7;
+
+  width: 23px;
+  height: 23px;
+
+  opacity: 1;
+
+  background: #38bdf8;
+
+  clip-path:
+    polygon(
+      50% 0,
+      100% 50%,
+      50% 100%,
+      0 50%
+    );
+
+  transform: translateX(-50%);
+
+  box-shadow:
+    0 0 13px #38bdf8;
+}
+
+
+/* ---------- 4강 ---------- */
+
+.sword-level-4 .sword-blade {
+  border-color: #b45309;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f59e0b,
+      #fef3c7,
+      #facc15,
+      #d97706
+    );
+}
+
+.sword-level-4 .sword-guard {
+  border-color: #fef08a;
+
+  box-shadow:
+    0 0 10px rgba(250, 204, 21, 0.7);
+}
+
+
+/* ---------- 5강 ---------- */
+
+.sword-level-5 .sword-blade {
+  border-color: #7c3aed;
+
+  background:
+    linear-gradient(
+      90deg,
+      #8b5cf6,
+      #ede9fe,
+      #6d28d9
+    );
+
+  box-shadow:
+    0 0 15px rgba(139, 92, 246, 0.8);
+}
+
+.sword-level-5 .sword-rune {
+  top: 72px;
+  left: 50%;
+  z-index: 8;
+
+  opacity: 1;
+
+  color: #fef08a;
+  font-size: 25px;
+  font-weight: 900;
+
+  transform: translateX(-50%);
+
+  text-shadow:
+    0 0 9px #facc15;
+}
+
+
+/* ---------- 6강 ---------- */
+
+.sword-level-6 .sword-aura {
+  inset: 12px 38px 55px;
+  z-index: 1;
+
+  opacity: 0.55;
+
+  border-radius: 45%;
+
+  background: #22d3ee;
+
+  filter: blur(14px);
+
+  animation:
+    sword-aura-pulse 1s alternate infinite;
+}
+
+.sword-level-6 .sword-blade {
+  border-color: #06b6d4;
+
+  background:
+    linear-gradient(
+      90deg,
+      #22d3ee,
+      #fff,
+      #0ea5e9,
+      #4f46e5
+    );
+}
+
+
+/* ---------- 7강 ---------- */
+
+.sword-level-7 .sword-blade {
+  border-color: #991b1b;
+
+  background:
+    linear-gradient(
+      90deg,
+      #dc2626,
+      #fde68a,
+      #f97316,
+      #7f1d1d
+    );
+
+  animation:
+    sword-fire 0.6s alternate infinite;
+}
+
+.sword-level-7 .sword-aura {
+  inset: 0 25px 45px;
+  z-index: 1;
+
+  opacity: 0.6;
+
+  background: #ef4444;
+
+  filter: blur(17px);
+
+  animation:
+    sword-aura-pulse 0.55s alternate infinite;
+}
+
+
+/* ---------- 8강 ---------- */
+
+.sword-level-8 .sword-blade {
+  border-color: #3b82f6;
+
+  background:
+    linear-gradient(
+      90deg,
+      #60a5fa,
+      #fff,
+      #c4b5fd,
+      #2563eb
+    );
+
+  box-shadow:
+    0 0 22px rgba(96, 165, 250, 0.9);
+}
+
+.sword-level-8 .sword-wing {
+  top: 168px;
+  z-index: 2;
+
+  width: 72px;
+  height: 52px;
+
+  opacity: 1;
+
+  background: #e0e7ff;
+
+  clip-path:
+    polygon(
+      0 50%,
+      100% 0,
+      72% 100%
+    );
+
+  filter:
+    drop-shadow(
+      0 0 7px #a5b4fc
+    );
+}
+
+.sword-level-8 .sword-wing-left {
+  left: -1px;
+  transform: scaleX(-1);
+}
+
+.sword-level-8 .sword-wing-right {
+  right: -1px;
+}
+
+
+/* ---------- 9강 ---------- */
+
+.sword-level-9 {
+  filter:
+    drop-shadow(0 0 12px #fef08a)
+    drop-shadow(0 0 24px #a78bfa);
+}
+
+.sword-level-9 .sword-blade {
+  border-color: #fef08a;
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff,
+      #fef08a,
+      #c4b5fd,
+      #fff
+    );
+
+  animation:
+    sword-holy-glow 0.8s alternate infinite;
+}
+
+
+/* ---------- 10강 ---------- */
+
+.sword-level-10 .sword-crown {
+  top: 176px;
+  left: 50%;
+  z-index: 7;
+
+  width: 48px;
+  height: 31px;
+
+  opacity: 1;
+
+  background: #facc15;
+
+  clip-path:
+    polygon(
+      0 100%,
+      0 35%,
+      25% 68%,
+      50% 0,
+      75% 68%,
+      100% 35%,
+      100% 100%
+    );
+
+  transform: translateX(-50%);
+
+  filter:
+    drop-shadow(0 0 7px #facc15);
+}
+
+
+/* ---------- 11강 ---------- */
+
+.sword-level-11 .sword-orbit-one {
+  inset: 30px 20px 65px;
+  z-index: 1;
+
+  opacity: 1;
+
+  border: 3px dotted #67e8f9;
+  border-radius: 50%;
+
+  animation:
+    sword-orbit-spin 3s linear infinite;
+}
+
+.sword-level-11 .sword-aura {
+  inset: 5px 12px 42px;
+
+  opacity: 0.55;
+
+  background:
+    radial-gradient(
+      circle,
+      #22d3ee,
+      transparent 67%
+    );
+
+  filter: blur(9px);
+}
+
+
+/* ---------- 12강 ---------- */
+
+.sword-level-12 .sword-blade {
+  border-color: #ef4444;
+
+  background:
+    linear-gradient(
+      90deg,
+      #7f1d1d,
+      #fde68a,
+      #dc2626,
+      #450a0a
+    );
+
+  animation:
+    sword-fire 0.45s alternate infinite;
+}
+
+.sword-level-12 .sword-wing {
+  top: 153px;
+
+  width: 84px;
+  height: 70px;
+
+  opacity: 1;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7f1d1d,
+      #f97316,
+      #facc15
+    );
+
+  clip-path:
+    polygon(
+      0 50%,
+      100% 0,
+      68% 100%
+    );
+}
+
+.sword-level-12 .sword-wing-left {
+  left: -8px;
+  transform: scaleX(-1);
+}
+
+.sword-level-12 .sword-wing-right {
+  right: -8px;
+}
+
+
+/* ---------- 13강 ---------- */
+
+.sword-level-13 .sword-blade {
+  border-color: #fff;
+
+  background:
+    linear-gradient(
+      90deg,
+      #bfdbfe,
+      #fff,
+      #fef3c7,
+      #c4b5fd
+    );
+
+  box-shadow:
+    0 0 28px rgba(255, 255, 255, 0.95);
+}
+
+.sword-level-13 .sword-wing {
+  top: 142px;
+
+  width: 98px;
+  height: 83px;
+
+  opacity: 1;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff,
+      #e0e7ff,
+      #fef3c7
+    );
+
+  clip-path:
+    polygon(
+      0 56%,
+      100% 0,
+      74% 100%
+    );
+
+  filter:
+    drop-shadow(
+      0 0 11px #fff
+    );
+}
+
+.sword-level-13 .sword-wing-left {
+  left: -18px;
+  transform: scaleX(-1);
+}
+
+.sword-level-13 .sword-wing-right {
+  right: -18px;
+}
+
+
+/* ---------- 14강 ---------- */
+
+.sword-level-14 {
+  filter:
+    drop-shadow(0 0 10px #22d3ee)
+    drop-shadow(0 0 23px #d946ef);
+}
+
+.sword-level-14 .sword-aura {
+  inset: -10px -5px 25px;
+
+  opacity: 0.7;
+
+  border-radius: 50%;
+
+  background:
+    conic-gradient(
+      #22d3ee,
+      #8b5cf6,
+      #ec4899,
+      #facc15,
+      #22d3ee
+    );
+
+  filter: blur(20px);
+
+  animation:
+    sword-divine-aura 2s linear infinite;
+}
+
+.sword-level-14 .sword-orbit-one {
+  inset: 15px 3px 48px;
+
+  opacity: 1;
+
+  border: 3px dashed #fef08a;
+  border-radius: 50%;
+
+  animation:
+    sword-orbit-spin 2.2s linear infinite;
+}
+
+
+/* ---------- 15강 ---------- */
+
+.sword-level-15 {
+  transform:
+    rotate(7deg)
+    scale(1.1);
+
+  filter:
+    drop-shadow(0 0 9px #22d3ee)
+    drop-shadow(0 0 20px #d946ef)
+    drop-shadow(0 0 37px #facc15);
+}
+
+.sword-level-15 .sword-blade {
+  width: 47px;
+
+  border-color: #fff;
+
+  background:
+    linear-gradient(
+      90deg,
+      #22d3ee,
+      #fff,
+      #f0abfc,
+      #fef08a,
+      #22d3ee
+    );
+
+  background-size: 300% auto;
+
+  animation:
+    sword-divine-blade 1.3s linear infinite;
+}
+
+.sword-level-15 .sword-aura {
+  inset: -24px -22px 4px;
+
+  opacity: 0.82;
+
+  border-radius: 50%;
+
+  background:
+    conic-gradient(
+      #22d3ee,
+      #8b5cf6,
+      #ec4899,
+      #facc15,
+      #22d3ee
+    );
+
+  filter: blur(22px);
+
+  animation:
+    sword-divine-aura 1.8s linear infinite;
+}
+
+.sword-level-15 .sword-wing {
+  top: 125px;
+
+  width: 108px;
+  height: 97px;
+
+  opacity: 1;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff,
+      #fef08a,
+      #c4b5fd,
+      #67e8f9
+    );
+
+  clip-path:
+    polygon(
+      0 55%,
+      100% 0,
+      72% 100%
+    );
+
+  filter:
+    drop-shadow(
+      0 0 13px #fff
+    );
+}
+
+.sword-level-15 .sword-wing-left {
+  left: -26px;
+  transform: scaleX(-1);
+}
+
+.sword-level-15 .sword-wing-right {
+  right: -26px;
+}
+
+.sword-level-15 .sword-orbit-one {
+  inset: 1px -20px 23px;
+
+  opacity: 1;
+
+  border: 3px dashed #fef08a;
+  border-radius: 50%;
+
+  animation:
+    sword-orbit-spin 2s linear infinite;
+}
+
+.sword-level-15 .sword-orbit-two {
+  inset: 32px -9px 54px;
+
+  opacity: 1;
+
+  border: 2px dotted #67e8f9;
+  border-radius: 50%;
+
+  animation:
+    sword-orbit-reverse 1.4s linear infinite;
+}
+
+
+/* ---------- 검 애니메이션 ---------- */
+
+@keyframes sword-aura-pulse {
+  to {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+@keyframes sword-fire {
+  to {
+    filter:
+      brightness(1.45)
+      drop-shadow(
+        0 0 12px #f97316
+      );
+  }
+}
+
+@keyframes sword-holy-glow {
+  to {
+    filter: brightness(1.5);
+
+    box-shadow:
+      0 0 28px #fef08a;
+  }
+}
+
+@keyframes sword-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sword-orbit-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes sword-divine-blade {
+  to {
+    background-position: 300% center;
+  }
+}
+
+@keyframes sword-divine-aura {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   대장간 정보 영역
+   ========================================================= */
+
+.forge-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  min-width: 0;
+  padding: 18px;
+
+  border: 1px solid #fed7aa;
+  border-radius: 14px;
+
+  background: #fff;
+}
+
+.forge-level-badge {
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  background: #ffedd5;
+  color: #c2410c;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.forge-info h3 {
+  margin: 11px 0 6px;
+
+  font-size: 23px;
+}
+
+.forge-info > p {
+  color: var(--gray);
+}
+
+
+/* ---------- 확률 표시 ---------- */
+
+.forge-rates {
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+  gap: 8px;
+
+  width: 100%;
+  margin: 12px 0;
+}
+
+.forge-rates > span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  padding: 10px 5px;
+
+  border-radius: 9px;
+
+  font-size: 11px;
+  text-align: center;
+}
+
+.forge-rates .success {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.forge-rates .maintain {
+  background: #f4f4f5;
+  color: #52525b;
+}
+
+.forge-rates .downgrade {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.forge-rates .destroy {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+
+/* ---------- 대장간 메시지 ---------- */
+
+.forge-message {
+  width: 100%;
+  padding: 11px;
+
+  border-radius: 9px;
+
+  background: #fafafa;
+  color: #57534e;
+
+  font-size: 13px;
+  text-align: center;
+}
+
+.forge-message-success,
+.forge-message-legendary {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.forge-message-maintain,
+.forge-message-normal {
+  background: #f4f4f5;
+  color: #52525b;
+}
+
+.forge-message-downgrade {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.forge-message-destroy,
+.forge-message-error {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+
+/* ---------- 대장간 버튼 ---------- */
+
+.forge-actions {
+  display: grid;
+  gap: 9px;
+
+  width: 100%;
+  margin-top: auto;
+}
+
+.forge-actions button {
+  width: 100%;
+}
+
+#forgeEnhanceButton {
+  border-color: #ea580c;
+  background: #ea580c;
+  color: #fff;
+
+  font-weight: 800;
+}
+
+#forgeEnhanceButton:hover:not(:disabled) {
+  background: #c2410c;
+}
+
+.forge-dismantle-button {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.forge-dismantle-button:hover:not(:disabled) {
+  border-color: #f87171;
+  background: #fee2e2;
+}
+
+
+/* ---------- 강화 결과 연출 ---------- */
+
+.forge-section.forge-success {
+  animation:
+    forge-success-effect
+    0.25s alternate 5;
+}
+
+.forge-section.forge-maintain {
+  animation:
+    forge-maintain-effect
+    0.17s alternate 4;
+}
+
+.forge-section.forge-downgrade {
+  animation:
+    forge-downgrade-effect
+    0.22s alternate 5;
+}
+
+.forge-section.forge-destroy {
+  animation:
+    forge-destroy-effect
+    0.2s alternate 6;
+}
+
+@keyframes forge-success-effect {
+  to {
+    border-color: #fef08a;
+
+    box-shadow:
+      0 0 34px rgba(250, 204, 21, 0.9);
+  }
+}
+
+@keyframes forge-maintain-effect {
+  to {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes forge-downgrade-effect {
+  to {
+    border-color: #f97316;
+
+    transform: translateY(3px);
+
+    filter: brightness(0.9);
+  }
+}
+
+@keyframes forge-destroy-effect {
+  to {
+    border-color: #dc2626;
+
+    background: #450a0a;
+
+    filter: brightness(1.3);
+  }
+}
+
+
+/* =========================================================
+   강화 비용 및 확률표
+   ========================================================= */
+
+.forge-table-details {
+  margin-top: 20px;
+
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+
+  background: #fff;
+}
+
+.forge-table-details summary {
+  padding: 14px 16px;
+
+  color: #9a3412;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.forge-table-scroll {
+  overflow-x: auto;
+
+  padding: 0 14px 14px;
+}
+
+.forge-table {
+  width: 100%;
+  min-width: 880px;
+
+  border-collapse: collapse;
+
+  font-size: 12px;
+}
+
+.forge-table th,
+.forge-table td {
+  padding: 10px 8px;
+
+  border-bottom: 1px solid #e7e5e4;
+
+  text-align: center;
+  white-space: nowrap;
+}
+
+.forge-table th {
+  background: #fff7ed;
+  color: #9a3412;
+
+  font-weight: 800;
+}
+
+.forge-table tbody tr:hover {
+  background: #fffbeb;
+}
+
+.rate-success {
+  color: #15803d;
+  font-weight: 800;
+}
+
+.rate-maintain {
+  color: #52525b;
+}
+
+.rate-downgrade {
+  color: #c2410c;
+  font-weight: 700;
+}
+
+.rate-destroy {
+  color: #dc2626;
+  font-weight: 800;
+}
+
+
+/* ---------- 모바일 ---------- */
+
+@media (max-width: 700px) {
+  .forge-section {
+    padding: 16px;
+  }
+
+  .forge-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .forge-fire-stage {
+    min-height: 345px;
+  }
+
+  .forge-rates {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* hidden 속성이 대장간 display 스타일에 덮이지 않도록 보정 */
+
+.forge-empty-state[hidden],
+.forge-sword[hidden],
+.forge-rates[hidden],
+.forge-actions button[hidden] {
+  display: none !important;
+}
+
+/* =========================================================
+   대장간 강화 망치 연출
+   ========================================================= */
+
+.forge-hammer-effect {
+  position: absolute;
+  top: 68px;
+  left: 50%;
+  z-index: 20;
+
+  width: 150px;
+  height: 160px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform:
+    translateX(-50%)
+    translateX(70px);
+}
+
+.forge-hammer-effect.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* 강화 망치 */
+
+.forge-hammer {
+  position: absolute;
+  top: 0;
+  right: 2px;
+
+  display: block;
+
+  font-size: 74px;
+  line-height: 1;
+
+  transform-origin: 20% 85%;
+}
+
+.forge-hammer-effect.active .forge-hammer {
+  animation:
+    forge-hammer-strike
+    0.45s ease-in-out 3;
+}
+
+
+/* 타격 불꽃 */
+
+.forge-hit-spark {
+  position: absolute;
+  top: 116px;
+  left: 34px;
+
+  color: #fef08a;
+  font-size: 32px;
+
+  opacity: 0;
+
+  text-shadow:
+    0 0 8px #facc15,
+    0 0 18px #f97316;
+}
+
+.forge-hammer-effect.active .spark-one {
+  animation:
+    forge-spark-one
+    0.45s ease-out 3;
+}
+
+.forge-hammer-effect.active .spark-two {
+  animation:
+    forge-spark-two
+    0.45s ease-out 3;
+}
+
+.forge-hammer-effect.active .spark-three {
+  animation:
+    forge-spark-three
+    0.45s ease-out 3;
+}
+
+
+/* 검 타격 반응 */
+
+.forge-sword.being-forged {
+  animation:
+    forge-sword-hit
+    0.45s ease-in-out 3;
+}
+
+
+@keyframes forge-hammer-strike {
+  0% {
+    transform:
+      rotate(-50deg)
+      translateY(-12px);
+  }
+
+  48% {
+    transform:
+      rotate(-50deg)
+      translateY(-12px);
+  }
+
+  62% {
+    transform:
+      rotate(19deg)
+      translateY(14px);
+  }
+
+  72% {
+    transform:
+      rotate(4deg)
+      translateY(4px);
+  }
+
+  100% {
+    transform:
+      rotate(-50deg)
+      translateY(-12px);
+  }
+}
+
+@keyframes forge-sword-hit {
+  0%,
+  48% {
+    transform:
+      rotate(7deg)
+      translateX(0);
+  }
+
+  62% {
+    transform:
+      rotate(5deg)
+      translateX(-7px)
+      translateY(4px);
+  }
+
+  75% {
+    transform:
+      rotate(9deg)
+      translateX(4px);
+  }
+
+  100% {
+    transform:
+      rotate(7deg)
+      translateX(0);
+  }
+}
+
+@keyframes forge-spark-one {
+  0%,
+  55% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.3);
+  }
+
+  65% {
+    opacity: 1;
+    transform: translate(-32px, -24px) scale(1.2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-55px, -45px) scale(0.4);
+  }
+}
+
+@keyframes forge-spark-two {
+  0%,
+  55% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.3);
+  }
+
+  65% {
+    opacity: 1;
+    transform: translate(28px, -31px) scale(1.1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(48px, -58px) scale(0.3);
+  }
+}
+
+@keyframes forge-spark-three {
+  0%,
+  55% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.3);
+  }
+
+  65% {
+    opacity: 1;
+    transform: translate(35px, 8px) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(67px, 23px) scale(0.2);
+  }
+}
+
+/* =========================================================
+   대장간 강화 결과 문구
+   ========================================================= */
+
+.forge-result-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+}
+
+.forge-result-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.forge-result-overlay strong {
+  font-size: 31px;
+  font-weight: 1000;
+
+  text-shadow:
+    0 3px 0 rgba(0, 0, 0, 0.4),
+    0 0 16px currentColor;
+}
+
+.forge-result-overlay span {
+  padding: 6px 13px;
+
+  border-radius: 999px;
+
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* 강화 성공 */
+
+.forge-fire-stage.result-success {
+  animation:
+    forge-stage-success
+    1.2s ease-out;
+}
+
+.forge-sword.result-success {
+  animation:
+    forge-sword-success
+    1.2s ease-out;
+}
+
+.forge-result-overlay.result-success {
+  color: #fef08a;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(250, 204, 21, 0.42),
+      transparent 68%
+    );
+
+  animation:
+    forge-result-success
+    1.2s ease-out forwards;
+}
+
+
+@keyframes forge-stage-success {
+  0% {
+    filter: brightness(1);
+  }
+
+  20% {
+    filter: brightness(2);
+  }
+
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes forge-sword-success {
+  0% {
+    transform:
+      rotate(7deg)
+      scale(1);
+  }
+
+  22% {
+    filter:
+      brightness(2.4)
+      drop-shadow(0 0 25px #facc15);
+
+    transform:
+      rotate(7deg)
+      scale(1.2);
+  }
+
+  45% {
+    transform:
+      rotate(7deg)
+      scale(1.05);
+  }
+
+  100% {
+    filter: none;
+
+    transform:
+      rotate(7deg)
+      scale(1);
+  }
+}
+
+@keyframes forge-result-success {
+  0% {
+    opacity: 0;
+    transform: scale(0.45);
+  }
+
+  18% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  35% {
+    transform: scale(1);
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 강화 하락 */
+
+.forge-fire-stage.result-downgrade {
+  animation:
+    forge-stage-downgrade
+    1.1s ease-out;
+}
+
+.forge-sword.result-downgrade {
+  animation:
+    forge-sword-downgrade
+    1.1s ease-in-out;
+}
+
+.forge-result-overlay.result-downgrade {
+  color: #fdba74;
+
+  background:
+    linear-gradient(
+      rgba(67, 20, 7, 0.35),
+      rgba(124, 45, 18, 0.5)
+    );
+
+  animation:
+    forge-result-downgrade
+    1.1s ease-out forwards;
+}
+
+
+@keyframes forge-stage-downgrade {
+  0% {
+    filter: brightness(1);
+  }
+
+  24% {
+    filter:
+      brightness(0.55)
+      sepia(0.7);
+  }
+
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes forge-sword-downgrade {
+  0% {
+    transform:
+      rotate(7deg)
+      translateY(0)
+      scale(1);
+  }
+
+  30% {
+    filter:
+      grayscale(0.7)
+      brightness(0.7);
+
+    transform:
+      rotate(12deg)
+      translateY(30px)
+      scale(0.87);
+  }
+
+  55% {
+    transform:
+      rotate(4deg)
+      translateY(16px)
+      scale(0.93);
+  }
+
+  100% {
+    filter: none;
+
+    transform:
+      rotate(7deg)
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes forge-result-downgrade {
+  0% {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* =========================================================
+   강화 파괴
+   ========================================================= */
+
+.forge-fire-stage.result-destroy {
+  animation:
+    forge-stage-destroy
+    1.4s ease-out;
+}
+
+.forge-sword.result-destroy {
+  animation:
+    forge-sword-destroy
+    1.4s ease-in forwards;
+}
+
+.forge-result-overlay.result-destroy {
+  color: #fecaca;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(220, 38, 38, 0.58),
+      rgba(69, 10, 10, 0.45) 53%,
+      transparent 76%
+    );
+
+  animation:
+    forge-result-destroy
+    1.4s ease-out forwards;
+}
+
+
+/* 검 파편 */
+
+.forge-destroy-pieces {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+
+  pointer-events: none;
+}
+
+.forge-piece {
+  position: absolute;
+  top: 47%;
+  left: 50%;
+
+  width: 16px;
+  height: 48px;
+
+  opacity: 0;
+
+  border: 2px solid #fecaca;
+
+  background:
+    linear-gradient(
+      90deg,
+      #71717a,
+      #fff,
+      #a1a1aa
+    );
+
+  clip-path:
+    polygon(
+      50% 0,
+      100% 20%,
+      73% 100%,
+      10% 78%,
+      0 30%
+    );
+}
+
+.forge-destroy-pieces.active .piece-one {
+  animation:
+    forge-piece-one
+    1.2s ease-out forwards;
+}
+
+.forge-destroy-pieces.active .piece-two {
+  animation:
+    forge-piece-two
+    1.2s ease-out forwards;
+}
+
+.forge-destroy-pieces.active .piece-three {
+  animation:
+    forge-piece-three
+    1.2s ease-out forwards;
+}
+
+.forge-destroy-pieces.active .piece-four {
+  animation:
+    forge-piece-four
+    1.2s ease-out forwards;
+}
+
+
+@keyframes forge-stage-destroy {
+  0% {
+    filter: brightness(1);
+  }
+
+  12% {
+    filter:
+      brightness(2)
+      saturate(1.7);
+
+    transform: translateX(-5px);
+  }
+
+  20% {
+    transform: translateX(6px);
+  }
+
+  28% {
+    transform: translateX(-5px);
+  }
+
+  36% {
+    transform: translateX(3px);
+  }
+
+  55% {
+    filter:
+      brightness(0.45)
+      saturate(1.4);
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: translateX(0);
+  }
+}
+
+@keyframes forge-sword-destroy {
+  0% {
+    opacity: 1;
+
+    transform:
+      rotate(7deg)
+      scale(1);
+  }
+
+  15% {
+    filter:
+      brightness(2.5)
+      drop-shadow(0 0 25px #ef4444);
+
+    transform:
+      rotate(-2deg)
+      scale(1.16);
+  }
+
+  27% {
+    transform:
+      rotate(14deg)
+      scale(0.96);
+  }
+
+  42% {
+    opacity: 1;
+
+    transform:
+      rotate(-9deg)
+      scale(1.08);
+  }
+
+  58% {
+    opacity: 0;
+
+    filter:
+      brightness(0.4)
+      grayscale(1);
+
+    transform:
+      rotate(34deg)
+      scale(0.3);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      rotate(45deg)
+      scale(0);
+  }
+}
+
+@keyframes forge-result-destroy {
+  0% {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+
+  15% {
+    opacity: 1;
+    transform: scale(1.14);
+  }
+
+  35% {
+    transform: scale(1);
+  }
+
+  76% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes forge-piece-one {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(-105px, -100px)
+      rotate(-260deg);
+  }
+}
+
+@keyframes forge-piece-two {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(100px, -70px)
+      rotate(290deg);
+  }
+}
+
+@keyframes forge-piece-three {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(-85px, 115px)
+      rotate(210deg);
+  }
+}
+
+@keyframes forge-piece-four {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(115px, 105px)
+      rotate(-320deg);
+  }
+}

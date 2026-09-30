@@ -39,7 +39,7 @@
         <h1>⛏️ 상암 광산</h1>
 
         <p>
-          거대한 광석을 클릭해 보석을 채굴하고 보물상자에 도전하세요.
+          거대한 광석을 클릭해 보석을 채굴하고 보물상자와 검 강화에 도전하세요.
         </p>
       </section>
 
@@ -238,6 +238,217 @@
 
         </div>
       </section>
+<section class="forge-section">
+  <div class="mine-section-heading">
+    <div>
+      <span>BLACKSMITH</span>
+      <h2>🔥 상암 대장간</h2>
+    </div>
+
+    <p>
+      보석으로 검을 제작하고 최고 15강까지 강화할 수 있습니다.
+    </p>
+  </div>
+
+  <div class="forge-layout">
+
+    <!-- 검 표시 영역 -->
+    <div class="forge-fire-stage">
+      <div class="forge-fire-glow"></div>
+
+      <!-- 강화 시 망치 연출 -->
+<div
+  id="forgeHammerEffect"
+  class="forge-hammer-effect"
+  aria-hidden="true"
+>
+  <span class="forge-hammer">🔨</span>
+  <span class="forge-hit-spark spark-one">✦</span>
+  <span class="forge-hit-spark spark-two">✦</span>
+  <span class="forge-hit-spark spark-three">✦</span>
+</div>
+
+<!-- 강화 결과 문구 -->
+<div
+  id="forgeResultOverlay"
+  class="forge-result-overlay"
+  aria-hidden="true"
+>
+  <strong id="forgeResultTitle">강화 성공!</strong>
+  <span id="forgeResultSubtitle">+1강</span>
+</div>
+
+<!-- 파괴 시 검 조각 -->
+<div
+  id="forgeDestroyPieces"
+  class="forge-destroy-pieces"
+  aria-hidden="true"
+>
+  <span class="forge-piece piece-one"></span>
+  <span class="forge-piece piece-two"></span>
+  <span class="forge-piece piece-three"></span>
+  <span class="forge-piece piece-four"></span>
+</div>
+
+      <div
+        id="forgeEmptyState"
+        class="forge-empty-state"
+      >
+        <span>⚒️</span>
+        <strong>현재 보유한 검이 없습니다</strong>
+        <small>보석 1,000개로 검을 제작할 수 있습니다.</small>
+      </div>
+
+      <div
+        id="forgeSword"
+        class="forge-sword"
+        aria-label="현재 강화 검"
+        hidden
+      >
+        <span class="sword-aura"></span>
+
+        <span
+          class="sword-orbit sword-orbit-one"
+        ></span>
+
+        <span
+          class="sword-orbit sword-orbit-two"
+        ></span>
+
+        <span
+          class="sword-wing sword-wing-left"
+        ></span>
+
+        <span
+          class="sword-wing sword-wing-right"
+        ></span>
+
+        <span class="sword-blade"></span>
+        <span class="sword-rune">ᚱ</span>
+        <span class="sword-gem"></span>
+        <span class="sword-crown"></span>
+        <span class="sword-guard"></span>
+        <span class="sword-handle"></span>
+      </div>
+
+      <div class="forge-anvil">⚒️</div>
+    </div>
+
+    <!-- 검 정보 -->
+    <div class="forge-info">
+      <span
+        id="forgeLevelBadge"
+        class="forge-level-badge"
+      >
+        검 없음
+      </span>
+
+      <h3 id="forgeSwordName">
+        검을 제작해 보세요
+      </h3>
+
+      <p id="forgeSwordValue">
+        제작 비용: 보석 1,000개
+      </p>
+
+      <div
+        id="forgeRates"
+        class="forge-rates"
+        hidden
+      >
+        <span class="success">
+          성공
+          <strong id="forgeSuccessRate">0%</strong>
+        </span>
+
+        <span class="maintain">
+          유지
+          <strong id="forgeMaintainRate">0%</strong>
+        </span>
+
+        <span class="downgrade">
+          하락
+          <strong id="forgeDowngradeRate">0%</strong>
+        </span>
+
+        <span class="destroy">
+          파괴
+          <strong id="forgeDestroyRate">0%</strong>
+        </span>
+      </div>
+
+      <p
+        id="forgeMessage"
+        class="forge-message"
+        aria-live="polite"
+      >
+        검을 제작하면 강화에 도전할 수 있습니다.
+      </p>
+
+      <div class="forge-actions">
+        <button
+          type="button"
+          id="forgeCraftButton"
+          onclick="craftSword()"
+        >
+          보석 1,000개로 검 제작
+        </button>
+
+        <button
+          type="button"
+          id="forgeEnhanceButton"
+          onclick="enhanceSword()"
+          hidden
+        >
+          검 강화
+        </button>
+
+        <button
+          type="button"
+          id="forgeDismantleButton"
+          class="forge-dismantle-button"
+          onclick="dismantleSword()"
+          hidden
+        >
+          검 분해
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 단계별 확률표 -->
+  <details class="forge-table-details">
+    <summary>
+      📊 단계별 강화 비용 및 확률표 보기
+    </summary>
+
+    <div class="forge-table-scroll">
+      <table class="forge-table">
+        <thead>
+          <tr>
+            <th>도전</th>
+            <th>강화 비용</th>
+            <th>현재 가치</th>
+            <th>다음 가치</th>
+            <th>성공</th>
+            <th>유지</th>
+            <th>하락</th>
+            <th>파괴</th>
+          </tr>
+        </thead>
+
+        <tbody id="forgeTableBody">
+          <tr>
+            <td colspan="8">
+              강화 정보를 불러오는 중입니다.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+</section>
 
       <!-- 상자 확률 -->
       <section class="mine-chest-rules">
