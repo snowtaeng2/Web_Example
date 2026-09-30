@@ -9211,3 +9211,49 @@ header .me {
       rotate(-320deg);
   }
 }
+
+/* =========================================================
+   클릭 가능한 광고
+   ========================================================= */
+
+.side-ad-link {
+  display: block;
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  color: inherit;
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.side-ad-link img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: inherit;
+}
+
+.side-ad-link:hover {
+  transform: translateY(-3px);
+
+  filter: brightness(1.05);
+
+  box-shadow:
+    0 8px 18px rgba(24, 24, 27, 0.18);
+}
+
+.side-ad-link:active {
+  transform: translateY(-1px);
+}
+
+.side-ad-link:focus-visible {
+  outline: 3px solid #6366f1;
+  outline-offset: 3px;
+}
