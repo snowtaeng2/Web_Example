@@ -8,6 +8,15 @@ my-project/
 ├─ pages/                     ★ 새 페이지는 전부 여기에
 │  ├─ board.html                게시판
 │  ├─ mypage.html               내 정보
+│  ├─ guide.html                가이드
+│  ├─ games.html                게임장
+│  ├─ slot.html                 슬롯
+│  ├─ coin.html                 동전 던지기
+│  ├─ dice.html                 주사위
+│  ├─ roulette.html             룰렛
+│  ├─ fate.html                 운명의 도박
+│  ├─ mine.html                 광산
+│  ├─ shop.html                 상점
 │  └─ _새페이지_템플릿.html      복사해서 쓰는 빈 페이지
 │
 ├─ assets/                    ★ 화면에 쓰는 재료는 전부 여기에
@@ -16,9 +25,22 @@ my-project/
 │  ├─ js/
 │  │  ├─ common.js              연결·로그인·메뉴 (모든 페이지가 함께 씀)
 │  │  ├─ home.js                홈 전용
+│  │  ├─ guide.js               가이드 전용
+│  │  ├─ games.js               게임장 전용
+│  │  ├─ slot.js                슬롯 전용
+│  │  ├─ coin.js                동전 던지기 전용
+│  │  ├─ dice.js                주사위 전용
+│  │  ├─ roulette.js            룰렛 전용
+│  │  ├─ fate.js                운명의 도박 전용
+│  │  ├─ mine.js                광산 전용
+│  │  ├─ shop.js                상점 전용
 │  │  ├─ board.js               게시판 전용
 │  │  └─ mypage.js              내 정보 전용
 │  └─ img/
+│     ├─ ad-land.png            광고 이미지들
+│     ├─ ad-sangam.png
+│     ├─ ad-toilet.png
+│     ├─ ad-wonking.png
 │     └─ logo.svg               이미지는 여기에 넣기
 │
 ├─ api/
@@ -29,122 +51,98 @@ my-project/
 └─ .env.local                진짜 키 ★ 직접 만들어야 하고, 깃에 안 올라갑니다
 ```
 
-## 키를 두는 곳
+# 🎡 상암랜드
 
-| 장소 | 누가 볼 수 있나 | 여기에 둘 것 |
-|---|---|---|
-| `index.html`, `assets/` | **전 세계** | Supabase Publishable key |
-| GitHub 저장소 | 저장소를 볼 수 있는 사람 | 코드만. 키는 없음 |
-| `.env.local` (내 컴퓨터) | 나만 | Groq 키 |
-| Vercel 환경변수 | 나만 | Groq 키 (같은 값) |
+가상 재화인 칩과 보석을 모아 다양한 미니게임을 즐기고,
+광산 채굴, 검 강화, 게시글 꾸미기와 커뮤니티 활동을 할 수 있는 웹사이트입니다.
 
-`.env.local` 은 깃에 안 올라가므로 **Vercel에는 따로 등록해야 합니다.**
-Settings → Environment Variables 에 넣고 **Redeploy** 까지 해야 반영됩니다.
+🔗 **배포 주소**: https://web-example-dun.vercel.app/
 
-Supabase 키를 안 숨기는 건 실수가 아닙니다. 공개를 전제로 만들어진 키이고,
-권한은 DB의 RLS 정책이 따로 막습니다.
+> 상암랜드의 칩과 보석은 사이트 내부에서만 사용하는 가상 재화입니다.
+> 실제 현금이나 상품으로 교환할 수 없습니다.
 
-## 규칙 1 — 주소는 항상 `/` 로 시작
+## 사용한 기술
 
-```html
-<!-- 맞음 -->
-<link rel="stylesheet" href="/assets/css/style.css">
-<script src="/assets/js/common.js"></script>
-<img src="/assets/img/logo.svg">
+| 구분 | 사용한 기술 |
+| --- | --- |
+| 프론트엔드 | HTML, CSS, JavaScript |
+| 데이터베이스 및 인증 | Supabase |
+| AI 기능 | Groq API |
+| 배포 | Vercel |
 
-<!-- 틀림 -->
-<link rel="stylesheet" href="assets/css/style.css">
-<script src="../assets/js/common.js"></script>
-```
+## 주요 기능
 
-`/` 없이 쓰면 `index.html`에서는 되는데 `pages/board.html`에서는 깨집니다.
-폴더 깊이가 달라지기 때문입니다.
-**`/` 로 시작하면 어느 폴더에서든 똑같이 동작합니다.**
+### 1. 회원가입 및 사용자 기능
 
-## 규칙 2 — 페이지마다 JS 파일 하나
+- Supabase Auth를 이용한 회원가입 및 로그인
+- 회원가입 시 선택적으로 닉네임 설정
+- 닉네임이 없으면 이메일의 `@` 앞부분을 표시 이름으로 사용
+- 내 정보 페이지에서 닉네임 변경 및 해제
+- 매일 출석 체크를 통해 가상 칩 획득
 
-`common.js` 는 모두가 함께 쓰고, 각 페이지는 자기 JS만 추가로 부릅니다.
+### 2. 다양한 미니게임
 
-한 파일에 다 넣지 마세요. 나눠두면 Copilot에게
-"board.js의 addPost 함수 고쳐줘"처럼 좁게 지시할 수 있어서 **크레딧이 훨씬 덜 듭니다.**
+- 상암 슬롯
+- 동전 던지기
+- 상암 주사위
+- 행운의 룰렛
+- 운명의 도박
 
-## 규칙 3 — `onAuthReady()` 안에서 시작
+각 게임의 결과와 재화 변동은 Supabase 데이터베이스 함수에서 처리하며,
+게임별 확률과 보상 규칙을 화면에 표시합니다.
 
-로그인 확인이 끝나면 `common.js` 가 이 함수를 자동으로 불러줍니다.
+### 3. 광산과 보물상자
 
-```js
-function onAuthReady() {
-  // 여기서부터 currentUser, db, askAI 를 쓸 수 있습니다.
-}
-```
+- 광석을 클릭해 보석 획득
+- 1% 확률로 크리티컬 발생
+- 크리티컬 발생 시 보석 100개와 피버 게이지 추가 획득
+- 피버 게이지를 채우면 5초 동안 모든 채굴이 크리티컬로 적용
+- 보석 100개를 가상 칩 1개로 교환
+- 보석 1,000개로 랜덤 보물상자 구매
 
-로그인 확인 전에 DB를 부르면 내 정보가 아직 없어서 실패합니다.
+### 4. 대장간과 검 강화
 
----
+- 보석을 사용해 검 제작
+- 최고 15강까지 강화 가능
+- 강화 결과는 성공, 유지, 하락, 파괴로 구성
+- 고강화 단계일수록 성공 확률이 낮아지고 하락 및 파괴 확률이 증가
+- 강화 단계에 따라 검의 색상, 장식, 오라와 날개 효과가 변경
+- 보유한 검을 분해해 단계별 가치만큼 보석으로 교환
+- 단계별 강화 비용 및 확률표 제공
 
-# 새 페이지 만드는 법 (4단계)
+### 5. 게시판과 꾸미기 상점
 
-**1.** `pages/_새페이지_템플릿.html` 을 복사해서 새 이름으로 저장
-```
-pages/gallery.html
-```
+- 게시글 작성 및 삭제, AI로 글 다듬기
+- Supabase에서 작성한 공지를 홈과 게시판 상단에 표시
+- 게시글 작성자 닉네임, 보유 칩과 작성 시간 표시
+- 칩으로 게시글 꾸미기 아이템 구매
+- 이름 아이콘, 닉네임 색상, 글씨 스타일, 테두리와 배경 장착
+- 구매한 상품은 영구 보관되며 언제든 장착하거나 해제 가능
 
-**2.** `assets/js/gallery.js` 를 만들고 안에 이렇게 씁니다
-```js
-function onAuthReady() {
-  // 여기에 이 페이지가 할 일
-}
-```
+## 주요 기능 요약
 
-**3.** `gallery.html` 맨 아래 script 주소를 바꿉니다
-```html
-<script src="/assets/js/gallery.js"></script>
-```
+- Supabase 기반 회원가입, 로그인과 사용자별 데이터 관리
+- 확률과 가상 재화를 활용한 다양한 미니게임
+- 클릭 채굴, 크리티컬과 피버타임이 포함된 광산
+- 성공, 유지, 하락과 파괴가 포함된 15단계 검 강화
+- 게시글 꾸미기 상점과 커뮤니티 게시판
 
-**4.** `assets/js/common.js` 의 `MENU` 에 한 줄 추가
-```js
-{ name: "갤러리", url: "/pages/gallery.html" },
-```
+## 보안 및 데이터 처리
 
-메뉴, 로그인 유지, DB 연결, AI 호출이 전부 그대로 따라옵니다.
+게임 결과와 재화 변경은 브라우저에서 직접 처리하지 않고
+Supabase Database Function을 통해 처리합니다.
 
----
+- 로그인 사용자 확인
+- 사용자별 데이터 접근 제한
+- RLS를 사용한 행 단위 보안
+- 게임 결과와 재화 변경을 데이터베이스에서 처리
+- 동시에 여러 요청이 들어올 때 발생할 수 있는 잔액 오류 방지
+- 구매하지 않은 꾸미기 아이템 장착 방지
 
-# 바로 쓸 수 있는 것들
+## 실행 화면
+<img width="1782" height="867" alt="image" src="https://github.com/user-attachments/assets/c1e3c57f-56dd-457b-98d0-90720e50586e" />
+<img width="1696" height="938" alt="image" src="https://github.com/user-attachments/assets/7919a4b8-f5c5-45b9-8da3-116dbd97d422" />
+<img width="1671" height="875" alt="image" src="https://github.com/user-attachments/assets/c1268837-46e2-49a3-a005-9668d70f9987" />
 
-`common.js` 를 부른 페이지라면 어디서든 씁니다.
-
-| 이름 | 하는 일 |
-|---|---|
-| `db` | Supabase. `db.from("posts").select("*")` 처럼 사용 |
-| `currentUser` | 지금 로그인한 사람. `currentUser.email`, `currentUser.id` |
-| `askAI(프롬프트)` | AI에게 물어보기. `await askAI("...")` |
-| `signOut()` | 로그아웃 |
-
-```js
-// 예시
-async function onAuthReady() {
-  const { data, error } = await db.from("posts").select("*");
-  if (error) { console.error(error); return; }
-
-  const 요약 = await askAI("이 글들을 한 줄로 요약해줘: " + JSON.stringify(data));
-  console.log(요약);
-}
-```
-
----
-
-# 자주 나는 문제
-
-| 증상 | 원인 |
-|---|---|
-| 새 페이지에서 디자인이 다 깨짐 | 주소에 `/` 를 안 붙임 (규칙 1) |
-| `supabase is not defined` | CDN script 가 common.js 뒤에 있음 |
-| `currentUser is null` | `onAuthReady()` 밖에서 코드를 실행함 (규칙 3) |
-| 새 페이지가 메뉴에 안 보임 | `common.js` 의 `MENU` 에 안 넣음 |
-| 커밋했는데 화면이 그대로 | 브라우저 캐시. `Ctrl+Shift+R` |
-| AI만 404 | Live Server로 열었음. 배포 주소나 `vercel dev` 에서 확인 |
-
-> **참고:** Git은 빈 폴더를 저장하지 않습니다.
-> `assets/img/` 에 파일이 하나도 없으면 GitHub에 폴더가 안 올라갑니다.
-> `logo.svg` 를 지우지 말고 두세요.
+## 만든 사람
+30604 박윤우
