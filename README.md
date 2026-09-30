@@ -138,3 +138,11 @@ Supabase Database Function을 통해 처리합니다.
 - 게임 결과와 재화 변경을 데이터베이스에서 처리
 - 동시에 여러 요청이 들어올 때 발생할 수 있는 잔액 오류 방지
 - 구매하지 않은 꾸미기 아이템 장착 방지
+
+## 실행 화면
+<img width="1782" height="867" alt="image" src="https://github.com/user-attachments/assets/c1e3c57f-56dd-457b-98d0-90720e50586e" />
+<img width="1696" height="938" alt="image" src="https://github.com/user-attachments/assets/7919a4b8-f5c5-45b9-8da3-116dbd97d422" />
+<img width="1671" height="875" alt="image" src="https://github.com/user-attachments/assets/c1268837-46e2-49a3-a005-9668d70f9987" />
+
+## 만든 사람
+30604 박윤우
