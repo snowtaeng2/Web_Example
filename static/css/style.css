@@ -9257,3 +9257,573 @@ header .me {
   outline: 3px solid #6366f1;
   outline-offset: 3px;
 }
+
+/* =========================================================
+   추가 상점 아이콘
+   ========================================================= */
+
+/* 게시판 작성자 아이콘 */
+
+.post-author-icon.icon_pickaxe::before {
+  content: "⛏️";
+}
+
+.post-author-icon.icon_chest::before {
+  content: "🪎";
+}
+
+.post-author-icon.icon_sword::before {
+  content: "⚔️";
+}
+
+.post-author-icon.icon_fire::before {
+  content: "🔥";
+}
+
+.post-author-icon.icon_lightning::before {
+  content: "⚡";
+}
+
+
+/* 상점 미리보기 아이콘 */
+
+.shop-item-preview.icon_pickaxe > strong::before,
+.shop-post-preview.icon_pickaxe > strong::before {
+  content: "⛏️";
+}
+
+.shop-item-preview.icon_chest > strong::before,
+.shop-post-preview.icon_chest > strong::before {
+  content: "🪎";
+}
+
+.shop-item-preview.icon_sword > strong::before,
+.shop-post-preview.icon_sword > strong::before {
+  content: "⚔️";
+}
+
+.shop-item-preview.icon_fire > strong::before,
+.shop-post-preview.icon_fire > strong::before {
+  content: "🔥";
+}
+
+.shop-item-preview.icon_lightning > strong::before,
+.shop-post-preview.icon_lightning > strong::before {
+  content: "⚡";
+}
+
+
+/* 아이콘 효과 */
+
+.post-author-icon.icon_chest,
+.shop-post-preview.icon_chest > strong::before {
+  filter:
+    drop-shadow(0 0 5px rgba(245, 158, 11, 0.75));
+}
+
+.post-author-icon.icon_sword,
+.shop-post-preview.icon_sword > strong::before {
+  filter:
+    drop-shadow(0 0 5px rgba(96, 165, 250, 0.75));
+}
+
+.post-author-icon.icon_fire,
+.shop-post-preview.icon_fire > strong::before {
+  animation:
+    shop-new-fire-icon
+    0.75s alternate infinite;
+}
+
+.post-author-icon.icon_lightning,
+.shop-post-preview.icon_lightning > strong::before {
+  animation:
+    shop-new-lightning-icon
+    0.6s steps(2) infinite;
+}
+
+
+@keyframes shop-new-fire-icon {
+  from {
+    transform: translateY(1px) scale(0.96);
+
+    filter:
+      drop-shadow(0 0 3px #ef4444);
+  }
+
+  to {
+    transform: translateY(-2px) scale(1.12);
+
+    filter:
+      drop-shadow(0 0 9px #f97316)
+      drop-shadow(0 0 15px #facc15);
+  }
+}
+
+@keyframes shop-new-lightning-icon {
+  0% {
+    transform: rotate(-4deg) scale(1);
+
+    filter:
+      drop-shadow(0 0 4px #facc15);
+  }
+
+  50% {
+    transform: rotate(5deg) scale(1.15);
+
+    filter:
+      brightness(1.5)
+      drop-shadow(0 0 12px #fef08a);
+  }
+
+  100% {
+    transform: rotate(0) scale(1);
+
+    filter:
+      drop-shadow(0 0 5px #a78bfa);
+  }
+}
+
+/* =========================================================
+   추가 닉네임 색상
+   ========================================================= */
+
+.name_pink .post-author-line > strong,
+.shop-post-preview.name_pink > strong,
+.shop-item-preview.name_pink > strong {
+  color: #ec4899 !important;
+}
+
+.name_crimson .post-author-line > strong,
+.shop-post-preview.name_crimson > strong,
+.shop-item-preview.name_crimson > strong {
+  color: #be123c !important;
+
+  text-shadow:
+    0 0 6px rgba(225, 29, 72, 0.3);
+}
+
+.name_ice .post-author-line > strong,
+.shop-post-preview.name_ice > strong,
+.shop-item-preview.name_ice > strong {
+  color: #0ea5e9 !important;
+
+  text-shadow:
+    0 0 5px #bae6fd,
+    0 0 11px rgba(56, 189, 248, 0.6);
+}
+
+.name_fire .post-author-line > strong,
+.shop-post-preview.name_fire > strong,
+.shop-item-preview.name_fire > strong {
+  color: transparent !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      #dc2626,
+      #f97316,
+      #facc15,
+      #dc2626
+    );
+
+  background-size: 220% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  animation:
+    shop-new-name-flow
+    2.2s linear infinite;
+}
+
+.name_cosmic .post-author-line > strong,
+.shop-post-preview.name_cosmic > strong,
+.shop-item-preview.name_cosmic > strong {
+  color: transparent !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      #22d3ee,
+      #6366f1,
+      #d946ef,
+      #f0abfc,
+      #22d3ee
+    );
+
+  background-size: 300% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  filter:
+    drop-shadow(0 0 5px rgba(168, 85, 247, 0.65));
+
+  animation:
+    shop-new-name-flow
+    2.7s linear infinite;
+}
+
+
+@keyframes shop-new-name-flow {
+  to {
+    background-position: 300% center;
+  }
+}
+
+/* =========================================================
+   추가 게시글 글씨
+   ========================================================= */
+
+.text_green .post-content,
+.shop-post-preview.text_green > span,
+.shop-item-preview.text_green > span {
+  color: #15803d;
+}
+
+.text_ice .post-content,
+.shop-post-preview.text_ice > span,
+.shop-item-preview.text_ice > span {
+  color: #0284c7;
+
+  text-shadow:
+    0 0 5px rgba(125, 211, 252, 0.65);
+}
+
+.text_shadow .post-content,
+.shop-post-preview.text_shadow > span,
+.shop-item-preview.text_shadow > span {
+  color: #27272a;
+
+  font-weight: 700;
+
+  text-shadow:
+    1px 1px 0 #d4d4d8,
+    2px 2px 2px rgba(24, 24, 27, 0.24);
+}
+
+.text_fire .post-content,
+.shop-post-preview.text_fire > span,
+.shop-item-preview.text_fire > span {
+  color: transparent;
+
+  background:
+    linear-gradient(
+      90deg,
+      #991b1b,
+      #ef4444,
+      #fbbf24,
+      #ef4444,
+      #991b1b
+    );
+
+  background-size: 260% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  font-weight: 800;
+
+  animation:
+    shop-new-text-flow
+    2s linear infinite;
+}
+
+.text_divine .post-content,
+.shop-post-preview.text_divine > span,
+.shop-item-preview.text_divine > span {
+  color: transparent;
+
+  background:
+    linear-gradient(
+      90deg,
+      #b45309,
+      #facc15,
+      #fff,
+      #fef08a,
+      #b45309
+    );
+
+  background-size: 300% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  font-weight: 900;
+
+  filter:
+    drop-shadow(0 0 4px rgba(250, 204, 21, 0.55));
+
+  animation:
+    shop-new-text-flow
+    2.3s linear infinite;
+}
+
+
+@keyframes shop-new-text-flow {
+  to {
+    background-position: 300% center;
+  }
+}
+
+/* =========================================================
+   추가 게시글 테두리
+   ========================================================= */
+
+.border_green {
+  border: 2px solid #10b981 !important;
+}
+
+.border_ice {
+  border: 3px solid #7dd3fc !important;
+
+  box-shadow:
+    0 0 8px rgba(56, 189, 248, 0.35),
+    inset 0 0 7px rgba(186, 230, 253, 0.25);
+}
+
+.border_rainbow {
+  border: 3px solid #8b5cf6 !important;
+
+  animation:
+    shop-new-rainbow-border
+    2.6s linear infinite;
+}
+
+.border_lightning {
+  border: 3px solid #facc15 !important;
+
+  animation:
+    shop-new-lightning-border
+    0.8s steps(2) infinite;
+}
+
+.border_dimension {
+  position: relative;
+
+  border: 3px solid #a855f7 !important;
+
+  box-shadow:
+    0 0 8px #6366f1,
+    0 0 17px rgba(168, 85, 247, 0.65),
+    inset 0 0 10px rgba(34, 211, 238, 0.2);
+
+  animation:
+    shop-new-dimension-border
+    2.2s ease-in-out infinite;
+}
+
+
+@keyframes shop-new-rainbow-border {
+  0% {
+    border-color: #ef4444 !important;
+  }
+
+  20% {
+    border-color: #f59e0b !important;
+  }
+
+  40% {
+    border-color: #22c55e !important;
+  }
+
+  60% {
+    border-color: #3b82f6 !important;
+  }
+
+  80% {
+    border-color: #8b5cf6 !important;
+  }
+
+  100% {
+    border-color: #ef4444 !important;
+  }
+}
+
+@keyframes shop-new-lightning-border {
+  0% {
+    box-shadow:
+      0 0 6px #facc15;
+  }
+
+  50% {
+    border-color: #fff !important;
+
+    box-shadow:
+      0 0 13px #fef08a,
+      0 0 25px rgba(99, 102, 241, 0.5);
+  }
+
+  100% {
+    box-shadow:
+      0 0 7px #facc15;
+  }
+}
+
+@keyframes shop-new-dimension-border {
+  0%,
+  100% {
+    border-color: #6366f1 !important;
+
+    box-shadow:
+      0 0 8px #6366f1,
+      0 0 17px rgba(168, 85, 247, 0.55);
+  }
+
+  50% {
+    border-color: #22d3ee !important;
+
+    box-shadow:
+      0 0 11px #22d3ee,
+      0 0 25px rgba(217, 70, 239, 0.7);
+  }
+}
+
+/* =========================================================
+   추가 게시글 배경
+   ========================================================= */
+
+.bg_mint {
+  background:
+    linear-gradient(
+      135deg,
+      #ecfdf5,
+      #d1fae5
+    ) !important;
+}
+
+.bg_cherry {
+  background:
+    linear-gradient(
+      135deg,
+      #fff1f2,
+      #fce7f3,
+      #fff7ed
+    ) !important;
+}
+
+.bg_ocean {
+  background:
+    linear-gradient(
+      120deg,
+      #082f49,
+      #0c4a6e,
+      #0369a1,
+      #0891b2,
+      #082f49
+    ) !important;
+
+  background-size: 300% 300% !important;
+
+  color: #fff;
+
+  animation:
+    shop-new-ocean-bg
+    6s ease infinite;
+}
+
+.bg_ocean .post-content,
+.bg_ocean > span {
+  color: #e0f2fe;
+}
+
+.bg_ocean .post-created-at {
+  color: #bae6fd;
+}
+
+.bg_space {
+  background:
+    radial-gradient(
+      circle at 18% 25%,
+      rgba(255, 255, 255, 0.85) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 78% 35%,
+      rgba(255, 255, 255, 0.75) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 58% 75%,
+      rgba(196, 181, 253, 0.85) 0 2px,
+      transparent 3px
+    ),
+    linear-gradient(
+      135deg,
+      #0f172a,
+      #312e81,
+      #581c87
+    ) !important;
+
+  color: #fff;
+
+  animation:
+    shop-new-space-bg
+    3s alternate infinite;
+}
+
+.bg_space .post-content,
+.bg_space > span {
+  color: #e0e7ff;
+}
+
+.bg_space .post-created-at {
+  color: #c4b5fd;
+}
+
+.bg_divine {
+  background:
+    linear-gradient(
+      120deg,
+      #fff7ed,
+      #fef3c7,
+      #fff,
+      #fde68a,
+      #fff7ed
+    ) !important;
+
+  background-size: 350% 350% !important;
+
+  box-shadow:
+    inset 0 0 20px rgba(250, 204, 21, 0.22),
+    0 0 18px rgba(245, 158, 11, 0.28);
+
+  animation:
+    shop-new-divine-bg
+    4s ease-in-out infinite;
+}
+
+
+@keyframes shop-new-ocean-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shop-new-space-bg {
+  from {
+    filter: brightness(0.9);
+  }
+
+  to {
+    filter: brightness(1.15);
+  }
+}
+
+@keyframes shop-new-divine-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
